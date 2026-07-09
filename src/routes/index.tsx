@@ -318,14 +318,6 @@ function ScratchSection() {
           onPointerUp={() => (drawing.current = false)}
           onPointerLeave={() => (drawing.current = false)}
         />
-        {!revealed && (
-          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 w-3/4 h-1.5 bg-white/40 rounded-full overflow-hidden">
-            <div
-              className="h-full bg-rose-deep transition-all duration-200"
-              style={{ width: `${Math.min(progress * 200, 100)}%` }}
-            />
-          </div>
-        )}
       </div>
       <PetalShower active={shower} />
     </section>
