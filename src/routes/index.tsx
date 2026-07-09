@@ -39,36 +39,44 @@ function Invitation() {
   const [sealing, setSealing] = useState(false);
 
   const handleOpen = () => {
+    if (sealing) return;
     setSealing(true);
-    setTimeout(() => setOpened(true), 700);
+    setTimeout(() => setOpened(true), 1400);
   };
 
-  if (!opened) {
-    return (
-      <div className="min-h-screen w-full flex flex-col items-center justify-center px-6"
-           style={{ background: "linear-gradient(180deg, oklch(0.96 0.02 25), oklch(0.9 0.05 15))" }}>
-        <p className="font-script text-4xl md:text-5xl text-rose-deep mb-8">You're Invited</p>
-        <button
-          onClick={handleOpen}
-          aria-label="Tap the seal to open"
-          className={`relative h-40 w-40 rounded-full text-white transition-all duration-700 ${sealing ? "scale-125 opacity-0" : "seal-anim"}`}
-          style={{
-            background: "radial-gradient(circle at 30% 30%, oklch(0.7 0.15 15), oklch(0.45 0.14 15) 70%, oklch(0.35 0.12 15))",
-          }}
+  return (
+    <>
+      {!opened && (
+        <div
+          className={`fixed inset-0 z-50 flex flex-col items-center justify-center px-6 transition-transform duration-[1200ms] ease-[cubic-bezier(0.77,0,0.175,1)] ${sealing ? "-translate-y-full" : "translate-y-0"}`}
+          style={{ background: "linear-gradient(180deg, oklch(0.96 0.02 25), oklch(0.9 0.05 15))" }}
         >
-          <span className="absolute inset-3 rounded-full border border-white/40" />
-          <span className="absolute inset-6 rounded-full border border-white/25" />
-          <span className="relative flex flex-col items-center justify-center h-full">
-            <Heart className="h-6 w-6 fill-white mb-1" />
-            <span className="text-[10px] tracking-[0.3em] font-sans">TAP TO OPEN</span>
-          </span>
-        </button>
-        <p className="font-script text-2xl text-rose-deep/80 mt-10">tap the seal to open</p>
-      </div>
-    );
-  }
-
-  return <InvitationBody />;
+          <p className={`font-script text-3xl md:text-4xl text-rose-deep mb-6 transition-all duration-500 ${sealing ? "opacity-0 -translate-y-4" : "opacity-100"}`}>
+            You're Invited
+          </p>
+          <button
+            onClick={handleOpen}
+            aria-label="Tap the seal to open"
+            className={`relative h-24 w-24 rounded-full text-white transition-all duration-700 ease-out ${sealing ? "scale-[6] opacity-0" : "seal-anim hover:scale-105"}`}
+            style={{
+              background: "radial-gradient(circle at 30% 30%, oklch(0.7 0.15 15), oklch(0.45 0.14 15) 70%, oklch(0.35 0.12 15))",
+            }}
+          >
+            <span className="absolute inset-2 rounded-full border border-white/40" />
+            <span className="absolute inset-4 rounded-full border border-white/25" />
+            <span className="relative flex flex-col items-center justify-center h-full">
+              <Heart className="h-4 w-4 fill-white mb-0.5" />
+              <span className="text-[8px] tracking-[0.25em] font-sans">TAP TO OPEN</span>
+            </span>
+          </button>
+          <p className={`font-script text-xl text-rose-deep/80 mt-8 transition-all duration-500 ${sealing ? "opacity-0 translate-y-4" : "opacity-100"}`}>
+            tap the seal to open
+          </p>
+        </div>
+      )}
+      {(sealing || opened) && <InvitationBody />}
+    </>
+  );
 }
 
 function useCountdown(target: Date) {
