@@ -46,35 +46,62 @@ function Invitation() {
 
   return (
     <>
+      {(sealing || opened) && <InvitationBody />}
       {!opened && (
-        <div
-          className={`fixed inset-0 z-50 flex flex-col items-center justify-center px-6 transition-transform duration-[1200ms] ease-[cubic-bezier(0.77,0,0.175,1)] ${sealing ? "-translate-y-full" : "translate-y-0"}`}
-          style={{ background: "linear-gradient(180deg, oklch(0.96 0.02 25), oklch(0.9 0.05 15))" }}
-        >
-          <p className={`font-script text-3xl md:text-4xl text-rose-deep mb-6 transition-all duration-500 ${sealing ? "opacity-0 -translate-y-4" : "opacity-100"}`}>
-            You're Invited
-          </p>
-          <button
-            onClick={handleOpen}
-            aria-label="Tap the seal to open"
-            className={`relative h-24 w-24 rounded-full text-white transition-all duration-700 ease-out ${sealing ? "scale-[6] opacity-0" : "seal-anim hover:scale-105"}`}
+        <div className="fixed inset-0 z-50 pointer-events-none" aria-hidden={sealing}>
+          {/* Left gate */}
+          <div
+            className={`absolute inset-y-0 left-0 w-1/2 pointer-events-auto flex items-center justify-end pr-3 transition-transform duration-[1600ms] ease-[cubic-bezier(0.77,0,0.175,1)] ${sealing ? "-translate-x-full" : "translate-x-0"}`}
             style={{
-              background: "radial-gradient(circle at 30% 30%, oklch(0.7 0.15 15), oklch(0.45 0.14 15) 70%, oklch(0.35 0.12 15))",
+              background: "linear-gradient(90deg, oklch(0.92 0.04 20), oklch(0.96 0.02 25))",
+              boxShadow: "inset -12px 0 30px -12px rgba(153,40,66,0.25)",
             }}
           >
-            <span className="absolute inset-2 rounded-full border border-white/40" />
-            <span className="absolute inset-4 rounded-full border border-white/25" />
-            <span className="relative flex flex-col items-center justify-center h-full">
-              <Heart className="h-4 w-4 fill-white mb-0.5" />
-              <span className="text-[8px] tracking-[0.25em] font-sans">TAP TO OPEN</span>
-            </span>
-          </button>
-          <p className={`font-script text-xl text-rose-deep/80 mt-8 transition-all duration-500 ${sealing ? "opacity-0 translate-y-4" : "opacity-100"}`}>
-            tap the seal to open
-          </p>
+            <div className="absolute inset-y-0 right-0 w-px bg-rose/30" />
+            <div className={`text-right transition-opacity duration-500 ${sealing ? "opacity-0" : "opacity-100"}`}>
+              <p className="font-script text-3xl md:text-4xl text-rose-deep">You're</p>
+            </div>
+          </div>
+
+          {/* Right gate */}
+          <div
+            className={`absolute inset-y-0 right-0 w-1/2 pointer-events-auto flex items-center justify-start pl-3 transition-transform duration-[1600ms] ease-[cubic-bezier(0.77,0,0.175,1)] ${sealing ? "translate-x-full" : "translate-x-0"}`}
+            style={{
+              background: "linear-gradient(270deg, oklch(0.92 0.04 20), oklch(0.96 0.02 25))",
+              boxShadow: "inset 12px 0 30px -12px rgba(153,40,66,0.25)",
+            }}
+          >
+            <div className="absolute inset-y-0 left-0 w-px bg-rose/30" />
+            <div className={`text-left transition-opacity duration-500 ${sealing ? "opacity-0" : "opacity-100"}`}>
+              <p className="font-script text-3xl md:text-4xl text-rose-deep">Invited</p>
+            </div>
+          </div>
+
+          {/* Center seal - sits on the seam */}
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <button
+              onClick={handleOpen}
+              aria-label="Tap the seal to open"
+              className={`pointer-events-auto relative h-24 w-24 rounded-full text-white transition-all duration-700 ease-out ${sealing ? "scale-50 opacity-0" : "seal-anim hover:scale-105"}`}
+              style={{
+                background: "radial-gradient(circle at 30% 30%, oklch(0.7 0.15 15), oklch(0.45 0.14 15) 70%, oklch(0.35 0.12 15))",
+              }}
+            >
+              <span className="absolute inset-2 rounded-full border border-white/40" />
+              <span className="absolute inset-4 rounded-full border border-white/25" />
+              <span className="relative flex flex-col items-center justify-center h-full">
+                <Heart className="h-4 w-4 fill-white mb-0.5" />
+                <span className="text-[8px] tracking-[0.25em] font-sans">TAP TO OPEN</span>
+              </span>
+            </button>
+          </div>
+
+          {/* Bottom hint */}
+          <div className={`absolute bottom-16 inset-x-0 text-center transition-opacity duration-500 ${sealing ? "opacity-0" : "opacity-100"}`}>
+            <p className="font-script text-xl text-rose-deep/80">tap the seal to open</p>
+          </div>
         </div>
       )}
-      {(sealing || opened) && <InvitationBody />}
     </>
   );
 }
