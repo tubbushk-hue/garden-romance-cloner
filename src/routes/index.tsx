@@ -203,12 +203,12 @@ function WaveDivider() {
 function PetalShower({ active }: { active: boolean }) {
   const petals = useMemo(() => {
     const colors = ["#d4717a", "#f4c542", "#f8e8e0", "#c48b12", "#e8a598"];
-    return Array.from({ length: 40 }, (_, i) => ({
+    return Array.from({ length: 90 }, (_, i) => ({
       id: i,
       left: `${Math.random() * 100}%`,
       delay: `${Math.random() * 1.5}s`,
       duration: `${2.5 + Math.random() * 2}s`,
-      size: 8 + Math.random() * 10,
+      size: 6 + Math.random() * 10,
       color: colors[Math.floor(Math.random() * colors.length)],
       swayDuration: `${2 + Math.random() * 2}s`,
     }));
@@ -240,7 +240,6 @@ function ScratchSection() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [revealed, setRevealed] = useState(false);
   const [shower, setShower] = useState(false);
-  const [progress, setProgress] = useState(0);
   const drawing = useRef(false);
   const showered = useRef(false);
 
@@ -292,7 +291,6 @@ function ScratchSection() {
     ctx.fill();
 
     const pct = checkProgress();
-    setProgress(pct);
     if (pct >= 0.5 && !showered.current) {
       showered.current = true;
       setShower(true);
@@ -320,14 +318,6 @@ function ScratchSection() {
           onPointerUp={() => (drawing.current = false)}
           onPointerLeave={() => (drawing.current = false)}
         />
-        {!revealed && (
-          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 w-3/4 h-1.5 bg-white/40 rounded-full overflow-hidden">
-            <div
-              className="h-full bg-rose-deep transition-all duration-200"
-              style={{ width: `${Math.min(progress * 200, 100)}%` }}
-            />
-          </div>
-        )}
       </div>
       <PetalShower active={shower} />
     </section>
