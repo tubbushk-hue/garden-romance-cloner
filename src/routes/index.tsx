@@ -203,12 +203,12 @@ function WaveDivider() {
 function PetalShower({ active }: { active: boolean }) {
   const petals = useMemo(() => {
     const colors = ["#d4717a", "#f4c542", "#f8e8e0", "#c48b12", "#e8a598"];
-    return Array.from({ length: 40 }, (_, i) => ({
+    return Array.from({ length: 90 }, (_, i) => ({
       id: i,
       left: `${Math.random() * 100}%`,
       delay: `${Math.random() * 1.5}s`,
       duration: `${2.5 + Math.random() * 2}s`,
-      size: 8 + Math.random() * 10,
+      size: 6 + Math.random() * 10,
       color: colors[Math.floor(Math.random() * colors.length)],
       swayDuration: `${2 + Math.random() * 2}s`,
     }));
