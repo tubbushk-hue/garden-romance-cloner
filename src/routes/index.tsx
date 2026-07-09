@@ -291,7 +291,6 @@ function ScratchSection() {
     ctx.fill();
 
     const pct = checkProgress();
-    setProgress(pct);
     if (pct >= 0.5 && !showered.current) {
       showered.current = true;
       setShower(true);
