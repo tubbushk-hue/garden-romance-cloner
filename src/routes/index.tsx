@@ -240,7 +240,6 @@ function ScratchSection() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [revealed, setRevealed] = useState(false);
   const [shower, setShower] = useState(false);
-  const [progress, setProgress] = useState(0);
   const drawing = useRef(false);
   const showered = useRef(false);
 
