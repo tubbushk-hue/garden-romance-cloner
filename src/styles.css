@@ -84,6 +84,19 @@
 }
 .fade-up { animation: fade-up 0.9s ease-out both; }
 
+@keyframes petal-fall {
+  0% { transform: translateY(-10vh) rotate(0deg) translateX(0); opacity: 1; }
+  25% { transform: translateY(25vh) rotate(90deg) translateX(15px); }
+  50% { transform: translateY(50vh) rotate(180deg) translateX(-10px); }
+  75% { transform: translateY(75vh) rotate(270deg) translateX(12px); }
+  100% { transform: translateY(110vh) rotate(360deg) translateX(0); opacity: 0; }
+}
+
+@keyframes petal-sway {
+  0%, 100% { margin-left: 0; }
+  50% { margin-left: 25px; }
+}
+
 .divider-heart {
   display: flex; align-items: center; justify-content: center; gap: 0.75rem;
   color: var(--rose);
