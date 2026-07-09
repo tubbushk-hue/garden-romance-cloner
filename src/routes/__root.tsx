@@ -77,14 +77,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Jack & Rose — Wedding Invitation" },
+      { title: "Wedding Invitation" },
       { name: "description", content: "You're invited to the wedding of Jack & Rose on June 30, 2026." },
       { name: "author", content: "Jack & Rose" },
-      { property: "og:title", content: "Jack & Rose — Wedding Invitation" },
+      { property: "og:title", content: "Wedding Invitation" },
       { property: "og:description", content: "You're invited to the wedding of Jack & Rose on June 30, 2026." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Wedding Invitation" },
+      { name: "twitter:description", content: "You're invited to the wedding of Jack & Rose on June 30, 2026." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/7398bc48-c66f-4d59-8182-3578b4b145e7/id-preview-7ae8f660--8a90be98-535e-4035-b7dd-2119934cbd60.lovable.app-1783619343331.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/7398bc48-c66f-4d59-8182-3578b4b145e7/id-preview-7ae8f660--8a90be98-535e-4035-b7dd-2119934cbd60.lovable.app-1783619343331.png" },
     ],
     links: [
       {
