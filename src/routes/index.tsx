@@ -51,30 +51,29 @@ function Invitation() {
         <div className="fixed inset-0 z-50 pointer-events-none" aria-hidden={sealing}>
           {/* Left gate */}
           <div
-            className={`absolute inset-y-0 left-0 w-1/2 pointer-events-auto flex items-center justify-end pr-3 transition-transform duration-[1600ms] ease-[cubic-bezier(0.77,0,0.175,1)] ${sealing ? "-translate-x-full" : "translate-x-0"}`}
+            className={`absolute inset-y-0 left-0 w-1/2 pointer-events-auto transition-transform duration-[1600ms] ease-[cubic-bezier(0.77,0,0.175,1)] ${sealing ? "-translate-x-full" : "translate-x-0"}`}
             style={{
               background: "linear-gradient(90deg, oklch(0.92 0.04 20), oklch(0.96 0.02 25))",
               boxShadow: "inset -12px 0 30px -12px rgba(153,40,66,0.25)",
             }}
           >
             <div className="absolute inset-y-0 right-0 w-px bg-rose/30" />
-            <div className={`text-right transition-opacity duration-500 ${sealing ? "opacity-0" : "opacity-100"}`}>
-              <p className="font-script text-3xl md:text-4xl text-rose-deep">You're</p>
-            </div>
           </div>
 
           {/* Right gate */}
           <div
-            className={`absolute inset-y-0 right-0 w-1/2 pointer-events-auto flex items-center justify-start pl-3 transition-transform duration-[1600ms] ease-[cubic-bezier(0.77,0,0.175,1)] ${sealing ? "translate-x-full" : "translate-x-0"}`}
+            className={`absolute inset-y-0 right-0 w-1/2 pointer-events-auto transition-transform duration-[1600ms] ease-[cubic-bezier(0.77,0,0.175,1)] ${sealing ? "translate-x-full" : "translate-x-0"}`}
             style={{
               background: "linear-gradient(270deg, oklch(0.92 0.04 20), oklch(0.96 0.02 25))",
               boxShadow: "inset 12px 0 30px -12px rgba(153,40,66,0.25)",
             }}
           >
             <div className="absolute inset-y-0 left-0 w-px bg-rose/30" />
-            <div className={`text-left transition-opacity duration-500 ${sealing ? "opacity-0" : "opacity-100"}`}>
-              <p className="font-script text-3xl md:text-4xl text-rose-deep">Invited</p>
-            </div>
+          </div>
+
+          {/* Title above the seal */}
+          <div className={`absolute top-32 inset-x-0 text-center transition-opacity duration-500 ${sealing ? "opacity-0" : "opacity-100"}`}>
+            <p className="font-script text-4xl md:text-5xl text-rose-deep">You're Invited</p>
           </div>
 
           {/* Center seal - sits on the seam */}
