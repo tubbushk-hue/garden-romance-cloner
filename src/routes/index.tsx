@@ -200,10 +200,49 @@ function WaveDivider() {
   );
 }
 
+function PetalShower({ active }: { active: boolean }) {
+  const petals = useMemo(() => {
+    const colors = ["#d4717a", "#f4c542", "#f8e8e0", "#c48b12", "#e8a598"];
+    return Array.from({ length: 40 }, (_, i) => ({
+      id: i,
+      left: `${Math.random() * 100}%`,
+      delay: `${Math.random() * 1.5}s`,
+      duration: `${2.5 + Math.random() * 2}s`,
+      size: 8 + Math.random() * 10,
+      color: colors[Math.floor(Math.random() * colors.length)],
+      swayDuration: `${2 + Math.random() * 2}s`,
+    }));
+  }, []);
+
+  if (!active) return null;
+
+  return (
+    <div className="fixed inset-0 pointer-events-none z-[200] overflow-hidden">
+      {petals.map((p) => (
+        <span
+          key={p.id}
+          className="absolute top-0 rounded-full opacity-0"
+          style={{
+            left: p.left,
+            width: p.size,
+            height: p.size,
+            backgroundColor: p.color,
+            borderRadius: "60% 40% 70% 30% / 40% 50% 60% 50%",
+            animation: `petal-fall ${p.duration} linear ${p.delay} forwards, petal-sway ${p.swayDuration} ease-in-out ${p.delay} infinite`,
+          }}
+        />
+      ))}
+    </div>
+  );
+}
+
 function ScratchSection() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [revealed, setRevealed] = useState(false);
+  const [shower, setShower] = useState(false);
+  const [progress, setProgress] = useState(0);
   const drawing = useRef(false);
+  const showered = useRef(false);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -227,6 +266,20 @@ function ScratchSection() {
     ctx.fillText("✦  Scratch to Reveal  ✦", rect.width / 2, rect.height / 2);
   }, []);
 
+  const checkProgress = () => {
+    const canvas = canvasRef.current;
+    if (!canvas) return 0;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return 0;
+    const img = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    let cleared = 0;
+    const step = 40;
+    for (let i = 3; i < img.data.length; i += step) {
+      if (img.data[i] === 0) cleared++;
+    }
+    return cleared / (img.data.length / step);
+  };
+
   const scratch = (x: number, y: number) => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -235,14 +288,17 @@ function ScratchSection() {
     const rect = canvas.getBoundingClientRect();
     ctx.globalCompositeOperation = "destination-out";
     ctx.beginPath();
-    ctx.arc(x - rect.left, y - rect.top, 30, 0, Math.PI * 2);
+    ctx.arc(x - rect.left, y - rect.top, 35, 0, Math.PI * 2);
     ctx.fill();
 
-    // Check pixel transparency
-    const img = ctx.getImageData(0, 0, canvas.width, canvas.height);
-    let cleared = 0;
-    for (let i = 3; i < img.data.length; i += 40) if (img.data[i] === 0) cleared++;
-    if (cleared / (img.data.length / 40) > 0.4) setRevealed(true);
+    const pct = checkProgress();
+    setProgress(pct);
+    if (pct >= 0.5 && !showered.current) {
+      showered.current = true;
+      setShower(true);
+      setTimeout(() => setRevealed(true), 600);
+      setTimeout(() => setShower(false), 5000);
+    }
   };
 
   return (
@@ -256,17 +312,24 @@ function ScratchSection() {
           <p className="text-sm text-muted-foreground mt-1">Tuesday</p>
           <p className="font-serif text-xl mt-2 text-rose">10:20 AM</p>
         </div>
+        <canvas
+          ref={canvasRef}
+          className={`absolute inset-0 h-full w-full touch-none cursor-pointer transition-opacity duration-700 ${revealed ? "opacity-0 pointer-events-none" : "opacity-100"}`}
+          onPointerDown={(e) => { drawing.current = true; scratch(e.clientX, e.clientY); }}
+          onPointerMove={(e) => drawing.current && scratch(e.clientX, e.clientY)}
+          onPointerUp={() => (drawing.current = false)}
+          onPointerLeave={() => (drawing.current = false)}
+        />
         {!revealed && (
-          <canvas
-            ref={canvasRef}
-            className="absolute inset-0 h-full w-full touch-none cursor-pointer"
-            onPointerDown={(e) => { drawing.current = true; scratch(e.clientX, e.clientY); }}
-            onPointerMove={(e) => drawing.current && scratch(e.clientX, e.clientY)}
-            onPointerUp={() => (drawing.current = false)}
-            onPointerLeave={() => (drawing.current = false)}
-          />
+          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 w-3/4 h-1.5 bg-white/40 rounded-full overflow-hidden">
+            <div
+              className="h-full bg-rose-deep transition-all duration-200"
+              style={{ width: `${Math.min(progress * 200, 100)}%` }}
+            />
+          </div>
         )}
       </div>
+      <PetalShower active={shower} />
     </section>
   );
 }
