@@ -142,9 +142,9 @@ function InvitationBody() {
 function Hero() {
   return (
     <section className="relative w-full overflow-hidden" style={{ background: "oklch(0.97 0.015 25)" }}>
-      {/* ── MOBILE: full-screen hero – image fills entire viewport, text overlaid at bottom ── */}
+      {/* ── MOBILE: full-screen hero – top 65% image, bottom 35% text ── */}
       <div className="md:hidden hero-mobile-wrap">
-        {/* Full-screen cover image — .hero-mobile-img overrides Tailwind base img{height:auto} with !important */}
+        {/* Image fills top portion — object-contain shows full couple */}
         <img
           src={heroBg}
           alt="Jack and Rose wedding"
@@ -152,35 +152,35 @@ function Hero() {
           height={1008}
           className="hero-fade hero-mobile-img"
         />
-        {/* Bottom gradient so text stays readable without overlapping the couple */}
+        {/* Gradient fade from image into text area */}
         <div
           style={{
             position: "absolute",
             inset: "auto 0 0 0",
-            height: "42%",
+            height: "38%",
             zIndex: 10,
             background:
-              "linear-gradient(to top, oklch(0.97 0.015 25 / 0.96) 0%, oklch(0.97 0.015 25 / 0.8) 45%, transparent 100%)",
+              "linear-gradient(to top, oklch(0.96 0.02 25) 40%, oklch(0.96 0.02 25 / 0.85) 60%, transparent 100%)",
           }}
         />
-        {/* Text overlaid on gradient */}
+        {/* Text block – positioned in lower portion, well below the couple */}
         <div
           className="hero-fade"
-          style={{ position: "relative", zIndex: 20, width: "100%", textAlign: "center", padding: "1.5rem 1.5rem 4rem" }}
+          style={{ position: "relative", zIndex: 20, width: "100%", textAlign: "center", padding: "1rem 1.5rem 4.5rem" }}
         >
-          <p style={{ letterSpacing: "0.35em", fontSize: "0.7rem", textTransform: "uppercase", color: "oklch(0.45 0.03 20 / 0.7)", marginBottom: "0.5rem" }}>
+          <p style={{ letterSpacing: "0.35em", fontSize: "0.65rem", textTransform: "uppercase", color: "oklch(0.45 0.03 20 / 0.75)", marginBottom: "0.4rem" }}>
             The Wedding Of
           </p>
           <h1
             className="font-script"
-            style={{ fontSize: "3.75rem", lineHeight: 1, color: "oklch(0.35 0.14 20)", marginTop: "0.5rem" }}
+            style={{ fontSize: "3.4rem", lineHeight: 1.05, color: "oklch(0.35 0.14 20)", marginTop: "0.25rem" }}
           >
             Jack &amp; Rose
           </h1>
-          <div className="divider-heart" style={{ color: "oklch(0.6 0.13 40)", margin: "0.75rem 0" }}>
+          <div className="divider-heart" style={{ color: "oklch(0.6 0.13 40)", margin: "0.6rem 0" }}>
             <Heart className="h-3 w-3 fill-current" />
           </div>
-          <p style={{ letterSpacing: "0.4em", fontSize: "0.7rem", textTransform: "uppercase", color: "oklch(0.6 0.13 60)" }}>
+          <p style={{ letterSpacing: "0.38em", fontSize: "0.65rem", textTransform: "uppercase", color: "oklch(0.6 0.13 60)" }}>
             Forever Together
           </p>
         </div>
@@ -192,6 +192,7 @@ function Hero() {
           <ChevronDown className="h-6 w-6" />
         </div>
       </div>
+
 
       {/* ── TABLET & DESKTOP: unchanged full-screen side-by-side layout ── */}
       <div
