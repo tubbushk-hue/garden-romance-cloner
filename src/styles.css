@@ -110,3 +110,10 @@
 .divider-heart::before, .divider-heart::after {
   content: ""; height: 1px; width: 60px; background: currentColor; opacity: 0.5;
 }
+
+/* Tablet (768px – 1023px): nudge couple toward center */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .hero-bg-img {
+    object-position: 55% center;
+  }
+}

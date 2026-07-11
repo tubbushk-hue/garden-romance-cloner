@@ -141,46 +141,88 @@ function InvitationBody() {
 
 function Hero() {
   return (
-    <section className="relative min-h-screen w-full flex flex-col md:flex-row md:items-center overflow-hidden bg-blush-soft">
-      {/* Mobile: image sits at the top as a normal block so the full couple is visible */}
-      <img
-        src={heroBg}
-        alt="Jack and Rose wedding"
-        width={1600}
-        height={1008}
-        className="hero-fade block md:hidden w-full h-auto object-contain"
-      />
-      {/* Desktop: image fills the section as a background */}
-      <img
-        src={heroBg}
-        alt=""
-        aria-hidden="true"
-        width={1600}
-        height={1008}
-        className="hero-fade hidden md:block absolute inset-0 h-full w-full object-cover object-center"
-      />
-      <div className="hero-fade relative z-10 w-full md:w-1/2 max-w-md md:pl-8 lg:pl-16 text-center px-6 py-10 md:py-16 mx-auto">
-        <p className="tracking-[0.35em] text-xs md:text-sm uppercase text-foreground/70">
-          The Wedding Of
-        </p>
-        <h1
-          className="font-script text-6xl md:text-7xl lg:text-8xl leading-none mt-6"
-          style={{ color: "oklch(0.35 0.14 20)" }}
-        >
-          Jack &amp; Rose
-        </h1>
-        <div className="divider-heart my-6" style={{ color: "oklch(0.6 0.13 40)" }}>
-          <Heart className="h-3 w-3 fill-current" />
+    <section className="relative w-full overflow-hidden bg-blush-soft">
+      {/* ── MOBILE: full-screen hero with image filling the viewport ── */}
+      <div className="relative flex md:hidden min-h-screen flex-col items-center justify-end">
+        {/* Image fills the full mobile screen, centered on the couple */}
+        <img
+          src={heroBg}
+          alt="Jack and Rose wedding"
+          width={1600}
+          height={1008}
+          className="hero-fade absolute inset-0 h-full w-full object-cover object-[60%_center]"
+        />
+        {/* Gradient overlay at the bottom so text is readable */}
+        <div
+          className="absolute inset-x-0 bottom-0 h-2/5 z-10"
+          style={{
+            background:
+              "linear-gradient(to top, oklch(0.97 0.015 25 / 0.95) 0%, oklch(0.97 0.015 25 / 0.75) 50%, transparent 100%)",
+          }}
+        />
+        {/* Text block – sits above the gradient at the bottom */}
+        <div className="hero-fade relative z-20 w-full text-center px-6 pb-16 pt-6">
+          <p className="tracking-[0.35em] text-xs uppercase text-foreground/70">
+            The Wedding Of
+          </p>
+          <h1
+            className="font-script text-6xl leading-none mt-4"
+            style={{ color: "oklch(0.35 0.14 20)" }}
+          >
+            Jack &amp; Rose
+          </h1>
+          <div className="divider-heart my-4" style={{ color: "oklch(0.6 0.13 40)" }}>
+            <Heart className="h-3 w-3 fill-current" />
+          </div>
+          <p
+            className="tracking-[0.4em] text-xs uppercase"
+            style={{ color: "oklch(0.6 0.13 60)" }}
+          >
+            Forever Together
+          </p>
         </div>
-        <p
-          className="tracking-[0.4em] text-xs md:text-sm uppercase"
-          style={{ color: "oklch(0.6 0.13 60)" }}
-        >
-          Forever Together
-        </p>
+        {/* Scroll cue */}
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center text-rose-deep/70 float-y">
+          <ChevronDown className="h-6 w-6" />
+        </div>
       </div>
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center text-rose-deep/70 float-y">
-        <ChevronDown className="h-6 w-6" />
+
+      {/* ── TABLET & DESKTOP: existing full-screen layout unchanged ── */}
+      <div className="relative hidden md:flex min-h-screen w-full md:flex-row md:items-center">
+        {/* Background image – desktop: object-center, tablet: nudged to 55% */}
+        <img
+          src={heroBg}
+          alt=""
+          aria-hidden="true"
+          width={1600}
+          height={1008}
+          className="hero-fade hero-bg-img absolute inset-0 h-full w-full object-cover object-center"
+        />
+        {/* Text panel */}
+        <div className="hero-fade relative z-10 w-full md:w-1/2 max-w-md md:pl-8 lg:pl-16 text-center px-6 py-10 md:py-16 mx-auto">
+          <p className="tracking-[0.35em] text-xs md:text-sm uppercase text-foreground/70">
+            The Wedding Of
+          </p>
+          <h1
+            className="font-script text-6xl md:text-7xl lg:text-8xl leading-none mt-6"
+            style={{ color: "oklch(0.35 0.14 20)" }}
+          >
+            Jack &amp; Rose
+          </h1>
+          <div className="divider-heart my-6" style={{ color: "oklch(0.6 0.13 40)" }}>
+            <Heart className="h-3 w-3 fill-current" />
+          </div>
+          <p
+            className="tracking-[0.4em] text-xs md:text-sm uppercase"
+            style={{ color: "oklch(0.6 0.13 60)" }}
+          >
+            Forever Together
+          </p>
+        </div>
+        {/* Scroll cue */}
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center text-rose-deep/70 float-y">
+          <ChevronDown className="h-6 w-6" />
+        </div>
       </div>
     </section>
   );
