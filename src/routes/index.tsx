@@ -142,69 +142,92 @@ function InvitationBody() {
 function Hero() {
   return (
     <section className="relative w-full overflow-hidden" style={{ background: "oklch(0.97 0.015 25)" }}>
-      {/* ── MOBILE: full-screen, text at top, couple below ── */}
+      {/* ── MOBILE ONLY: shown on screens narrower than 768px ── */}
       <div
-        className="md:hidden"
         style={{
-          position: "relative",
-          width: "100%",
-          minHeight: "100svh",
-          display: "flex",
-          flexDirection: "column",
-          background: "oklch(0.96 0.02 25)",
+          display: "none",
+        }}
+        ref={(el) => {
+          if (el) {
+            const applyMobileStyles = () => {
+              if (window.innerWidth < 768) {
+                el.style.display = "block";
+              } else {
+                el.style.display = "none";
+              }
+            };
+            applyMobileStyles();
+            window.addEventListener("resize", applyMobileStyles);
+          }
         }}
       >
-        {/* Full-screen background image — contain so both people fully visible */}
-        <div
-          className="hero-fade"
-          style={{
-            position: "absolute",
-            inset: 0,
-            backgroundImage: `url(${heroBg})`,
-            backgroundSize: "contain",
-            backgroundPosition: "center bottom",
-            backgroundRepeat: "no-repeat",
-            backgroundColor: "oklch(0.96 0.02 25)",
-          }}
-        />
-        {/* Top gradient for text readability */}
-        <div
-          style={{
+        <div style={{
+          position: "relative",
+          width: "100%",
+          height: "100svh",
+          overflow: "hidden",
+          background: "oklch(0.96 0.02 25)",
+        }}>
+          {/* Couple image — background-contain shows BOTH people, no cropping */}
+          <div
+            className="hero-fade"
+            style={{
+              position: "absolute",
+              top: "18%",
+              left: 0,
+              right: 0,
+              bottom: 0,
+              backgroundImage: `url(${heroBg})`,
+              backgroundSize: "contain",
+              backgroundPosition: "center bottom",
+              backgroundRepeat: "no-repeat",
+            }}
+          />
+          {/* Soft gradient at top for text readability */}
+          <div style={{
             position: "absolute",
             top: 0, left: 0, right: 0,
-            height: "45%",
-            background: "linear-gradient(to bottom, oklch(0.96 0.02 25 / 0.92) 0%, oklch(0.96 0.02 25 / 0.6) 60%, transparent 100%)",
-            zIndex: 5,
+            height: "55%",
+            background: "linear-gradient(to bottom, oklch(0.96 0.02 25) 0%, oklch(0.96 0.02 25 / 0.88) 40%, oklch(0.96 0.02 25 / 0.4) 70%, transparent 100%)",
+            zIndex: 2,
             pointerEvents: "none",
-          }}
-        />
-        {/* Text at the TOP */}
-        <div
-          className="hero-fade"
-          style={{ position: "relative", zIndex: 10, width: "100%", textAlign: "center", padding: "3rem 1.5rem 1rem" }}
-        >
-          <p style={{ letterSpacing: "0.35em", fontSize: "0.65rem", textTransform: "uppercase", color: "oklch(0.4 0.04 20 / 0.8)", marginBottom: "0.4rem" }}>
-            The Wedding Of
-          </p>
-          <h1
-            className="font-script"
-            style={{ fontSize: "3.5rem", lineHeight: 1.05, color: "oklch(0.32 0.15 20)", margin: "0.2rem 0" }}
+          }} />
+          {/* Text overlaid at the TOP */}
+          <div
+            className="hero-fade"
+            style={{
+              position: "absolute",
+              top: "2.5rem",
+              left: 0,
+              right: 0,
+              textAlign: "center",
+              zIndex: 10,
+              padding: "0 1.5rem",
+            }}
           >
-            Jack &amp; Rose
-          </h1>
-          <div className="divider-heart" style={{ color: "oklch(0.6 0.13 40)", margin: "0.5rem 0" }}>
-            <Heart className="h-3 w-3 fill-current" />
+            <p style={{ letterSpacing: "0.35em", fontSize: "0.65rem", textTransform: "uppercase", color: "oklch(0.4 0.04 20 / 0.8)", marginBottom: "0.4rem" }}>
+              The Wedding Of
+            </p>
+            <h1
+              className="font-script"
+              style={{ fontSize: "3.5rem", lineHeight: 1.05, color: "oklch(0.32 0.15 20)", margin: "0.25rem 0" }}
+            >
+              Jack &amp; Rose
+            </h1>
+            <div className="divider-heart" style={{ color: "oklch(0.6 0.13 40)", margin: "0.5rem 0" }}>
+              <Heart className="h-3 w-3 fill-current" />
+            </div>
+            <p style={{ letterSpacing: "0.38em", fontSize: "0.65rem", textTransform: "uppercase", color: "oklch(0.55 0.13 60)" }}>
+              Forever Together
+            </p>
           </div>
-          <p style={{ letterSpacing: "0.38em", fontSize: "0.65rem", textTransform: "uppercase", color: "oklch(0.55 0.13 60)" }}>
-            Forever Together
-          </p>
-        </div>
-        {/* Scroll cue at bottom */}
-        <div
-          className="float-y"
-          style={{ position: "absolute", bottom: "1.5rem", left: "50%", transform: "translateX(-50%)", zIndex: 20, display: "flex", flexDirection: "column", alignItems: "center", color: "oklch(0.55 0.15 15 / 0.7)" }}
-        >
-          <ChevronDown className="h-6 w-6" />
+          {/* Scroll cue */}
+          <div
+            className="float-y"
+            style={{ position: "absolute", bottom: "1.5rem", left: "50%", transform: "translateX(-50%)", zIndex: 10, display: "flex", flexDirection: "column", alignItems: "center", color: "oklch(0.55 0.15 15 / 0.7)" }}
+          >
+            <ChevronDown className="h-6 w-6" />
+          </div>
         </div>
       </div>
 
