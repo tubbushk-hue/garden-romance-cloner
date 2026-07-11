@@ -141,15 +141,25 @@ function InvitationBody() {
 
 function Hero() {
   return (
-    <section className="relative min-h-screen w-full flex items-center px-6 py-16 overflow-hidden bg-blush-soft">
+    <section className="relative min-h-screen w-full flex flex-col md:flex-row md:items-center overflow-hidden bg-blush-soft">
+      {/* Mobile: image sits at the top as a normal block so the full couple is visible */}
       <img
         src={heroBg}
         alt="Jack and Rose wedding"
         width={1600}
         height={1008}
-        className="hero-fade absolute inset-0 h-full w-full object-contain object-[center_top] md:object-cover md:object-center"
+        className="hero-fade block md:hidden w-full h-auto object-contain"
       />
-      <div className="hero-fade relative z-10 w-full md:w-1/2 max-w-md md:pl-8 lg:pl-16 text-center">
+      {/* Desktop: image fills the section as a background */}
+      <img
+        src={heroBg}
+        alt=""
+        aria-hidden="true"
+        width={1600}
+        height={1008}
+        className="hero-fade hidden md:block absolute inset-0 h-full w-full object-cover object-center"
+      />
+      <div className="hero-fade relative z-10 w-full md:w-1/2 max-w-md md:pl-8 lg:pl-16 text-center px-6 py-10 md:py-16 mx-auto">
         <p className="tracking-[0.35em] text-xs md:text-sm uppercase text-foreground/70">
           The Wedding Of
         </p>
@@ -169,7 +179,7 @@ function Hero() {
           Forever Together
         </p>
       </div>
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center text-rose-deep/70 float-y">
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center text-rose-deep/70 float-y">
         <ChevronDown className="h-6 w-6" />
       </div>
     </section>
