@@ -142,32 +142,35 @@ function InvitationBody() {
 function Hero() {
   return (
     <section
-      className="relative min-h-screen w-full flex flex-col items-center justify-center text-center px-6 py-16"
+      className="relative min-h-screen w-full flex items-center px-6 py-16"
       style={{
         backgroundImage: `url(${heroBg})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
     >
-      <div className="fade-up max-w-md mx-auto text-white/95 mt-24">
-        <Heart className="mx-auto h-8 w-8 fill-white/90 text-white/90 mb-6" />
-        <p className="font-hand text-2xl md:text-3xl leading-relaxed text-white/95">
-          We are honored to welcome you to<br />the Wedding ceremony of..
+      <div className="fade-up w-full md:w-1/2 max-w-md md:pl-8 lg:pl-16 text-center">
+        <p className="tracking-[0.35em] text-xs md:text-sm uppercase text-foreground/70">
+          The Wedding Of
         </p>
-        <div className="divider-heart my-8 text-white/60">
+        <h1
+          className="font-script text-6xl md:text-7xl lg:text-8xl leading-none mt-6"
+          style={{ color: "oklch(0.35 0.14 20)" }}
+        >
+          Jack &amp; Rose
+        </h1>
+        <div className="divider-heart my-6" style={{ color: "oklch(0.6 0.13 40)" }}>
           <Heart className="h-3 w-3 fill-current" />
         </div>
-        <h1 className="font-script text-7xl md:text-8xl leading-none" style={{ color: "oklch(0.8 0.13 85)" }}>
-          Jack
-        </h1>
-        <p className="font-script text-5xl my-2" style={{ color: "oklch(0.8 0.13 85)" }}>&amp;</p>
-        <h1 className="font-script text-7xl md:text-8xl leading-none" style={{ color: "oklch(0.8 0.13 85)" }}>
-          Rose
-        </h1>
+        <p
+          className="tracking-[0.4em] text-xs md:text-sm uppercase"
+          style={{ color: "oklch(0.6 0.13 60)" }}
+        >
+          Forever Together
+        </p>
       </div>
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center text-white/80 float-y">
-        <span className="text-xs tracking-[0.4em] uppercase">Scroll</span>
-        <ChevronDown className="h-5 w-5 mt-1" />
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center text-rose-deep/70 float-y">
+        <ChevronDown className="h-6 w-6" />
       </div>
     </section>
   );
