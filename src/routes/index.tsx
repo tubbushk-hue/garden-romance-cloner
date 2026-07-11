@@ -142,26 +142,15 @@ function InvitationBody() {
 function Hero() {
   return (
     <section className="relative w-full overflow-hidden" style={{ background: "oklch(0.97 0.015 25)" }}>
-      {/* ── MOBILE: full-screen hero \u2013 image fills entire viewport, text overlaid at bottom ── */}
-      <div
-        className="md:hidden"
-        style={{ position: "relative", width: "100%", minHeight: "100svh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "flex-end" }}
-      >
-        {/* Full-screen cover image */}
+      {/* ── MOBILE: full-screen hero – image fills entire viewport, text overlaid at bottom ── */}
+      <div className="md:hidden hero-mobile-wrap">
+        {/* Full-screen cover image — .hero-mobile-img overrides Tailwind base img{height:auto} with !important */}
         <img
           src={heroBg}
           alt="Jack and Rose wedding"
           width={1600}
           height={1008}
-          className="hero-fade"
-          style={{
-            position: "absolute",
-            inset: 0,
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            objectPosition: "60% center",
-          }}
+          className="hero-fade hero-mobile-img"
         />
         {/* Bottom gradient so text stays readable without overlapping the couple */}
         <div
