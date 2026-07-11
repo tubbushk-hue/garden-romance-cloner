@@ -142,38 +142,43 @@ function InvitationBody() {
 function Hero() {
   return (
     <section className="relative w-full overflow-hidden" style={{ background: "oklch(0.97 0.015 25)" }}>
-      {/* ── MOBILE: full-screen hero – top 65% image, bottom 35% text ── */}
-      <div className="md:hidden hero-mobile-wrap">
-        {/* Image fills top portion — object-contain shows full couple */}
-        <img
-          src={heroBg}
-          alt="Jack and Rose wedding"
-          width={1600}
-          height={1008}
-          className="hero-fade hero-mobile-img"
-        />
-        {/* Gradient fade from image into text area */}
-        <div
-          style={{
-            position: "absolute",
-            inset: "auto 0 0 0",
-            height: "38%",
-            zIndex: 10,
-            background:
-              "linear-gradient(to top, oklch(0.96 0.02 25) 40%, oklch(0.96 0.02 25 / 0.85) 60%, transparent 100%)",
-          }}
-        />
-        {/* Text block – positioned in lower portion, well below the couple */}
+      {/* ── MOBILE: full-screen hero – couple in top 62%, text below ── */}
+      <div className="md:hidden" style={{ position: "relative", width: "100%", minHeight: "100svh", display: "flex", flexDirection: "column", background: "oklch(0.96 0.02 25)" }}>
+        {/* Background-image div — bypasses Tailwind img{height:auto} reset completely */}
         <div
           className="hero-fade"
-          style={{ position: "relative", zIndex: 20, width: "100%", textAlign: "center", padding: "1rem 1.5rem 4.5rem" }}
+          style={{
+            width: "100%",
+            height: "62svh",
+            backgroundImage: `url(${heroBg})`,
+            backgroundSize: "contain",
+            backgroundPosition: "center top",
+            backgroundRepeat: "no-repeat",
+            backgroundColor: "oklch(0.96 0.02 25)",
+            flexShrink: 0,
+          }}
+        />
+        {/* Gradient bridge between image and text */}
+        <div style={{
+          position: "absolute",
+          left: 0, right: 0,
+          top: "52svh",
+          height: "14svh",
+          background: "linear-gradient(to bottom, transparent, oklch(0.96 0.02 25))",
+          zIndex: 5,
+          pointerEvents: "none",
+        }} />
+        {/* Text section */}
+        <div
+          className="hero-fade"
+          style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center", padding: "0.5rem 1.5rem 4rem", position: "relative", zIndex: 10 }}
         >
-          <p style={{ letterSpacing: "0.35em", fontSize: "0.65rem", textTransform: "uppercase", color: "oklch(0.45 0.03 20 / 0.75)", marginBottom: "0.4rem" }}>
+          <p style={{ letterSpacing: "0.35em", fontSize: "0.65rem", textTransform: "uppercase", color: "oklch(0.45 0.03 20 / 0.75)", marginBottom: "0.5rem" }}>
             The Wedding Of
           </p>
           <h1
             className="font-script"
-            style={{ fontSize: "3.4rem", lineHeight: 1.05, color: "oklch(0.35 0.14 20)", marginTop: "0.25rem" }}
+            style={{ fontSize: "3.5rem", lineHeight: 1.05, color: "oklch(0.35 0.14 20)", margin: "0.25rem 0" }}
           >
             Jack &amp; Rose
           </h1>
