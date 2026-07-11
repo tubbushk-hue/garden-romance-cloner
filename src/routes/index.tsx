@@ -141,15 +141,15 @@ function InvitationBody() {
 
 function Hero() {
   return (
-    <section
-      className="relative min-h-screen w-full flex items-center px-6 py-16"
-      style={{
-        backgroundImage: `url(${heroBg})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-    >
-      <div className="fade-up w-full md:w-1/2 max-w-md md:pl-8 lg:pl-16 text-center">
+    <section className="relative min-h-screen w-full flex items-center px-6 py-16 overflow-hidden bg-blush-soft">
+      <img
+        src={heroBg}
+        alt="Jack and Rose wedding"
+        width={1600}
+        height={1008}
+        className="hero-fade absolute inset-0 h-full w-full object-cover object-[75%_center] md:object-center"
+      />
+      <div className="fade-up relative z-10 w-full md:w-1/2 max-w-md md:pl-8 lg:pl-16 text-center">
         <p className="tracking-[0.35em] text-xs md:text-sm uppercase text-foreground/70">
           The Wedding Of
         </p>
@@ -169,7 +169,7 @@ function Hero() {
           Forever Together
         </p>
       </div>
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center text-rose-deep/70 float-y">
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center text-rose-deep/70 float-y">
         <ChevronDown className="h-6 w-6" />
       </div>
     </section>
