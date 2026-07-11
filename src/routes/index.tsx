@@ -141,86 +141,104 @@ function InvitationBody() {
 
 function Hero() {
   return (
-    <section className="relative w-full overflow-hidden bg-blush-soft">
-      {/* ── MOBILE: full-screen hero with image filling the viewport ── */}
-      <div className="relative flex md:hidden min-h-screen flex-col items-center justify-end">
-        {/* Image fills the full mobile screen, centered on the couple */}
+    <section className="relative w-full overflow-hidden" style={{ background: "oklch(0.97 0.015 25)" }}>
+      {/* ── MOBILE: full-screen hero \u2013 image fills entire viewport, text overlaid at bottom ── */}
+      <div
+        className="md:hidden"
+        style={{ position: "relative", width: "100%", minHeight: "100svh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "flex-end" }}
+      >
+        {/* Full-screen cover image */}
         <img
           src={heroBg}
           alt="Jack and Rose wedding"
           width={1600}
           height={1008}
-          className="hero-fade absolute inset-0 h-full w-full object-cover object-[60%_center]"
-        />
-        {/* Gradient overlay at the bottom so text is readable */}
-        <div
-          className="absolute inset-x-0 bottom-0 h-2/5 z-10"
+          className="hero-fade"
           style={{
-            background:
-              "linear-gradient(to top, oklch(0.97 0.015 25 / 0.95) 0%, oklch(0.97 0.015 25 / 0.75) 50%, transparent 100%)",
+            position: "absolute",
+            inset: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            objectPosition: "60% center",
           }}
         />
-        {/* Text block – sits above the gradient at the bottom */}
-        <div className="hero-fade relative z-20 w-full text-center px-6 pb-16 pt-6">
-          <p className="tracking-[0.35em] text-xs uppercase text-foreground/70">
+        {/* Bottom gradient so text stays readable without overlapping the couple */}
+        <div
+          style={{
+            position: "absolute",
+            inset: "auto 0 0 0",
+            height: "42%",
+            zIndex: 10,
+            background:
+              "linear-gradient(to top, oklch(0.97 0.015 25 / 0.96) 0%, oklch(0.97 0.015 25 / 0.8) 45%, transparent 100%)",
+          }}
+        />
+        {/* Text overlaid on gradient */}
+        <div
+          className="hero-fade"
+          style={{ position: "relative", zIndex: 20, width: "100%", textAlign: "center", padding: "1.5rem 1.5rem 4rem" }}
+        >
+          <p style={{ letterSpacing: "0.35em", fontSize: "0.7rem", textTransform: "uppercase", color: "oklch(0.45 0.03 20 / 0.7)", marginBottom: "0.5rem" }}>
             The Wedding Of
           </p>
           <h1
-            className="font-script text-6xl leading-none mt-4"
-            style={{ color: "oklch(0.35 0.14 20)" }}
+            className="font-script"
+            style={{ fontSize: "3.75rem", lineHeight: 1, color: "oklch(0.35 0.14 20)", marginTop: "0.5rem" }}
           >
             Jack &amp; Rose
           </h1>
-          <div className="divider-heart my-4" style={{ color: "oklch(0.6 0.13 40)" }}>
+          <div className="divider-heart" style={{ color: "oklch(0.6 0.13 40)", margin: "0.75rem 0" }}>
             <Heart className="h-3 w-3 fill-current" />
           </div>
-          <p
-            className="tracking-[0.4em] text-xs uppercase"
-            style={{ color: "oklch(0.6 0.13 60)" }}
-          >
+          <p style={{ letterSpacing: "0.4em", fontSize: "0.7rem", textTransform: "uppercase", color: "oklch(0.6 0.13 60)" }}>
             Forever Together
           </p>
         </div>
         {/* Scroll cue */}
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center text-rose-deep/70 float-y">
+        <div
+          className="float-y"
+          style={{ position: "absolute", bottom: "1rem", left: "50%", transform: "translateX(-50%)", zIndex: 20, display: "flex", flexDirection: "column", alignItems: "center", color: "oklch(0.55 0.15 15 / 0.7)" }}
+        >
           <ChevronDown className="h-6 w-6" />
         </div>
       </div>
 
-      {/* ── TABLET & DESKTOP: existing full-screen layout unchanged ── */}
-      <div className="relative hidden md:flex min-h-screen w-full md:flex-row md:items-center">
-        {/* Background image – desktop: object-center, tablet: nudged to 55% */}
+      {/* ── TABLET & DESKTOP: unchanged full-screen side-by-side layout ── */}
+      <div
+        className="hidden md:flex"
+        style={{ position: "relative", minHeight: "100vh", width: "100%", flexDirection: "row", alignItems: "center" }}
+      >
         <img
           src={heroBg}
           alt=""
           aria-hidden="true"
           width={1600}
           height={1008}
-          className="hero-fade hero-bg-img absolute inset-0 h-full w-full object-cover object-center"
+          className="hero-fade hero-bg-img"
+          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }}
         />
-        {/* Text panel */}
-        <div className="hero-fade relative z-10 w-full md:w-1/2 max-w-md md:pl-8 lg:pl-16 text-center px-6 py-10 md:py-16 mx-auto">
-          <p className="tracking-[0.35em] text-xs md:text-sm uppercase text-foreground/70">
+        <div className="hero-fade" style={{ position: "relative", zIndex: 10, width: "50%", maxWidth: "28rem", textAlign: "center", padding: "4rem 2rem 4rem 4rem", margin: "0 auto" }}>
+          <p style={{ letterSpacing: "0.35em", fontSize: "0.8rem", textTransform: "uppercase", color: "oklch(0.45 0.03 20 / 0.7)" }}>
             The Wedding Of
           </p>
           <h1
-            className="font-script text-6xl md:text-7xl lg:text-8xl leading-none mt-6"
-            style={{ color: "oklch(0.35 0.14 20)" }}
+            className="font-script"
+            style={{ fontSize: "5rem", lineHeight: 1, color: "oklch(0.35 0.14 20)", marginTop: "1.5rem" }}
           >
             Jack &amp; Rose
           </h1>
-          <div className="divider-heart my-6" style={{ color: "oklch(0.6 0.13 40)" }}>
+          <div className="divider-heart" style={{ color: "oklch(0.6 0.13 40)", margin: "1.5rem 0" }}>
             <Heart className="h-3 w-3 fill-current" />
           </div>
-          <p
-            className="tracking-[0.4em] text-xs md:text-sm uppercase"
-            style={{ color: "oklch(0.6 0.13 60)" }}
-          >
+          <p style={{ letterSpacing: "0.4em", fontSize: "0.8rem", textTransform: "uppercase", color: "oklch(0.6 0.13 60)" }}>
             Forever Together
           </p>
         </div>
-        {/* Scroll cue */}
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center text-rose-deep/70 float-y">
+        <div
+          className="float-y"
+          style={{ position: "absolute", bottom: "1.5rem", left: "50%", transform: "translateX(-50%)", zIndex: 10, display: "flex", flexDirection: "column", alignItems: "center", color: "oklch(0.55 0.15 15 / 0.7)" }}
+        >
           <ChevronDown className="h-6 w-6" />
         </div>
       </div>
