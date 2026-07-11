@@ -147,9 +147,9 @@ function Hero() {
         alt="Jack and Rose wedding"
         width={1600}
         height={1008}
-        className="hero-fade absolute inset-0 h-full w-full object-cover object-[75%_center] md:object-center"
+        className="hero-fade absolute inset-0 h-full w-full object-contain object-[center_top] md:object-cover md:object-center"
       />
-      <div className="fade-up relative z-10 w-full md:w-1/2 max-w-md md:pl-8 lg:pl-16 text-center">
+      <div className="hero-fade relative z-10 w-full md:w-1/2 max-w-md md:pl-8 lg:pl-16 text-center">
         <p className="tracking-[0.35em] text-xs md:text-sm uppercase text-foreground/70">
           The Wedding Of
         </p>
