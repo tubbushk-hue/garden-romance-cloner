@@ -142,57 +142,67 @@ function InvitationBody() {
 function Hero() {
   return (
     <section className="relative w-full overflow-hidden" style={{ background: "oklch(0.97 0.015 25)" }}>
-      {/* ── MOBILE: full-screen hero – couple in top 62%, text below ── */}
-      <div className="md:hidden" style={{ position: "relative", width: "100%", minHeight: "100svh", display: "flex", flexDirection: "column", background: "oklch(0.96 0.02 25)" }}>
-        {/* Background-image div — bypasses Tailwind img{height:auto} reset completely */}
+      {/* ── MOBILE: full-screen, text at top, couple below ── */}
+      <div
+        className="md:hidden"
+        style={{
+          position: "relative",
+          width: "100%",
+          minHeight: "100svh",
+          display: "flex",
+          flexDirection: "column",
+          background: "oklch(0.96 0.02 25)",
+        }}
+      >
+        {/* Full-screen background image — contain so both people fully visible */}
         <div
           className="hero-fade"
           style={{
-            width: "100%",
-            height: "62svh",
+            position: "absolute",
+            inset: 0,
             backgroundImage: `url(${heroBg})`,
             backgroundSize: "contain",
-            backgroundPosition: "center top",
+            backgroundPosition: "center bottom",
             backgroundRepeat: "no-repeat",
             backgroundColor: "oklch(0.96 0.02 25)",
-            flexShrink: 0,
           }}
         />
-        {/* Gradient bridge between image and text */}
-        <div style={{
-          position: "absolute",
-          left: 0, right: 0,
-          top: "52svh",
-          height: "14svh",
-          background: "linear-gradient(to bottom, transparent, oklch(0.96 0.02 25))",
-          zIndex: 5,
-          pointerEvents: "none",
-        }} />
-        {/* Text section */}
+        {/* Top gradient for text readability */}
+        <div
+          style={{
+            position: "absolute",
+            top: 0, left: 0, right: 0,
+            height: "45%",
+            background: "linear-gradient(to bottom, oklch(0.96 0.02 25 / 0.92) 0%, oklch(0.96 0.02 25 / 0.6) 60%, transparent 100%)",
+            zIndex: 5,
+            pointerEvents: "none",
+          }}
+        />
+        {/* Text at the TOP */}
         <div
           className="hero-fade"
-          style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center", padding: "0.5rem 1.5rem 4rem", position: "relative", zIndex: 10 }}
+          style={{ position: "relative", zIndex: 10, width: "100%", textAlign: "center", padding: "3rem 1.5rem 1rem" }}
         >
-          <p style={{ letterSpacing: "0.35em", fontSize: "0.65rem", textTransform: "uppercase", color: "oklch(0.45 0.03 20 / 0.75)", marginBottom: "0.5rem" }}>
+          <p style={{ letterSpacing: "0.35em", fontSize: "0.65rem", textTransform: "uppercase", color: "oklch(0.4 0.04 20 / 0.8)", marginBottom: "0.4rem" }}>
             The Wedding Of
           </p>
           <h1
             className="font-script"
-            style={{ fontSize: "3.5rem", lineHeight: 1.05, color: "oklch(0.35 0.14 20)", margin: "0.25rem 0" }}
+            style={{ fontSize: "3.5rem", lineHeight: 1.05, color: "oklch(0.32 0.15 20)", margin: "0.2rem 0" }}
           >
             Jack &amp; Rose
           </h1>
-          <div className="divider-heart" style={{ color: "oklch(0.6 0.13 40)", margin: "0.6rem 0" }}>
+          <div className="divider-heart" style={{ color: "oklch(0.6 0.13 40)", margin: "0.5rem 0" }}>
             <Heart className="h-3 w-3 fill-current" />
           </div>
-          <p style={{ letterSpacing: "0.38em", fontSize: "0.65rem", textTransform: "uppercase", color: "oklch(0.6 0.13 60)" }}>
+          <p style={{ letterSpacing: "0.38em", fontSize: "0.65rem", textTransform: "uppercase", color: "oklch(0.55 0.13 60)" }}>
             Forever Together
           </p>
         </div>
-        {/* Scroll cue */}
+        {/* Scroll cue at bottom */}
         <div
           className="float-y"
-          style={{ position: "absolute", bottom: "1rem", left: "50%", transform: "translateX(-50%)", zIndex: 20, display: "flex", flexDirection: "column", alignItems: "center", color: "oklch(0.55 0.15 15 / 0.7)" }}
+          style={{ position: "absolute", bottom: "1.5rem", left: "50%", transform: "translateX(-50%)", zIndex: 20, display: "flex", flexDirection: "column", alignItems: "center", color: "oklch(0.55 0.15 15 / 0.7)" }}
         >
           <ChevronDown className="h-6 w-6" />
         </div>
