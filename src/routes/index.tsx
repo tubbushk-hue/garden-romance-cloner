@@ -8,7 +8,7 @@ import desktopEntranceBg from "@/assets/desktop-entrance-bg.jpg";
 import formalInvitationBg from "@/assets/formal-invitation.png";
 import welcomeBg from "@/assets/welcome-bg.jpg";
 import welcomeBgMobile from "@/assets/welcome-bg-mobile.png";
-import bgMusic from "@/assets/bg-music.mp3";
+import bgMusic from "@/assets/bg-music.m4a";
 
 export const Route = createFileRoute("/")({
   component: AppWrapper,
