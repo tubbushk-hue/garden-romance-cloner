@@ -174,7 +174,7 @@ function Hero() {
               className="font-script"
               style={{ fontSize: "3rem", lineHeight: 1.05, color: "oklch(0.32 0.15 20)", margin: "0.15rem 0" }}
             >
-              Jack &amp; Rose
+              Gibran &amp; Yasmeen
             </h1>
             <div className="divider-heart" style={{ color: "oklch(0.6 0.13 40)", margin: "0.35rem 0" }}>
               <Heart className="h-3 w-3 fill-current" />
@@ -216,7 +216,7 @@ function Hero() {
             className="font-script"
             style={{ fontSize: "5rem", lineHeight: 1, color: "oklch(0.35 0.14 20)", marginTop: "1.5rem" }}
           >
-            Jack &amp; Rose
+            Gibran &amp; Yasmeen
           </h1>
           <div className="divider-heart" style={{ color: "oklch(0.6 0.13 40)", margin: "1.5rem 0" }}>
             <Heart className="h-3 w-3 fill-current" />
@@ -262,7 +262,7 @@ function Welcome() {
           style={{ color: "oklch(0.25 0.05 20)" }}
         >
           We are honored to welcome you to<br />
-          the wedding ceremony of Yasmeen &amp; Gibran<br />
+          the wedding ceremony of Gibran &amp; Yasmeen<br />
           as they begin their journey together in<br />
           faith and love.
         </p>
@@ -734,7 +734,7 @@ function Footer() {
         <div className="relative flex items-center justify-center mt-4 mb-16">
           <div className="w-full h-[1px]" style={{ backgroundColor: "#E8C385", opacity: 0.4 }}></div>
           <div className="absolute w-24 h-24 rounded-full border flex items-center justify-center" style={{ backgroundColor: "#641829", borderColor: "#E8C385" }}>
-            <span className="font-serif text-4xl italic font-semibold" style={{ color: "#E8C385" }}>Y&amp;G</span>
+            <span className="font-serif text-4xl italic font-semibold" style={{ color: "#E8C385" }}>G&amp;Y</span>
           </div>
         </div>
 
@@ -745,7 +745,7 @@ function Footer() {
           </p>
           <Heart className="w-4 h-4 fill-current mx-auto mb-10" style={{ color: "#E8C385" }} />
           <p className="text-[0.7rem] tracking-[0.2em] opacity-80 uppercase leading-loose max-w-[350px] mx-auto">
-            © 2026 Yasmeen &amp; Gibran Wedding. All Rights<br/>Reserved.
+            © 2026 Gibran &amp; Yasmeen Wedding. All Rights<br/>Reserved.
           </p>
         </div>
 
