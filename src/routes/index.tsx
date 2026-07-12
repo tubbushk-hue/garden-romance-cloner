@@ -319,6 +319,7 @@ function InvitationBody() {
 }
 
 function Hero() {
+  const lang = useLanguage();
   return (
     <section className="relative w-full overflow-hidden" style={{ background: "oklch(0.97 0.015 25)" }}>
       {/* ── MOBILE ONLY: shown on screens narrower than 768px ── */}
