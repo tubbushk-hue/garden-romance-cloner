@@ -215,6 +215,7 @@ function Invitation() {
 
     if (audioRef.current) {
       audioRef.current.volume = 0.6;
+      audioRef.current.currentTime = 3.5;
       audioRef.current.play().then(() => setIsPlaying(true)).catch((e) => console.log("Audio play failed:", e));
     }
   };
@@ -762,10 +763,6 @@ function Timeline() {
 
   return (
     <section className="py-24 px-4 md:px-8 relative overflow-hidden bg-white">
-      {/* Delicate floral corners */}
-      <div className="absolute top-0 left-0 w-32 h-32 opacity-20 pointer-events-none" style={{ backgroundImage: `url(${heroBg})`, backgroundPosition: "top left" }} />
-      <div className="absolute bottom-0 right-0 w-32 h-32 opacity-20 pointer-events-none" style={{ backgroundImage: `url(${heroBg})`, backgroundPosition: "bottom right" }} />
-      
       <div className="max-w-4xl mx-auto relative z-10">
         <SectionTitle icon={CalendarDays}>{t[lang].timelineTitle}</SectionTitle>
         <div className="mt-16 space-y-12 md:space-y-24 relative before:absolute before:inset-0 before:ml-5 md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-[oklch(0.97_0.015_25)] before:via-[oklch(0.85_0.05_30)] before:to-[oklch(0.97_0.015_25)]">
