@@ -537,23 +537,56 @@ function Gallery() {
 function Countdown() {
   const { d, h, m, s } = useCountdown(WEDDING_DATE);
   const cells = [
-    { label: "Days", value: d },
-    { label: "Hours", value: h },
-    { label: "Minutes", value: m },
-    { label: "Seconds", value: s },
+    { label: "DAYS", value: d },
+    { label: "HOURS", value: h },
+    { label: "MINUTES", value: m },
+    { label: "SECONDS", value: s },
   ];
   return (
-    <section className="bg-blush py-20 px-6">
-      <SectionTitle>Counting Down to Forever</SectionTitle>
-      <div className="mx-auto mt-8 grid max-w-md grid-cols-4 gap-3">
-        {cells.map((c) => (
-          <div key={c.label} className="flex flex-col items-center rounded-xl bg-white/70 backdrop-blur p-4 shadow-sm">
-            <span className="font-serif text-3xl md:text-4xl font-semibold text-foreground tabular-nums">
-              {String(c.value).padStart(2, "0")}
-            </span>
-            <span className="mt-1 text-[10px] tracking-[0.2em] uppercase text-muted-foreground">{c.label}</span>
-          </div>
-        ))}
+    <section className="relative w-full py-16 overflow-hidden" style={{ backgroundColor: "#641829" }}>
+      {/* Subtle overlay to give a rich, velvety texture to the maroon background */}
+      <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.1)_0%,transparent_100%)] pointer-events-none"></div>
+
+      <div className="relative z-10 mx-auto max-w-5xl text-center px-4">
+        <h2 className="font-script text-4xl md:text-[3.25rem] tracking-wide" style={{ color: "#E8C385" }}>
+          Counting Down to Forever
+        </h2>
+        
+        <div className="flex items-center justify-center gap-3 mt-4 mb-10">
+          <div className="h-[1px] w-12 sm:w-20" style={{ backgroundColor: "#E8C385", opacity: 0.6 }}></div>
+          <Heart className="w-3 h-3 fill-current" style={{ color: "#E8C385" }} />
+          <div className="h-[1px] w-12 sm:w-20" style={{ backgroundColor: "#E8C385", opacity: 0.6 }}></div>
+        </div>
+
+        <div className="flex items-center justify-center flex-wrap" style={{ gap: "0.5rem" }}>
+          {cells.map((c, i) => (
+            <div key={c.label} className="flex items-center">
+              <div 
+                className="flex flex-col items-center justify-center rounded-lg shadow-xl"
+                style={{ 
+                  backgroundColor: "#FCF6E8", 
+                  border: "2px solid #E8C385",
+                  width: "85px",
+                  height: "90px",
+                }}
+              >
+                <span className="font-serif text-3xl md:text-[2.5rem] font-semibold tabular-nums leading-none" style={{ color: "#641829" }}>
+                  {String(c.value).padStart(2, "0")}
+                </span>
+                <span className="mt-2 text-[9px] md:text-[10px] tracking-[0.15em] font-medium" style={{ color: "#3D0B16" }}>
+                  {c.label}
+                </span>
+              </div>
+              
+              {/* Diamond Separator */}
+              {i < cells.length - 1 && (
+                <div className="mx-2 md:mx-4 flex items-center justify-center">
+                  <div className="w-1.5 h-1.5 md:w-2 md:h-2 rotate-45" style={{ backgroundColor: "#E8C385" }}></div>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
