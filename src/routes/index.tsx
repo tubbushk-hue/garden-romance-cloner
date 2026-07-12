@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Heart, MapPin, Clock, PartyPopper, Bus, BedDouble, Gift, Send, ChevronDown, CalendarDays, Users, Camera, Wine, Instagram, Facebook, MessageCircle } from "lucide-react";
+import { Heart, MapPin, Clock, PartyPopper, Bus, BedDouble, Gift, Send, ChevronDown, CalendarDays, Users, Camera, Wine, Instagram, Facebook, MessageCircle, Volume2, VolumeX } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
 import heroBgMobile from "@/assets/hero-bg-mobile.jpg";
 import entranceBg from "@/assets/entrance-bg.png";
@@ -8,6 +8,7 @@ import desktopEntranceBg from "@/assets/desktop-entrance-bg.jpg";
 import formalInvitationBg from "@/assets/formal-invitation.png";
 import welcomeBg from "@/assets/welcome-bg.jpg";
 import welcomeBgMobile from "@/assets/welcome-bg-mobile.png";
+import bgMusic from "@/assets/bg-music.mp3";
 
 export const Route = createFileRoute("/")({
   component: Invitation,
@@ -43,15 +44,45 @@ function SectionTitle({ icon: Icon, children }: { icon?: any; children: React.Re
 function Invitation() {
   const [opened, setOpened] = useState(false);
   const [sealing, setSealing] = useState(false);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   const handleOpen = () => {
     if (sealing) return;
     setSealing(true);
     setTimeout(() => setOpened(true), 1400);
+
+    if (audioRef.current) {
+      audioRef.current.volume = 0.6;
+      audioRef.current.play().then(() => setIsPlaying(true)).catch((e) => console.log("Audio play failed:", e));
+    }
+  };
+
+  const toggleAudio = () => {
+    if (!audioRef.current) return;
+    if (isPlaying) {
+      audioRef.current.pause();
+      setIsPlaying(false);
+    } else {
+      audioRef.current.play().then(() => setIsPlaying(true)).catch(() => {});
+    }
   };
 
   return (
     <>
+      <audio ref={audioRef} src={bgMusic} loop />
+
+      {opened && (
+        <button
+          onClick={toggleAudio}
+          className="fixed top-4 right-4 z-[999] p-3 rounded-full shadow-lg backdrop-blur-md transition-transform hover:scale-105 active:scale-95"
+          style={{ backgroundColor: "rgba(122, 32, 64, 0.85)", color: "#FDF8F0", border: "1px solid rgba(212, 175, 55, 0.4)" }}
+          aria-label={isPlaying ? "Mute music" : "Play music"}
+        >
+          {isPlaying ? <Volume2 className="w-5 h-5" /> : <VolumeX className="w-5 h-5" />}
+        </button>
+      )}
+
       {(sealing || opened) && <InvitationBody />}
       {!opened && (
         <div className="fixed inset-0 z-[100] pointer-events-none" aria-hidden={sealing}>
@@ -213,10 +244,10 @@ function FormalInvitation() {
     <section className="relative w-full py-20 md:py-32 px-4 md:px-8 overflow-hidden flex flex-col items-center justify-center text-center" style={{ backgroundColor: "#FCF8F2" }}>
       
       {/* Decorative borders from heroBg */}
-      <div className="absolute top-0 bottom-0 left-0 w-24 md:w-80 opacity-40 pointer-events-none" style={{ backgroundImage: `url(${heroBg})`, backgroundSize: "cover", backgroundPosition: "left center" }}>
+      <div className="absolute top-0 bottom-0 left-0 w-24 md:w-80 pointer-events-none" style={{ backgroundImage: `url(${heroBg})`, backgroundSize: "cover", backgroundPosition: "left center" }}>
          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-[#FCF8F2]" />
       </div>
-      <div className="absolute top-0 bottom-0 right-0 w-24 md:w-80 opacity-40 pointer-events-none" style={{ backgroundImage: `url(${heroBg})`, backgroundSize: "cover", backgroundPosition: "right center" }}>
+      <div className="absolute top-0 bottom-0 right-0 w-24 md:w-80 pointer-events-none" style={{ backgroundImage: `url(${heroBg})`, backgroundSize: "cover", backgroundPosition: "right center" }}>
          <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-[#FCF8F2]" />
       </div>
 
@@ -245,7 +276,7 @@ function FormalInvitation() {
           <div className="flex-1 h-[1px]" style={{ backgroundColor: "#C2A878", opacity: 0.6 }} />
         </div>
 
-        <h2 className="font-script text-[4rem] md:text-[6.5rem] leading-[0.9] mb-4" style={{ color: "#7A2040" }}>
+        <h2 className="font-script text-[3rem] md:text-[5rem] leading-[0.9] mb-4" style={{ color: "#7A2040" }}>
           Yasmeen Shaikh
         </h2>
         <p className="font-serif text-[1rem] md:text-[1.2rem] text-[#6E4950] mb-1">
@@ -258,7 +289,7 @@ function FormalInvitation() {
         {/* Divider Heart */}
         <Heart className="w-5 h-5 fill-current mb-8" style={{ color: "#7A2040" }} />
 
-        <h2 className="font-script text-[4rem] md:text-[6.5rem] leading-[0.9] mb-4" style={{ color: "#7A2040" }}>
+        <h2 className="font-script text-[3rem] md:text-[5rem] leading-[0.9] mb-4" style={{ color: "#7A2040" }}>
           Mohammed Gibran Shaikh
         </h2>
         <p className="font-serif text-[1rem] md:text-[1.2rem] text-[#6E4950] mb-1">
