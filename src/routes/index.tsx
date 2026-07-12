@@ -772,13 +772,13 @@ function Footer() {
         </div>
 
         {/* Thank You & Copyright */}
-        <div className="text-center mt-12 pb-8" style={{ color: "#FDF8F0" }}>
-          <p className="font-serif text-[1.35rem] tracking-wide mb-6">
+        <div className="text-center mt-14 pb-12" style={{ color: "#FDF8F0" }}>
+          <p className="font-serif text-[1.45rem] tracking-wide mb-10 leading-relaxed">
             Thank you for being a part of our<br/>special day
           </p>
-          <Heart className="w-4 h-4 fill-current mx-auto mb-8" style={{ color: "#E8C385" }} />
-          <p className="text-xs tracking-[0.2em] opacity-70 uppercase">
-            © 2026 Jack &amp; Rose Wedding. All Rights Reserved.
+          <Heart className="w-4 h-4 fill-current mx-auto mb-10" style={{ color: "#E8C385" }} />
+          <p className="text-[0.7rem] tracking-[0.2em] opacity-80 uppercase leading-loose max-w-[350px] mx-auto">
+            © 2026 Jack &amp; Rose Wedding. All Rights<br/>Reserved.
           </p>
         </div>
 
