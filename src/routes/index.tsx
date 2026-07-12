@@ -50,40 +50,49 @@ function Invitation() {
     <>
       {(sealing || opened) && <InvitationBody />}
       {!opened && (
-        <div className="fixed inset-0 z-[100] pointer-events-none" aria-hidden={sealing}>
-          {/* Left gate using clip-path */}
-          <div
-            className={`absolute inset-0 pointer-events-auto transition-transform duration-[1600ms] ease-[cubic-bezier(0.77,0,0.175,1)] ${sealing ? "-translate-x-full" : "translate-x-0"}`}
-            style={{
-              backgroundImage: `url(${entranceBg})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-              clipPath: "polygon(0 0, 50% 0, 50% 100%, 0 100%)"
-            }}
-          ></div>
+        <>
+          {/* Desktop background blur that fades out when opening */}
+          <div 
+            className={`fixed inset-0 z-[90] pointer-events-auto transition-opacity duration-1000 ${sealing ? "opacity-0" : "opacity-100"} bg-[#FDF8F0]/70 backdrop-blur-md hidden md:block`}
+          />
 
-          {/* Right gate using clip-path */}
-          <div
-            className={`absolute inset-0 pointer-events-auto transition-transform duration-[1600ms] ease-[cubic-bezier(0.77,0,0.175,1)] ${sealing ? "translate-x-full" : "translate-x-0"}`}
-            style={{
-              backgroundImage: `url(${entranceBg})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-              clipPath: "polygon(50% 0, 100% 0, 100% 100%, 50% 100%)"
-            }}
-          ></div>
+          <div className="fixed inset-0 z-[100] flex items-center justify-center pointer-events-none" aria-hidden={sealing}>
+            <div className="relative w-full h-full md:h-[90vh] md:w-[450px] md:rounded-2xl md:shadow-[0_0_40px_rgba(0,0,0,0.15)] overflow-hidden pointer-events-none">
+              {/* Left gate using clip-path */}
+              <div
+                className={`absolute inset-0 pointer-events-auto transition-transform duration-[1600ms] ease-[cubic-bezier(0.77,0,0.175,1)] ${sealing ? "-translate-x-full" : "translate-x-0"}`}
+                style={{
+                  backgroundImage: `url(${entranceBg})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                  clipPath: "polygon(0 0, 50% 0, 50% 100%, 0 100%)"
+                }}
+              ></div>
 
-          {/* Invisible interactive area over the seal */}
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
-            <button
-              onClick={handleOpen}
-              aria-label="Tap to open"
-              className={`pointer-events-auto w-48 h-48 rounded-full transition-transform duration-700 ${sealing ? "scale-150 opacity-0" : "hover:scale-105 active:scale-95"}`}
-            >
-              <span className="sr-only">Tap to open</span>
-            </button>
+              {/* Right gate using clip-path */}
+              <div
+                className={`absolute inset-0 pointer-events-auto transition-transform duration-[1600ms] ease-[cubic-bezier(0.77,0,0.175,1)] ${sealing ? "translate-x-full" : "translate-x-0"}`}
+                style={{
+                  backgroundImage: `url(${entranceBg})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                  clipPath: "polygon(50% 0, 100% 0, 100% 100%, 50% 100%)"
+                }}
+              ></div>
+
+              {/* Invisible interactive area over the seal */}
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
+                <button
+                  onClick={handleOpen}
+                  aria-label="Tap to open"
+                  className={`pointer-events-auto w-48 h-48 rounded-full transition-transform duration-700 ${sealing ? "scale-150 opacity-0" : "hover:scale-105 active:scale-95"}`}
+                >
+                  <span className="sr-only">Tap to open</span>
+                </button>
+              </div>
+            </div>
           </div>
-        </div>
+        </>
       )}
     </>
   );
