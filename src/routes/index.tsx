@@ -372,7 +372,7 @@ function Hero() {
             className="float-y"
             style={{ position: "absolute", bottom: "1.5rem", left: "50%", transform: "translateX(-50%)", zIndex: 10, display: "flex", flexDirection: "column", alignItems: "center", color: "#D4AF37", opacity: 0.9 }}
           >
-            <span className="font-serif text-base md:text-lg font-bold uppercase tracking-[0.2em] mb-1" style={{ textShadow: "0 2px 4px rgba(0,0,0,0.5)" }}>{t[lang].scrollDown}</span>
+            <span className="font-serif text-lg md:text-xl font-extrabold uppercase tracking-[0.2em] mb-1" style={{ textShadow: "0 2px 4px rgba(0,0,0,0.5)" }}>{t[lang].scrollDown}</span>
             <ChevronDown className="h-7 w-7 drop-shadow-md" />
           </div>
         </div>
@@ -415,7 +415,7 @@ function Hero() {
           className="float-y"
           style={{ position: "absolute", bottom: "1.5rem", left: "50%", transform: "translateX(-50%)", zIndex: 10, display: "flex", flexDirection: "column", alignItems: "center", color: "#D4AF37", opacity: 0.9 }}
         >
-          <span className="font-serif text-base md:text-lg font-bold uppercase tracking-[0.2em] mb-1" style={{ textShadow: "0 2px 4px rgba(0,0,0,0.5)" }}>{t[lang].scrollDown}</span>
+          <span className="font-serif text-lg md:text-xl font-extrabold uppercase tracking-[0.2em] mb-1" style={{ textShadow: "0 2px 4px rgba(0,0,0,0.5)" }}>{t[lang].scrollDown}</span>
           <ChevronDown className="h-7 w-7 drop-shadow-md" />
         </div>
       </div>
@@ -706,6 +706,15 @@ function Gallery() {
   );
 }
 
+function localizeNumber(num: number, lang: Language): string {
+  const str = String(num).padStart(2, "0");
+  if (lang === "en") return str;
+  const digitsUr = ['۰','۱','۲','۳','۴','۵','۶','۷','۸','۹'];
+  const digitsHi = ['०','१','२','३','४','५','६','७','८','९'];
+  const digits = lang === "ur" ? digitsUr : digitsHi;
+  return str.replace(/\d/g, d => digits[parseInt(d)]);
+}
+
 function Countdown() {
   const { d, h, m, s } = useCountdown(WEDDING_DATE);
   const lang = useLanguage();
@@ -743,7 +752,7 @@ function Countdown() {
                 }}
               >
                 <span className="font-serif text-2xl sm:text-3xl md:text-[2.5rem] font-semibold tabular-nums leading-none" style={{ color: "#641829" }}>
-                  {String(c.value).padStart(2, "0")}
+                  {localizeNumber(c.value, lang)}
                 </span>
                 <span className="mt-1 sm:mt-2 text-[8px] sm:text-[9px] md:text-[10px] tracking-[0.1em] sm:tracking-[0.15em] font-medium" style={{ color: "#3D0B16" }}>
                   {c.label}
