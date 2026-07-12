@@ -260,14 +260,38 @@ function Hero() {
 
 function Welcome() {
   return (
-    <section className="bg-blush-soft py-20 px-6">
-      <div className="mx-auto max-w-xl text-center">
-        <WaveDivider />
-        <p className="font-serif italic text-xl md:text-2xl leading-relaxed text-foreground/80 my-10">
-          We are honored to welcome you to the Wedding ceremony of Jack &amp; Rose As they begin their journey together in faith and love,
-          we thank you for being part of this blessed occasion <Heart className="inline h-4 w-4 fill-foreground/80" />
+    <section className="relative w-full overflow-hidden flex flex-row min-h-[50vh]" style={{ background: "oklch(0.97 0.015 25)" }}>
+      {/* Left decorative border using the floral part of heroBg */}
+      <div className="w-16 md:w-32 lg:w-48 relative flex-shrink-0">
+        <img src={heroBg} className="w-full h-full object-cover object-left" alt="" />
+        {/* Gradient overlay to blend the border smoothly into the cream background */}
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[oklch(0.97_0.015_25)]" />
+        {/* Subtle white lace-like overlay just to give it that card feel */}
+        <div className="absolute inset-0 bg-white/20 mix-blend-overlay" />
+      </div>
+
+      {/* Center text content */}
+      <div className="flex-1 flex flex-col items-center justify-center py-16 px-4 md:px-12 text-center z-10">
+        <h2
+          className="font-script text-5xl md:text-6xl mb-6 md:mb-8"
+          style={{ color: "oklch(0.35 0.14 20)" }}
+        >
+          Welcome
+        </h2>
+        
+        <p
+          className="font-serif text-[0.95rem] md:text-lg leading-[2] md:leading-loose max-w-lg"
+          style={{ color: "oklch(0.25 0.05 20)" }}
+        >
+          We are honored to welcome you to<br />
+          the wedding ceremony of Jack &amp; Rose<br />
+          as they begin their journey together in<br />
+          faith and love.
         </p>
-        <WaveDivider />
+        
+        <div className="mt-6 md:mt-8">
+          <Heart className="h-5 w-5" style={{ fill: "oklch(0.35 0.14 20)", color: "oklch(0.35 0.14 20)" }} />
+        </div>
       </div>
     </section>
   );
