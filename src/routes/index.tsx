@@ -3,6 +3,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { Heart, MapPin, Clock, PartyPopper, Bus, BedDouble, Gift, Send, ChevronDown, CalendarDays, Users, Camera, Wine, Instagram, Facebook, MessageCircle } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
 import heroBgMobile from "@/assets/hero-bg-mobile.jpg";
+import entranceBg from "@/assets/entrance-bg.png";
 
 export const Route = createFileRoute("/")({
   component: Invitation,
@@ -120,18 +121,96 @@ function useCountdown(target: Date) {
   return { d, h, m, s };
 }
 
-function InvitationBody() {
+function Entrance({ isOpen, onOpen }: { isOpen: boolean; onOpen: () => void }) {
   return (
-    <main className="w-full overflow-x-hidden">
-      <Hero />
-      <Welcome />
-      <ScratchSection />
-      <Gallery />
-      <Countdown />
-      <Timeline />
-      <Venue />
-      <Footer />
-    </main>
+    <div 
+      className={`fixed inset-0 z-[100] flex flex-col items-center justify-center transition-all duration-[1500ms] ease-in-out ${isOpen ? 'opacity-0 scale-110 pointer-events-none' : 'opacity-100 scale-100'}`}
+      style={{
+        backgroundImage: `url(${entranceBg})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      }}
+    >
+      {/* Red vertical line */}
+      <div className="absolute top-0 bottom-0 w-[1px] bg-[#8C2E41] left-1/2 -translate-x-1/2 z-0"></div>
+
+      <div className="relative z-10 flex flex-col items-center h-full w-full py-16 md:py-20 justify-between">
+         {/* Top Text */}
+         <div className="flex flex-col items-center pt-8 md:pt-10">
+           <h1 className="font-script text-[4rem] md:text-7xl text-[#641829] tracking-wider mb-4 drop-shadow-sm">You're Invited</h1>
+           <div className="flex items-center gap-3">
+              <div className="w-12 h-[1px] bg-[#D4AF37]"></div>
+              <Heart className="w-3 h-3 fill-current text-[#641829]" />
+              <div className="w-12 h-[1px] bg-[#D4AF37]"></div>
+           </div>
+         </div>
+
+         {/* Center Seal Button */}
+         <button 
+           onClick={onOpen}
+           className="group relative flex items-center justify-center w-36 h-36 md:w-40 md:h-40 rounded-full transition-transform hover:scale-105 active:scale-95 cursor-pointer"
+         >
+           {/* Outer gold glow */}
+           <div className="absolute inset-[-6px] rounded-full bg-gradient-to-tr from-[#D4AF37] to-[#E8C385] opacity-50 blur-md group-hover:opacity-100 transition-opacity"></div>
+           {/* Gold border */}
+           <div className="absolute inset-0 rounded-full bg-gradient-to-b from-[#E8C385] to-[#B38B36] p-[3px] shadow-2xl">
+             {/* Maroon Seal */}
+             <div className="w-full h-full rounded-full bg-gradient-to-br from-[#8C2E41] to-[#4A1020] border-[2px] border-[#641829] flex flex-col items-center justify-center gap-2 shadow-[inset_0_4px_10px_rgba(0,0,0,0.5)] relative">
+                {/* Inner gold ring */}
+                <div className="absolute inset-2 rounded-full border border-[#D4AF37]/40"></div>
+                
+                <Heart className="w-4 h-4 text-white fill-current mt-2" />
+                <span className="text-white text-[0.65rem] tracking-[0.2em] font-medium z-10 uppercase mt-1 text-center leading-tight">Tap to<br/>Open</span>
+             </div>
+           </div>
+         </button>
+
+         {/* Bottom Text */}
+         <div className="flex items-center gap-4 pb-8 md:pb-10">
+            <div className="flex items-center text-[#D4AF37]">
+              <div className="w-1.5 h-1.5 rotate-45 border border-current"></div>
+              <div className="w-6 h-[1px] bg-current"></div>
+            </div>
+            <span className="font-serif italic text-lg text-[#641829]">tap the seal to open</span>
+            <div className="flex items-center text-[#D4AF37]">
+              <div className="w-6 h-[1px] bg-current"></div>
+              <div className="w-1.5 h-1.5 rotate-45 border border-current"></div>
+            </div>
+         </div>
+      </div>
+    </div>
+  );
+}
+
+function InvitationBody() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'auto';
+    } else {
+      document.body.style.overflow = 'hidden';
+      window.scrollTo(0, 0);
+    }
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [isOpen]);
+
+  return (
+    <>
+      <Entrance isOpen={isOpen} onOpen={() => setIsOpen(true)} />
+      <main className={`w-full overflow-x-hidden ${!isOpen ? 'h-screen' : ''}`}>
+        <Hero />
+        <Welcome />
+        <ScratchSection />
+        <Gallery />
+        <Countdown />
+        <Timeline />
+        <Venue />
+        <Footer />
+      </main>
+    </>
   );
 }
 
