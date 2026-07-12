@@ -52,6 +52,7 @@ const t = {
     sendWishes: "Send Wishes",
     shareBlessings: "Share your blessings",
     thankYou: "Thank you for being a part of our special day",
+    scrollDown: "Scroll Down",
   },
   ur: {
     heroSub: "کی شادی",
@@ -86,6 +87,7 @@ const t = {
     sendWishes: "دعائیں بھیجیں",
     shareBlessings: "اپنی نیک تمناؤں کا اظہار کریں",
     thankYou: "ہمارے اس خاص دن کا حصہ بننے کے لیے آپ کا شکریہ",
+    scrollDown: "نیچے سکرول کریں",
   },
   hi: {
     heroSub: "की शादी",
@@ -120,6 +122,7 @@ const t = {
     sendWishes: "शुभकामनाएं भेजें",
     shareBlessings: "अपना आशीर्वाद साझा करें",
     thankYou: "हमारे इस खास दिन का हिस्सा बनने के लिए आपका धन्यवाद",
+    scrollDown: "नीचे स्क्रॉल करें",
   }
 };
 
@@ -354,6 +357,7 @@ function Hero() {
             className="float-y"
             style={{ position: "absolute", bottom: "1.5rem", left: "50%", transform: "translateX(-50%)", zIndex: 10, display: "flex", flexDirection: "column", alignItems: "center", color: "oklch(0.55 0.15 15 / 0.7)" }}
           >
+            <span className="font-serif text-xs uppercase tracking-[0.2em] mb-1">{t[lang].scrollDown}</span>
             <ChevronDown className="h-6 w-6" />
           </div>
         </div>
@@ -396,6 +400,7 @@ function Hero() {
           className="float-y"
           style={{ position: "absolute", bottom: "1.5rem", left: "50%", transform: "translateX(-50%)", zIndex: 10, display: "flex", flexDirection: "column", alignItems: "center", color: "oklch(0.55 0.15 15 / 0.7)" }}
         >
+          <span className="font-serif text-xs uppercase tracking-[0.2em] mb-1">{t[lang].scrollDown}</span>
           <ChevronDown className="h-6 w-6" />
         </div>
       </div>
