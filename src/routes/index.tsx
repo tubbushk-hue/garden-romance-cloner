@@ -5,6 +5,8 @@ import heroBg from "@/assets/hero-bg.jpg";
 import heroBgMobile from "@/assets/hero-bg-mobile.jpg";
 import entranceBg from "@/assets/entrance-bg.png";
 import desktopEntranceBg from "@/assets/desktop-entrance-bg.jpg";
+import welcomeBg from "@/assets/welcome-bg.jpg";
+import welcomeBgMobile from "@/assets/welcome-bg-mobile.png";
 
 export const Route = createFileRoute("/")({
   component: Invitation,
@@ -110,6 +112,7 @@ function InvitationBody() {
   return (
     <main className="w-full overflow-x-hidden">
       <Hero />
+      <FormalInvitation />
       <Welcome />
       <ScratchSection />
       <Gallery />
@@ -199,6 +202,22 @@ function Hero() {
         >
           <ChevronDown className="h-6 w-6" />
         </div>
+      </div>
+    </section>
+  );
+}
+
+function FormalInvitation() {
+  return (
+    <section className="relative w-full overflow-hidden bg-[oklch(0.97_0.015_25)]">
+      {/* Mobile View */}
+      <div className="md:hidden w-full relative">
+        <img src={welcomeBgMobile} alt="Formal Invitation" className="w-full h-auto block" />
+      </div>
+
+      {/* Desktop View */}
+      <div className="hidden md:flex w-full justify-center relative">
+        <img src={welcomeBg} alt="Formal Invitation" className="w-[100%] max-w-[1200px] h-auto object-contain block mx-auto my-8 md:my-16 shadow-2xl rounded-sm" />
       </div>
     </section>
   );
