@@ -11,10 +11,10 @@ export const Route = createFileRoute("/")({
 const WEDDING_DATE = new Date("2026-06-30T10:20:00");
 
 const GALLERY = [
-  "https://images.unsplash.com/photo-1519741497674-611481863552?w=900&h=600&fit=crop",
-  "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=900&h=600&fit=crop",
-  "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=900&h=600&fit=crop",
-  "https://images.unsplash.com/photo-1529636798458-92182e662485?w=900&h=600&fit=crop",
+  "/gallery/gallery-1.jpg",
+  "/gallery/gallery-2.jpg",
+  "/gallery/gallery-3.jpg",
+  "/gallery/gallery-4.jpg",
 ];
 
 function Divider() {
