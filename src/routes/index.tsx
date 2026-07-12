@@ -763,6 +763,25 @@ function Footer() {
           </button>
         </div>
 
+        {/* Divider with J&R */}
+        <div className="relative flex items-center justify-center my-16">
+          <div className="w-full h-[1px]" style={{ backgroundColor: "#E8C385", opacity: 0.4 }}></div>
+          <div className="absolute w-20 h-20 rounded-full border flex items-center justify-center" style={{ backgroundColor: "#641829", borderColor: "#E8C385" }}>
+            <span className="font-serif text-3xl italic font-semibold" style={{ color: "#E8C385" }}>J&amp;R</span>
+          </div>
+        </div>
+
+        {/* Thank You & Copyright */}
+        <div className="text-center mt-12 pb-8" style={{ color: "#FDF8F0" }}>
+          <p className="font-serif text-[1.35rem] tracking-wide mb-6">
+            Thank you for being a part of our<br/>special day
+          </p>
+          <Heart className="w-4 h-4 fill-current mx-auto mb-8" style={{ color: "#E8C385" }} />
+          <p className="text-xs tracking-[0.2em] opacity-70 uppercase">
+            © 2026 Jack &amp; Rose Wedding. All Rights Reserved.
+          </p>
+        </div>
+
       </div>
     </footer>
   );
