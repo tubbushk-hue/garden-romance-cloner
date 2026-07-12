@@ -763,41 +763,6 @@ function Footer() {
           </button>
         </div>
 
-        {/* Divider with J&R */}
-        <div className="relative flex items-center justify-center my-16">
-          <div className="w-full h-[1px]" style={{ backgroundColor: "#E8C385", opacity: 0.4 }}></div>
-          <div className="absolute w-20 h-20 rounded-full border flex items-center justify-center" style={{ backgroundColor: "#641829", borderColor: "#E8C385" }}>
-            <span className="font-serif text-3xl italic font-semibold" style={{ color: "#E8C385" }}>J&amp;R</span>
-          </div>
-        </div>
-
-        {/* Thank You & Copyright */}
-        <div className="flex flex-col md:flex-row items-center justify-between mt-12 gap-8">
-          <div className="text-center md:text-left flex-1" style={{ color: "#FDF8F0" }}>
-            <div className="flex flex-col md:flex-row items-center gap-3 mb-6">
-              <p className="font-serif text-xl tracking-wide">
-                Thank you for being a part of our special day
-              </p>
-              <Heart className="w-4 h-4 fill-current hidden md:block" style={{ color: "#E8C385" }} />
-              <Heart className="w-4 h-4 fill-current md:hidden mt-2" style={{ color: "#E8C385" }} />
-            </div>
-            <p className="text-xs tracking-[0.15em] opacity-70 uppercase">
-              © 2026 Jack &amp; Rose Wedding. All Rights Reserved.
-            </p>
-          </div>
-          
-          <div className="flex items-center gap-4">
-            {[Instagram, Facebook, MessageCircle].map((Icon, i) => (
-              <a key={i} href="#" className="w-12 h-12 rounded-full border flex items-center justify-center transition-colors duration-300" 
-                 style={{ borderColor: "#E8C385", color: "#E8C385" }}
-                 onMouseOver={(e) => { e.currentTarget.style.backgroundColor = "#E8C385"; e.currentTarget.style.color = "#641829"; }}
-                 onMouseOut={(e) => { e.currentTarget.style.backgroundColor = "transparent"; e.currentTarget.style.color = "#E8C385"; }}
-              >
-                <Icon className="w-5 h-5" />
-              </a>
-            ))}
-          </div>
-        </div>
       </div>
     </footer>
   );
