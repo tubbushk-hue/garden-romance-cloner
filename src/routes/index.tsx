@@ -4,6 +4,7 @@ import { Heart, MapPin, Clock, PartyPopper, Bus, BedDouble, Gift, Send, ChevronD
 import heroBg from "@/assets/hero-bg.jpg";
 import heroBgMobile from "@/assets/hero-bg-mobile.jpg";
 import entranceBg from "@/assets/entrance-bg.png";
+import desktopEntranceBg from "@/assets/desktop-entrance-bg.png";
 
 export const Route = createFileRoute("/")({
   component: Invitation,
@@ -51,27 +52,29 @@ function Invitation() {
       {(sealing || opened) && <InvitationBody />}
       {!opened && (
         <div className="fixed inset-0 z-[100] pointer-events-none" aria-hidden={sealing}>
+          <style>{`
+            .entrance-door-left {
+              background-image: url(${entranceBg});
+              background-size: cover;
+              background-position: center;
+              clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
+            }
+            .entrance-door-right {
+              background-image: url(${entranceBg});
+              background-size: cover;
+              background-position: center;
+              clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
+            }
+            @media (min-width: 768px) {
+              .entrance-door-left { background-image: url(${desktopEntranceBg}); }
+              .entrance-door-right { background-image: url(${desktopEntranceBg}); }
+            }
+          `}</style>
           {/* Left gate using clip-path */}
-          <div
-            className={`absolute inset-0 pointer-events-auto transition-transform duration-[1600ms] ease-[cubic-bezier(0.77,0,0.175,1)] ${sealing ? "-translate-x-full" : "translate-x-0"}`}
-            style={{
-              backgroundImage: `url(${entranceBg})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-              clipPath: "polygon(0 0, 50% 0, 50% 100%, 0 100%)"
-            }}
-          ></div>
+          <div className={`entrance-door-left absolute inset-0 pointer-events-auto transition-transform duration-[1600ms] ease-[cubic-bezier(0.77,0,0.175,1)] ${sealing ? "-translate-x-full" : "translate-x-0"}`}></div>
 
           {/* Right gate using clip-path */}
-          <div
-            className={`absolute inset-0 pointer-events-auto transition-transform duration-[1600ms] ease-[cubic-bezier(0.77,0,0.175,1)] ${sealing ? "translate-x-full" : "translate-x-0"}`}
-            style={{
-              backgroundImage: `url(${entranceBg})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-              clipPath: "polygon(50% 0, 100% 0, 100% 100%, 50% 100%)"
-            }}
-          ></div>
+          <div className={`entrance-door-right absolute inset-0 pointer-events-auto transition-transform duration-[1600ms] ease-[cubic-bezier(0.77,0,0.175,1)] ${sealing ? "translate-x-full" : "translate-x-0"}`}></div>
 
           {/* Invisible interactive area over the seal */}
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
