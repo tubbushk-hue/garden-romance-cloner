@@ -370,10 +370,10 @@ function Hero() {
           {/* Scroll cue */}
           <div
             className="float-y"
-            style={{ position: "absolute", bottom: "1.5rem", left: "50%", transform: "translateX(-50%)", zIndex: 10, display: "flex", flexDirection: "column", alignItems: "center", color: "#D4AF37", opacity: 0.9 }}
+            style={{ position: "absolute", bottom: "1.5rem", left: "1.5rem", zIndex: 10, display: "flex", flexDirection: "column", alignItems: "flex-start", color: "#FFFFFF" }}
           >
-            <span className="font-serif text-lg md:text-xl font-extrabold uppercase tracking-[0.2em] mb-1" style={{ textShadow: "0 2px 4px rgba(0,0,0,0.5)" }}>{t[lang].scrollDown}</span>
-            <ChevronDown className="h-7 w-7 drop-shadow-md" />
+            <span className="font-sans text-xl font-black uppercase tracking-[0.15em] mb-1" style={{ textShadow: "0 2px 10px rgba(0,0,0,0.9), 0 0 20px rgba(0,0,0,0.5)" }}>{t[lang].scrollDown}</span>
+            <ChevronDown className="h-8 w-8 ml-8" style={{ filter: "drop-shadow(0 2px 8px rgba(0,0,0,0.9))" }} />
           </div>
         </div>
       </div>
@@ -413,10 +413,10 @@ function Hero() {
         </div>
         <div
           className="float-y"
-          style={{ position: "absolute", bottom: "1.5rem", left: "50%", transform: "translateX(-50%)", zIndex: 10, display: "flex", flexDirection: "column", alignItems: "center", color: "#D4AF37", opacity: 0.9 }}
+          style={{ position: "absolute", bottom: "2rem", left: "4rem", zIndex: 10, display: "flex", flexDirection: "column", alignItems: "flex-start", color: "#FFFFFF" }}
         >
-          <span className="font-serif text-lg md:text-xl font-extrabold uppercase tracking-[0.2em] mb-1" style={{ textShadow: "0 2px 4px rgba(0,0,0,0.5)" }}>{t[lang].scrollDown}</span>
-          <ChevronDown className="h-7 w-7 drop-shadow-md" />
+          <span className="font-sans text-xl font-black uppercase tracking-[0.15em] mb-1" style={{ textShadow: "0 2px 10px rgba(0,0,0,0.9), 0 0 20px rgba(0,0,0,0.5)" }}>{t[lang].scrollDown}</span>
+          <ChevronDown className="h-8 w-8 ml-10" style={{ filter: "drop-shadow(0 2px 8px rgba(0,0,0,0.9))" }} />
         </div>
       </div>
     </section>
