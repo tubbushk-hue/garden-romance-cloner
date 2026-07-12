@@ -448,9 +448,76 @@ function Hero() {
 }
 
 function FormalInvitation() {
+  const lang = useLanguage();
   return (
-    <section className="relative w-full overflow-hidden">
-      <img src={formalInvitationBg} alt="Formal Invitation" className="w-full h-auto block" />
+    <section className="relative w-full overflow-hidden flex flex-row min-h-[50vh]" style={{ background: "oklch(0.97 0.015 25)" }}>
+      {/* Left decorative border */}
+      <div className="hidden md:block w-16 md:w-32 lg:w-48 relative flex-shrink-0">
+        <img src={heroBg} className="w-full h-full object-cover object-left opacity-30 mix-blend-multiply" alt="" />
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[oklch(0.97_0.015_25)]" />
+      </div>
+
+      {/* Center text content based on specific formatting request */}
+      <div className="flex-1 flex flex-col items-center justify-center py-16 px-4 md:px-12 text-center z-10">
+        
+        {/* Top small heart */}
+        <Heart className="w-3 h-3 mb-6" style={{ color: "#7a2040", fill: "#7a2040" }} />
+
+        {/* Bismillah */}
+        <h3 className="font-serif text-3xl md:text-4xl mb-3" style={{ color: "#5a1a2a" }}>
+          {t[lang].bismillahArabic}
+        </h3>
+        <p className="font-serif text-sm md:text-base font-semibold mb-6" style={{ color: "#2a0a14", whiteSpace: "pre-line" }}>
+          {t[lang].bismillahTrans}
+        </p>
+
+        {/* Divider & Announce */}
+        <div className="flex items-center justify-center gap-2 md:gap-4 w-full max-w-sm mx-auto mb-8">
+          <div className="h-[1px] flex-1 bg-[oklch(0.25_0.05_20)] opacity-30"></div>
+          <p className="font-serif text-[0.95rem] md:text-lg text-[oklch(0.25_0.05_20)] whitespace-nowrap">
+            {t[lang].announceText}
+          </p>
+          <div className="h-[1px] flex-1 bg-[oklch(0.25_0.05_20)] opacity-30"></div>
+        </div>
+
+        {/* Bride */}
+        <h2 className="font-script text-5xl md:text-6xl mb-2" style={{ color: "#5a1a2a" }}>
+          {t[lang].brideName}
+        </h2>
+        <p className="font-serif text-sm md:text-base font-medium mb-6" style={{ color: "#2a0a14", whiteSpace: "pre-line" }}>
+          {t[lang].brideParents}
+        </p>
+
+        {/* Heart Divider */}
+        <Heart className="w-4 h-4 mb-6" style={{ color: "#7a2040", fill: "#7a2040" }} />
+
+        {/* Groom */}
+        <h2 className="font-script text-5xl md:text-6xl mb-2" style={{ color: "#5a1a2a" }}>
+          {t[lang].groomName}
+        </h2>
+        <p className="font-serif text-sm md:text-base font-medium mb-8" style={{ color: "#2a0a14", whiteSpace: "pre-line" }}>
+          {t[lang].groomParents}
+        </p>
+
+        {/* Ornate Divider */}
+        <div className="flex items-center justify-center gap-2 mb-8">
+          <div className="h-[1px] w-12 bg-[#d4af37]"></div>
+          <div className="w-2 h-2 rotate-45 bg-[#d4af37]"></div>
+          <div className="h-[1px] w-12 bg-[#d4af37]"></div>
+        </div>
+
+        {/* Journey Text */}
+        <p className="font-serif text-base md:text-lg font-medium leading-relaxed max-w-sm mx-auto" style={{ color: "#2a0a14", whiteSpace: "pre-line" }}>
+          {t[lang].journeyText}
+        </p>
+
+      </div>
+
+      {/* Right decorative border */}
+      <div className="hidden md:block w-16 md:w-32 lg:w-48 relative flex-shrink-0" style={{ transform: "scaleX(-1)" }}>
+        <img src={heroBg} className="w-full h-full object-cover object-left opacity-30 mix-blend-multiply" alt="" />
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[oklch(0.97_0.015_25)]" />
+      </div>
     </section>
   );
 }
@@ -468,60 +535,25 @@ function Welcome() {
         <div className="absolute inset-0 bg-white/20 mix-blend-overlay" />
       </div>
 
-      {/* Center text content based on specific formatting request */}
+      {/* Center text content */}
       <div className="flex-1 flex flex-col items-center justify-center py-16 px-4 md:px-12 text-center z-10">
+        <h2
+          className="font-script text-5xl md:text-6xl mb-6 md:mb-8"
+          style={{ color: "oklch(0.35 0.14 20)" }}
+        >
+          {t[lang].welcomeTitle}
+        </h2>
         
-        {/* Top small heart */}
-        <Heart className="w-3 h-3 mb-6" style={{ color: "#7a2040", fill: "#7a2040" }} />
-
-        {/* Bismillah */}
-        <h3 className="font-serif text-3xl md:text-4xl mb-3" style={{ color: "#5a1a2a" }}>
-          {t[lang].bismillahArabic}
-        </h3>
-        <p className="font-serif text-sm md:text-base font-semibold mb-6" style={{ color: "#2a0a14" }}>
-          {t[lang].bismillahTrans}
+        <p
+          className="font-serif text-[0.95rem] md:text-lg leading-[2] md:leading-loose max-w-lg whitespace-pre-line"
+          style={{ color: "oklch(0.25 0.05 20)" }}
+        >
+          {t[lang].welcomeText}
         </p>
-
-        {/* Divider & Announce */}
-        <div className="flex items-center justify-center gap-2 md:gap-4 w-full max-w-sm mx-auto mb-8">
-          <div className="h-[1px] flex-1 bg-[oklch(0.25_0.05_20)] opacity-30"></div>
-          <p className="font-serif text-[0.95rem] md:text-lg text-[oklch(0.25_0.05_20)] whitespace-nowrap">
-            {t[lang].announceText}
-          </p>
-          <div className="h-[1px] flex-1 bg-[oklch(0.25_0.05_20)] opacity-30"></div>
+        
+        <div className="mt-6 md:mt-8">
+          <Heart className="h-5 w-5" style={{ fill: "oklch(0.35 0.14 20)", color: "oklch(0.35 0.14 20)" }} />
         </div>
-
-        {/* Bride */}
-        <h2 className="font-script text-5xl md:text-6xl mb-2" style={{ color: "#5a1a2a" }}>
-          {t[lang].brideName}
-        </h2>
-        <p className="font-serif text-sm md:text-base font-medium mb-6" style={{ color: "#2a0a14" }}>
-          {t[lang].brideParents}
-        </p>
-
-        {/* Heart Divider */}
-        <Heart className="w-4 h-4 mb-6" style={{ color: "#7a2040", fill: "#7a2040" }} />
-
-        {/* Groom */}
-        <h2 className="font-script text-5xl md:text-6xl mb-2" style={{ color: "#5a1a2a" }}>
-          {t[lang].groomName}
-        </h2>
-        <p className="font-serif text-sm md:text-base font-medium mb-8" style={{ color: "#2a0a14" }}>
-          {t[lang].groomParents}
-        </p>
-
-        {/* Ornate Divider */}
-        <div className="flex items-center justify-center gap-2 mb-8">
-          <div className="h-[1px] w-12 bg-[#d4af37]"></div>
-          <div className="w-2 h-2 rotate-45 bg-[#d4af37]"></div>
-          <div className="h-[1px] w-12 bg-[#d4af37]"></div>
-        </div>
-
-        {/* Journey Text */}
-        <p className="font-serif text-base md:text-lg font-medium leading-relaxed max-w-sm mx-auto" style={{ color: "#2a0a14" }}>
-          {t[lang].journeyText}
-        </p>
-
       </div>
     </section>
   );
