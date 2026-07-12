@@ -547,7 +547,7 @@ function Countdown() {
       {/* Subtle overlay to give a rich, velvety texture to the maroon background */}
       <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.1)_0%,transparent_100%)] pointer-events-none"></div>
 
-      <div className="relative z-10 mx-auto max-w-5xl text-center px-4">
+      <div className="relative z-10 mx-auto max-w-5xl text-center px-2 sm:px-4">
         <h2 className="font-script text-4xl md:text-[3.25rem] tracking-wide" style={{ color: "#E8C385" }}>
           Counting Down to Forever
         </h2>
@@ -558,30 +558,29 @@ function Countdown() {
           <div className="h-[1px] w-12 sm:w-20" style={{ backgroundColor: "#E8C385", opacity: 0.6 }}></div>
         </div>
 
-        <div className="flex items-center justify-center flex-wrap" style={{ gap: "0.5rem" }}>
+        {/* Removed flex-wrap, reduced gap on mobile to ensure it fits in one line */}
+        <div className="flex items-center justify-center flex-nowrap gap-1 sm:gap-3 w-full">
           {cells.map((c, i) => (
             <div key={c.label} className="flex items-center">
               <div 
-                className="flex flex-col items-center justify-center rounded-lg shadow-xl"
+                className="flex flex-col items-center justify-center rounded-lg shadow-xl w-[70px] h-[75px] sm:w-[85px] sm:h-[90px]"
                 style={{ 
                   backgroundColor: "#FCF6E8", 
                   border: "2px solid #E8C385",
-                  width: "85px",
-                  height: "90px",
                 }}
               >
-                <span className="font-serif text-3xl md:text-[2.5rem] font-semibold tabular-nums leading-none" style={{ color: "#641829" }}>
+                <span className="font-serif text-2xl sm:text-3xl md:text-[2.5rem] font-semibold tabular-nums leading-none" style={{ color: "#641829" }}>
                   {String(c.value).padStart(2, "0")}
                 </span>
-                <span className="mt-2 text-[9px] md:text-[10px] tracking-[0.15em] font-medium" style={{ color: "#3D0B16" }}>
+                <span className="mt-1 sm:mt-2 text-[8px] sm:text-[9px] md:text-[10px] tracking-[0.1em] sm:tracking-[0.15em] font-medium" style={{ color: "#3D0B16" }}>
                   {c.label}
                 </span>
               </div>
               
-              {/* Diamond Separator */}
+              {/* Diamond Separator - scale down on mobile */}
               {i < cells.length - 1 && (
-                <div className="mx-2 md:mx-4 flex items-center justify-center">
-                  <div className="w-1.5 h-1.5 md:w-2 md:h-2 rotate-45" style={{ backgroundColor: "#E8C385" }}></div>
+                <div className="mx-1 sm:mx-2 md:mx-4 flex items-center justify-center">
+                  <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 md:w-2 md:h-2 rotate-45" style={{ backgroundColor: "#E8C385" }}></div>
                 </div>
               )}
             </div>
