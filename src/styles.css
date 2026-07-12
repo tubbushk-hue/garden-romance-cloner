@@ -114,7 +114,7 @@
 /* Tablet (768px – 1023px): nudge couple toward center */
 @media (min-width: 768px) and (max-width: 1023px) {
   .hero-bg-img {
-    object-position: 55% center;
+    object-position: 50% center;
   }
 }
 
