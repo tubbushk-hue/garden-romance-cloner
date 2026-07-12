@@ -693,8 +693,20 @@ function Timeline() {
 function Venue() {
   const q = encodeURIComponent("Royal Palm Banquet, Lahore, Pakistan");
   return (
-    <section className="py-24 px-6 overflow-hidden" style={{ backgroundColor: "#FDF8F0" }}>
-      <div className="mx-auto max-w-5xl flex flex-col md:flex-row items-center justify-between gap-12">
+    <section className="relative py-24 px-6 overflow-hidden" style={{ backgroundColor: "#F9EFE5" }}>
+      
+      {/* Decorative Top Divider */}
+      <div className="absolute top-0 left-0 w-full flex justify-center items-center opacity-50 pt-8">
+        <div className="w-1/4 md:w-1/3 h-[1px]" style={{ backgroundColor: "#D4AF37" }}></div>
+        <div className="mx-4 md:mx-6 flex items-center gap-2">
+           <div className="w-1.5 h-1.5 rotate-45 border" style={{ borderColor: "#D4AF37" }}></div>
+           <Heart className="w-3 h-3 md:w-4 md:h-4 fill-current mx-1" style={{ color: "#D4AF37" }} />
+           <div className="w-1.5 h-1.5 rotate-45 border" style={{ borderColor: "#D4AF37" }}></div>
+        </div>
+        <div className="w-1/4 md:w-1/3 h-[1px]" style={{ backgroundColor: "#D4AF37" }}></div>
+      </div>
+
+      <div className="mx-auto max-w-5xl flex flex-col md:flex-row items-center justify-between gap-12 mt-6">
         <div className="md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left z-10">
           <div className="flex items-center gap-3 mb-6">
             <MapPin className="w-7 h-7" style={{ color: "#641829" }} />
