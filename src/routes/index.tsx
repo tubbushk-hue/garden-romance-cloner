@@ -5,6 +5,7 @@ import heroBg from "@/assets/hero-bg.jpg";
 import heroBgMobile from "@/assets/hero-bg-mobile.jpg";
 import entranceBg from "@/assets/entrance-bg.png";
 import desktopEntranceBg from "@/assets/desktop-entrance-bg.jpg";
+import coupleImg from "@/assets/couple.png";
 
 export const Route = createFileRoute("/")({
   component: Invitation,
@@ -148,6 +149,10 @@ function Hero() {
               backgroundRepeat: "no-repeat",
             }}
           />
+          {/* Couple Cutout Overlay */}
+          <div className="absolute inset-x-0 bottom-0 z-[5] flex justify-center pointer-events-none">
+            <img src={coupleImg} alt="Couple" className="w-[90%] max-w-sm object-contain object-bottom hero-fade" style={{ maxHeight: "70vh" }} />
+          </div>
           {/* Soft gradient at top for text readability */}
           <div style={{
             position: "absolute",
@@ -211,6 +216,10 @@ function Hero() {
           className="hero-fade hero-bg-img"
           style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }}
         />
+        {/* Couple Cutout Overlay Desktop */}
+        <div className="absolute inset-y-0 left-0 w-1/2 flex items-end justify-center z-[5] pointer-events-none">
+           <img src={coupleImg} alt="Couple" className="h-[85%] max-h-[900px] object-contain object-bottom hero-fade" />
+        </div>
         <div className="hero-fade" style={{ position: "relative", zIndex: 10, width: "50%", maxWidth: "28rem", textAlign: "center", padding: "4rem 2rem 4rem 4rem", margin: "0 auto" }}>
           <p style={{ letterSpacing: "0.35em", fontSize: "0.8rem", textTransform: "uppercase", color: "oklch(0.45 0.03 20 / 0.7)" }}>
             The Wedding Of
