@@ -748,19 +748,23 @@ function Footer() {
     <footer className="relative py-24 px-6 overflow-hidden" style={{ backgroundColor: "#641829" }}>
       <div className="mx-auto max-w-5xl relative z-10">
         
-        {/* RSVP Section */}
-        <div className="text-center mb-16">
-          <h2 className="font-script text-[4rem] mb-4" style={{ color: "#E8C385" }}>RSVP</h2>
-          <p className="text-lg md:text-xl max-w-[500px] mx-auto mb-10 font-serif" style={{ color: "#FDF8F0" }}>
-            Kindly confirm your presence and bless the couple with your love.
+        {/* Divider with J&R */}
+        <div className="relative flex items-center justify-center mt-4 mb-16">
+          <div className="w-full h-[1px]" style={{ backgroundColor: "#E8C385", opacity: 0.4 }}></div>
+          <div className="absolute w-24 h-24 rounded-full border flex items-center justify-center" style={{ backgroundColor: "#641829", borderColor: "#E8C385" }}>
+            <span className="font-serif text-4xl italic font-semibold" style={{ color: "#E8C385" }}>J&amp;R</span>
+          </div>
+        </div>
+
+        {/* Thank You & Copyright */}
+        <div className="text-center pb-8" style={{ color: "#FDF8F0" }}>
+          <p className="font-serif text-[1.45rem] tracking-wide mb-10 leading-relaxed">
+            Thank you for being a part of our<br/>special day
           </p>
-          <button 
-            className="rounded-full px-10 py-4 font-semibold tracking-[0.15em] shadow-xl transition-transform hover:scale-105"
-            style={{ backgroundColor: "#E8C385", color: "#641829" }}
-            onClick={() => alert('RSVP functionality would go here!')}
-          >
-            CONFIRM NOW
-          </button>
+          <Heart className="w-4 h-4 fill-current mx-auto mb-10" style={{ color: "#E8C385" }} />
+          <p className="text-[0.7rem] tracking-[0.2em] opacity-80 uppercase leading-loose max-w-[350px] mx-auto">
+            © 2026 Jack &amp; Rose Wedding. All Rights<br/>Reserved.
+          </p>
         </div>
 
       </div>
