@@ -53,6 +53,7 @@ const t = {
     shareBlessings: "Share your blessings",
     thankYou: "Thank you for being a part of our special day",
     scrollDown: "Scroll Down",
+    weddingDate: "NOVEMBER 1, 2026",
   },
   ur: {
     heroSub: "کی شادی",
@@ -74,7 +75,7 @@ const t = {
     weWelcomeYou: "ہم آپ کو خوش آمدید کہتے ہیں!",
     weddingCeremony: "تقریب نکاح",
     yourPresence: "آپ کی شرکت ہمارے لیے باعث مسرت ہے",
-    dinner: "دعوت ولیمہ",
+    dinner: "دعوت",
     letsCelebrate: "آئیے مل کر خوشیاں منائیں!",
     venueTitle: "مقام",
     venueName: "ڈائمنڈ بینکوئٹ ہال",
@@ -88,41 +89,43 @@ const t = {
     shareBlessings: "اپنی نیک تمناؤں کا اظہار کریں",
     thankYou: "ہمارے اس خاص دن کا حصہ بننے کے لیے آپ کا شکریہ",
     scrollDown: "نیچے سکرول کریں",
+    weddingDate: "١ نومبر ٢٠٢٦",
   },
   hi: {
     heroSub: "की शादी",
     forever: "हमेशा एक साथ",
     chooseLanguage: "अपनी भाषा चुनें",
     welcomeTitle: "स्वागत है",
-    welcomeText: "हमें आपको जिब्रान और यास्मीन के विवाह\nसमारोह में आमंत्रित करते हुए अत्यंत हर्ष हो रहा है\nजैसे कि वे विश्वास और प्रेम के साथ\nअपनी नई यात्रा शुरू कर रहे हैं।",
+    welcomeText: "हमें आपको जिब्रान और यास्मीन की शादी में\nआमंत्रित करते हुए बहुत खुशी हो रही है\nजैसे कि वे प्यार और विश्वास के साथ\nअपनी नई जिंदगी की शुरुआत कर रहे हैं।",
     scratchToReveal: "देखने के लिए स्क्रैच करें",
     youAreInvited: "आप आमंत्रित हैं!",
     sunday: "रविवार",
     gallery: "तस्वीरें",
-    countdownTitle: "अनमोल पल का इंतज़ार",
+    countdownTitle: "शादी का इंतज़ार",
     days: "दिन",
     hours: "घंटे",
     minutes: "मिनट",
     seconds: "सेकंड",
-    timelineTitle: "कार्यक्रम विवरण",
-    guestArrival: "अतिथियों का आगमन",
+    timelineTitle: "कार्यक्रम",
+    guestArrival: "मेहमानों का आना",
     weWelcomeYou: "हम आपका स्वागत करते हैं!",
-    weddingCeremony: "विवाह समारोह (निकाह)",
-    yourPresence: "आपकी उपस्थिति हमारे लिए विशेष है",
-    dinner: "रात्रिकालीन भोज (दावत-ए-वलीमा)",
-    letsCelebrate: "आइए मिलकर जश्न मनाएं!",
-    venueTitle: "स्थान",
+    weddingCeremony: "निकाह",
+    yourPresence: "आपकी मौजूदगी हमारे लिए खास है",
+    dinner: "दावत",
+    letsCelebrate: "आइए मिलकर खुशियां मनाएं!",
+    venueTitle: "जगह",
     venueName: "डायमंड बैंक्वेट हॉल",
     venueAddress: "सेंट मैरी स्कूल के पास, खादी मशीन रोड...",
     viewOnMap: "नक्शे पर देखें",
     rsvpTitle: "आरएसवीपी",
-    rsvpDate: "कृपया 15 अक्टूबर 2026 तक सूचित करें",
+    rsvpDate: "कृपया 15 अक्टूबर 2026 तक बताएं",
     gibransFamily: "जिब्रान का परिवार",
     yasmeensFamily: "यास्मीन का परिवार",
-    sendWishes: "शुभकामनाएं भेजें",
-    shareBlessings: "अपना आशीर्वाद साझा करें",
-    thankYou: "हमारे इस खास दिन का हिस्सा बनने के लिए आपका धन्यवाद",
-    scrollDown: "नीचे स्क्रॉल करें",
+    sendWishes: "दुआएं भेजें",
+    shareBlessings: "अपनी दुआएं दें",
+    thankYou: "हमारे इस खास दिन में शामिल होने के लिए आपका शुक्रिया",
+    scrollDown: "नीचे जाएं",
+    weddingDate: "१ नवंबर २०२६",
   }
 };
 
@@ -355,10 +358,10 @@ function Hero() {
           {/* Scroll cue */}
           <div
             className="float-y"
-            style={{ position: "absolute", bottom: "1.5rem", left: "50%", transform: "translateX(-50%)", zIndex: 10, display: "flex", flexDirection: "column", alignItems: "center", color: "oklch(0.55 0.15 15 / 0.7)" }}
+            style={{ position: "absolute", bottom: "1.5rem", left: "50%", transform: "translateX(-50%)", zIndex: 10, display: "flex", flexDirection: "column", alignItems: "center", color: "#D4AF37", opacity: 0.9 }}
           >
-            <span className="font-serif text-xs uppercase tracking-[0.2em] mb-1">{t[lang].scrollDown}</span>
-            <ChevronDown className="h-6 w-6" />
+            <span className="font-serif text-sm font-semibold uppercase tracking-[0.2em] mb-1" style={{ textShadow: "0 2px 4px rgba(0,0,0,0.3)" }}>{t[lang].scrollDown}</span>
+            <ChevronDown className="h-7 w-7 drop-shadow-md" />
           </div>
         </div>
       </div>
@@ -398,10 +401,10 @@ function Hero() {
         </div>
         <div
           className="float-y"
-          style={{ position: "absolute", bottom: "1.5rem", left: "50%", transform: "translateX(-50%)", zIndex: 10, display: "flex", flexDirection: "column", alignItems: "center", color: "oklch(0.55 0.15 15 / 0.7)" }}
+          style={{ position: "absolute", bottom: "1.5rem", left: "50%", transform: "translateX(-50%)", zIndex: 10, display: "flex", flexDirection: "column", alignItems: "center", color: "#D4AF37", opacity: 0.9 }}
         >
-          <span className="font-serif text-xs uppercase tracking-[0.2em] mb-1">{t[lang].scrollDown}</span>
-          <ChevronDown className="h-6 w-6" />
+          <span className="font-serif text-sm font-semibold uppercase tracking-[0.2em] mb-1" style={{ textShadow: "0 2px 4px rgba(0,0,0,0.3)" }}>{t[lang].scrollDown}</span>
+          <ChevronDown className="h-7 w-7 drop-shadow-md" />
         </div>
       </div>
     </section>
@@ -632,7 +635,7 @@ function ScratchSection() {
             }}>
               <CalendarDays style={{ width: "2rem", height: "2rem", color: "#7a2040", marginBottom: "0.5rem" }} />
               <p className="font-script" style={{ fontSize: "1.5rem", color: "#7a2040", marginBottom: "0.25rem" }}>{t[lang].youAreInvited}</p>
-              <p className="font-serif" style={{ fontSize: "1.5rem", fontWeight: 700, color: "#2a0a14", letterSpacing: "0.05em" }}>NOVEMBER <span style={{ fontFamily: "sans-serif" }}>1</span>, 2026</p>
+              <p className="font-serif" style={{ fontSize: "1.5rem", fontWeight: 700, color: "#2a0a14", letterSpacing: "0.05em" }}>{t[lang].weddingDate}</p>
               <p style={{ fontSize: "0.8rem", letterSpacing: "0.2em", color: "#7a2040", textTransform: "uppercase", margin: "0.2rem 0" }}>{t[lang].sunday}</p>
               <p style={{ fontSize: "0.85rem", letterSpacing: "0.15em", color: "#7a2040" }}>8:00 PM</p>
             </div>
