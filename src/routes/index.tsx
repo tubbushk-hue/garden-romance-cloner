@@ -112,7 +112,6 @@ function InvitationBody() {
   return (
     <main className="w-full overflow-x-hidden">
       <Hero />
-      <FormalInvitation />
       <Welcome />
       <ScratchSection />
       <Gallery />
@@ -207,21 +206,7 @@ function Hero() {
   );
 }
 
-function FormalInvitation() {
-  return (
-    <section className="relative w-full overflow-hidden bg-[oklch(0.97_0.015_25)]">
-      {/* Mobile View */}
-      <div className="md:hidden w-full relative">
-        <img src={welcomeBgMobile} alt="Formal Invitation" className="w-full h-auto block" />
-      </div>
 
-      {/* Desktop View */}
-      <div className="hidden md:flex w-full justify-center relative">
-        <img src={welcomeBg} alt="Formal Invitation" className="w-[100%] max-w-[1200px] h-auto object-contain block mx-auto my-8 md:my-16 shadow-2xl rounded-sm" />
-      </div>
-    </section>
-  );
-}
 
 function Welcome() {
   return (
@@ -440,7 +425,7 @@ function ScratchSection() {
             }}>
               <CalendarDays style={{ width: "2rem", height: "2rem", color: "#7a2040", marginBottom: "0.5rem" }} />
               <p className="font-script" style={{ fontSize: "1.5rem", color: "#7a2040", marginBottom: "0.25rem" }}>You're Invited!</p>
-              <p className="font-serif" style={{ fontSize: "1.5rem", fontWeight: 700, color: "#2a0a14", letterSpacing: "0.05em" }}>NOVEMBER 1, 2026</p>
+              <p className="font-sans" style={{ fontSize: "1.5rem", fontWeight: 700, color: "#2a0a14", letterSpacing: "0.05em" }}>NOVEMBER 1, 2026</p>
               <p style={{ fontSize: "0.8rem", letterSpacing: "0.2em", color: "#7a2040", textTransform: "uppercase", margin: "0.2rem 0" }}>Sunday</p>
               <p style={{ fontSize: "0.85rem", letterSpacing: "0.15em", color: "#7a2040" }}>8:00 PM</p>
             </div>
@@ -726,14 +711,11 @@ function Footer() {
         </div>
 
         {/* Thank You & Copyright */}
-        <div className="text-center pb-2" style={{ color: "#FDF8F0" }}>
-          <p className="font-serif text-[1.45rem] tracking-wide mb-10 leading-relaxed">
+        <div className="text-center pb-6" style={{ color: "#FDF8F0" }}>
+          <p className="font-serif text-[1.45rem] tracking-wide mb-8 leading-relaxed">
             Thank you for being a part of our<br/>special day
           </p>
-          <Heart className="w-4 h-4 fill-current mx-auto mb-10" style={{ color: "#E8C385" }} />
-          <p className="text-[0.7rem] tracking-[0.2em] opacity-80 uppercase leading-loose max-w-[350px] mx-auto">
-            © 2026 Gibran &amp; Yasmeen Wedding. All Rights<br/>Reserved.
-          </p>
+          <Heart className="w-4 h-4 fill-current mx-auto" style={{ color: "#E8C385" }} />
         </div>
 
       </div>
