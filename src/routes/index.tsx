@@ -745,7 +745,7 @@ function Venue() {
 
 function Footer() {
   return (
-    <footer className="relative py-24 px-6 overflow-hidden" style={{ backgroundColor: "#641829" }}>
+    <footer className="relative pt-20 pb-10 px-6 overflow-hidden" style={{ backgroundColor: "#641829" }}>
       <div className="mx-auto max-w-5xl relative z-10">
         
         {/* Divider with J&R */}
@@ -757,7 +757,7 @@ function Footer() {
         </div>
 
         {/* Thank You & Copyright */}
-        <div className="text-center pb-8" style={{ color: "#FDF8F0" }}>
+        <div className="text-center pb-2" style={{ color: "#FDF8F0" }}>
           <p className="font-serif text-[1.45rem] tracking-wide mb-10 leading-relaxed">
             Thank you for being a part of our<br/>special day
           </p>
