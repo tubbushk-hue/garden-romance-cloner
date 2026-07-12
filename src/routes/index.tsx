@@ -50,56 +50,38 @@ function Invitation() {
     <>
       {(sealing || opened) && <InvitationBody />}
       {!opened && (
-        <div className="fixed inset-0 z-50 pointer-events-none" aria-hidden={sealing}>
-          {/* Left gate */}
+        <div className="fixed inset-0 z-[100] pointer-events-none" aria-hidden={sealing}>
+          {/* Left gate using clip-path */}
           <div
-            className={`absolute inset-y-0 left-0 w-1/2 pointer-events-auto transition-transform duration-[1600ms] ease-[cubic-bezier(0.77,0,0.175,1)] ${sealing ? "-translate-x-full" : "translate-x-0"}`}
+            className={`absolute inset-0 pointer-events-auto transition-transform duration-[1600ms] ease-[cubic-bezier(0.77,0,0.175,1)] ${sealing ? "-translate-x-full" : "translate-x-0"}`}
             style={{
-              background: "linear-gradient(90deg, oklch(0.92 0.04 20), oklch(0.96 0.02 25))",
-              boxShadow: "inset -12px 0 30px -12px rgba(153,40,66,0.25)",
+              backgroundImage: `url(${entranceBg})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              clipPath: "polygon(0 0, 50% 0, 50% 100%, 0 100%)"
             }}
-          >
-            <div className="absolute inset-y-0 right-0 w-px bg-rose/30" />
-          </div>
+          ></div>
 
-          {/* Right gate */}
+          {/* Right gate using clip-path */}
           <div
-            className={`absolute inset-y-0 right-0 w-1/2 pointer-events-auto transition-transform duration-[1600ms] ease-[cubic-bezier(0.77,0,0.175,1)] ${sealing ? "translate-x-full" : "translate-x-0"}`}
+            className={`absolute inset-0 pointer-events-auto transition-transform duration-[1600ms] ease-[cubic-bezier(0.77,0,0.175,1)] ${sealing ? "translate-x-full" : "translate-x-0"}`}
             style={{
-              background: "linear-gradient(270deg, oklch(0.92 0.04 20), oklch(0.96 0.02 25))",
-              boxShadow: "inset 12px 0 30px -12px rgba(153,40,66,0.25)",
+              backgroundImage: `url(${entranceBg})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              clipPath: "polygon(50% 0, 100% 0, 100% 100%, 50% 100%)"
             }}
-          >
-            <div className="absolute inset-y-0 left-0 w-px bg-rose/30" />
-          </div>
+          ></div>
 
-          {/* Title above the seal */}
-          <div className={`absolute top-32 inset-x-0 text-center transition-opacity duration-500 ${sealing ? "opacity-0" : "opacity-100"}`}>
-            <p className="font-script text-4xl md:text-5xl text-rose-deep">You're Invited</p>
-          </div>
-
-          {/* Center seal - sits on the seam */}
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          {/* Invisible interactive area over the seal */}
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
             <button
               onClick={handleOpen}
-              aria-label="Tap the seal to open"
-              className={`pointer-events-auto relative h-24 w-24 rounded-full text-white transition-all duration-700 ease-out ${sealing ? "scale-50 opacity-0" : "seal-anim hover:scale-105"}`}
-              style={{
-                background: "radial-gradient(circle at 30% 30%, oklch(0.7 0.15 15), oklch(0.45 0.14 15) 70%, oklch(0.35 0.12 15))",
-              }}
+              aria-label="Tap to open"
+              className={`pointer-events-auto w-48 h-48 rounded-full transition-transform duration-700 ${sealing ? "scale-150 opacity-0" : "hover:scale-105 active:scale-95"}`}
             >
-              <span className="absolute inset-2 rounded-full border border-white/40" />
-              <span className="absolute inset-4 rounded-full border border-white/25" />
-              <span className="relative flex flex-col items-center justify-center h-full">
-                <Heart className="h-4 w-4 fill-white mb-0.5" />
-                <span className="text-[8px] tracking-[0.25em] font-sans">TAP TO OPEN</span>
-              </span>
+              <span className="sr-only">Tap to open</span>
             </button>
-          </div>
-
-          {/* Bottom hint */}
-          <div className={`absolute bottom-16 inset-x-0 text-center transition-opacity duration-500 ${sealing ? "opacity-0" : "opacity-100"}`}>
-            <p className="font-script text-xl text-rose-deep/80">tap the seal to open</p>
           </div>
         </div>
       )}
@@ -137,67 +119,118 @@ function InvitationBody() {
 }
 
 function Hero() {
-  const scrollToWelcome = () => {
-    const welcomeEl = document.getElementById('welcome');
-    if (welcomeEl) {
-      welcomeEl.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
-    <section className="relative w-full h-[100svh] overflow-hidden flex flex-col items-center justify-center bg-[#FDF8F0]"
-      style={{
-        backgroundImage: `url(${entranceBg})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-      }}
-    >
-      {/* Red vertical line */}
-      <div className="absolute top-0 bottom-0 w-[1px] bg-[#8C2E41] left-1/2 -translate-x-1/2 z-0"></div>
-
-      <div className="relative z-10 flex flex-col items-center h-full w-full py-16 md:py-20 justify-between">
-         {/* Top Text */}
-         <div className="flex flex-col items-center pt-8 md:pt-10">
-           <h1 className="font-script text-[4rem] md:text-7xl text-[#641829] tracking-wider mb-4 drop-shadow-sm">You're Invited</h1>
-           <div className="flex items-center gap-3">
-              <div className="w-12 h-[1px] bg-[#D4AF37]"></div>
-              <Heart className="w-3 h-3 fill-current text-[#641829]" />
-              <div className="w-12 h-[1px] bg-[#D4AF37]"></div>
-           </div>
-         </div>
-
-         {/* Center Seal Button */}
-         <button 
-           onClick={scrollToWelcome}
-           className="group relative flex items-center justify-center w-36 h-36 md:w-40 md:h-40 rounded-full transition-transform hover:scale-105 active:scale-95 cursor-pointer"
-         >
-           {/* Outer gold glow */}
-           <div className="absolute inset-[-6px] rounded-full bg-gradient-to-tr from-[#D4AF37] to-[#E8C385] opacity-50 blur-md group-hover:opacity-100 transition-opacity"></div>
-           {/* Gold border */}
-           <div className="absolute inset-0 rounded-full bg-gradient-to-b from-[#E8C385] to-[#B38B36] p-[3px] shadow-2xl">
-             {/* Maroon Seal */}
-             <div className="w-full h-full rounded-full bg-gradient-to-br from-[#8C2E41] to-[#4A1020] border-[2px] border-[#641829] flex flex-col items-center justify-center gap-2 shadow-[inset_0_4px_10px_rgba(0,0,0,0.5)] relative">
-                {/* Inner gold ring */}
-                <div className="absolute inset-2 rounded-full border border-[#D4AF37]/40"></div>
-                
-                <Heart className="w-4 h-4 text-white fill-current mt-2" />
-                <span className="text-white text-[0.65rem] tracking-[0.2em] font-medium z-10 uppercase mt-1 text-center leading-tight">Tap to<br/>Open</span>
-             </div>
-           </div>
-         </button>
-
-         {/* Bottom Text */}
-         <div className="flex items-center gap-4 pb-8 md:pb-10">
-            <div className="flex items-center text-[#D4AF37]">
-              <div className="w-1.5 h-1.5 rotate-45 border border-current"></div>
-              <div className="w-6 h-[1px] bg-current"></div>
+    <section className="relative w-full overflow-hidden" style={{ background: "oklch(0.97 0.015 25)" }}>
+      {/* ── MOBILE ONLY: shown on screens narrower than 768px ── */}
+      <div className="md:hidden">
+        <div style={{
+          position: "relative",
+          width: "100%",
+          height: "100svh",
+          overflow: "hidden",
+          background: "oklch(0.96 0.02 25)",
+        }}>
+          {/* Couple image — fully centered vertically & horizontally */}
+          <div
+            className="hero-fade"
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              backgroundImage: `url(${heroBgMobile})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center center",
+              backgroundRepeat: "no-repeat",
+            }}
+          />
+          {/* Soft gradient at top for text readability */}
+          <div style={{
+            position: "absolute",
+            top: 0, left: 0, right: 0,
+            height: "40%",
+            background: "linear-gradient(to bottom, oklch(0.96 0.02 25) 0%, oklch(0.96 0.02 25 / 0.85) 45%, oklch(0.96 0.02 25 / 0.3) 80%, transparent 100%)",
+            zIndex: 2,
+            pointerEvents: "none",
+          }} />
+          {/* Text overlaid at the TOP */}
+          <div
+            className="hero-fade"
+            style={{
+              position: "absolute",
+              top: "1.5rem",
+              left: 0,
+              right: 0,
+              textAlign: "center",
+              zIndex: 10,
+              padding: "0 1.5rem",
+            }}
+          >
+            <p style={{ letterSpacing: "0.35em", fontSize: "0.65rem", textTransform: "uppercase", color: "oklch(0.4 0.04 20 / 0.8)", marginBottom: "0.3rem" }}>
+              The Wedding Of
+            </p>
+            <h1
+              className="font-script"
+              style={{ fontSize: "3rem", lineHeight: 1.05, color: "oklch(0.32 0.15 20)", margin: "0.15rem 0" }}
+            >
+              Jack &amp; Rose
+            </h1>
+            <div className="divider-heart" style={{ color: "oklch(0.6 0.13 40)", margin: "0.35rem 0" }}>
+              <Heart className="h-3 w-3 fill-current" />
             </div>
-            <span className="font-serif italic text-lg text-[#641829]">tap the seal to open</span>
-            <div className="flex items-center text-[#D4AF37]">
-              <div className="w-6 h-[1px] bg-current"></div>
-              <div className="w-1.5 h-1.5 rotate-45 border border-current"></div>
-            </div>
-         </div>
+            <p style={{ letterSpacing: "0.38em", fontSize: "0.65rem", textTransform: "uppercase", color: "oklch(0.55 0.13 60)" }}>
+              Forever Together
+            </p>
+          </div>
+          {/* Scroll cue */}
+          <div
+            className="float-y"
+            style={{ position: "absolute", bottom: "1.5rem", left: "50%", transform: "translateX(-50%)", zIndex: 10, display: "flex", flexDirection: "column", alignItems: "center", color: "oklch(0.55 0.15 15 / 0.7)" }}
+          >
+            <ChevronDown className="h-6 w-6" />
+          </div>
+        </div>
+      </div>
+
+
+      {/* ── TABLET & DESKTOP: unchanged full-screen side-by-side layout ── */}
+      <div
+        className="hidden md:flex"
+        style={{ position: "relative", minHeight: "100vh", width: "100%", flexDirection: "row", alignItems: "center" }}
+      >
+        <img
+          src={heroBg}
+          alt=""
+          aria-hidden="true"
+          width={1600}
+          height={1008}
+          className="hero-fade hero-bg-img"
+          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }}
+        />
+        <div className="hero-fade" style={{ position: "relative", zIndex: 10, width: "50%", maxWidth: "28rem", textAlign: "center", padding: "4rem 2rem 4rem 4rem", margin: "0 auto" }}>
+          <p style={{ letterSpacing: "0.35em", fontSize: "0.8rem", textTransform: "uppercase", color: "oklch(0.45 0.03 20 / 0.7)" }}>
+            The Wedding Of
+          </p>
+          <h1
+            className="font-script"
+            style={{ fontSize: "5rem", lineHeight: 1, color: "oklch(0.35 0.14 20)", marginTop: "1.5rem" }}
+          >
+            Jack &amp; Rose
+          </h1>
+          <div className="divider-heart" style={{ color: "oklch(0.6 0.13 40)", margin: "1.5rem 0" }}>
+            <Heart className="h-3 w-3 fill-current" />
+          </div>
+          <p style={{ letterSpacing: "0.4em", fontSize: "0.8rem", textTransform: "uppercase", color: "oklch(0.6 0.13 60)" }}>
+            Forever Together
+          </p>
+        </div>
+        <div
+          className="float-y"
+          style={{ position: "absolute", bottom: "1.5rem", left: "50%", transform: "translateX(-50%)", zIndex: 10, display: "flex", flexDirection: "column", alignItems: "center", color: "oklch(0.55 0.15 15 / 0.7)" }}
+        >
+          <ChevronDown className="h-6 w-6" />
+        </div>
       </div>
     </section>
   );
@@ -205,7 +238,7 @@ function Hero() {
 
 function Welcome() {
   return (
-    <section id="welcome" className="relative w-full overflow-hidden flex flex-row min-h-[50vh]" style={{ background: "oklch(0.97 0.015 25)" }}>
+    <section className="relative w-full overflow-hidden flex flex-row min-h-[50vh]" style={{ background: "oklch(0.97 0.015 25)" }}>
       {/* Left decorative border using the floral part of heroBg */}
       <div className="w-16 md:w-32 lg:w-48 relative flex-shrink-0">
         <img src={heroBg} className="w-full h-full object-cover object-left" alt="" />
