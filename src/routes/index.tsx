@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Heart, MapPin, Clock, PartyPopper, Bus, BedDouble, Gift, Send, ChevronDown, CalendarDays, Users, Camera, Wine } from "lucide-react";
+import { Heart, MapPin, Clock, PartyPopper, Bus, BedDouble, Gift, Send, ChevronDown, CalendarDays, Users, Camera, Wine, Instagram, Facebook, MessageCircle } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
 import heroBgMobile from "@/assets/hero-bg-mobile.jpg";
 
@@ -130,11 +130,6 @@ function InvitationBody() {
       <Countdown />
       <Timeline />
       <Venue />
-      <DressCode />
-      <PreWedding />
-      <InfoCards />
-      <Gifts />
-      <RSVPForm />
       <Footer />
     </main>
   );
@@ -617,7 +612,7 @@ function Timeline() {
            <div className="w-10 h-10 rounded-full border flex items-center justify-center mb-4" style={{ borderColor: "#D4AF37" }}>
              <Clock className="w-5 h-5" style={{ color: "#983A4E" }} />
            </div>
-           <h2 className="font-script text-[3rem]" style={{ color: "#983A4E" }}>Program Timeline</h2>
+           <h2 className="font-script text-[2.5rem]" style={{ color: "#983A4E" }}>Program Timeline</h2>
            <div className="flex items-center justify-center gap-4 mt-5">
               <div className="h-[1px] w-12" style={{ backgroundColor: "#D4AF37", opacity: 0.6 }}></div>
               <Heart className="w-3 h-3 fill-current" style={{ color: "#D4AF37" }} />
@@ -634,7 +629,7 @@ function Timeline() {
                <div className="text-xl leading-none -mt-1" style={{ color: "#D4AF37" }}>›</div>
              </div>
              
-             <h2 className="font-script text-[4rem] -mt-3" style={{ color: "#983A4E" }}>Program Timeline</h2>
+             <h2 className="font-script text-[3.25rem] -mt-3" style={{ color: "#983A4E" }}>Program Timeline</h2>
              
              <div className="flex items-center gap-3">
                <div className="text-xl leading-none -mt-1" style={{ color: "#D4AF37" }}>‹</div>
@@ -661,7 +656,7 @@ function Timeline() {
                   </div>
                   
                   <div className="mt-8 text-center">
-                    <h3 className="font-serif text-[1.35rem] font-medium" style={{ color: "#983A4E" }}>{t.title}</h3>
+                    <h3 className="font-serif text-[1.15rem] font-semibold" style={{ color: "#983A4E" }}>{t.title}</h3>
                     <p className="mt-4 text-sm font-medium tracking-wide" style={{ color: "#6E4950" }}>{t.date}</p>
                     <p className="text-sm font-bold mt-1" style={{ color: "#6E4950" }}>{t.time}</p>
                     <p className="mt-4 text-sm leading-relaxed max-w-[200px] mx-auto" style={{ color: "#983A4E", opacity: 0.9 }}>{t.note}</p>
@@ -684,7 +679,7 @@ function Timeline() {
                {/* Dot */}
                <div className="absolute -left-[37.5px] top-2 h-3.5 w-3.5 rounded-full ring-4 ring-[#FDF8F0]" style={{ backgroundColor: "#983A4E" }} />
                
-               <h3 className="font-script text-[2.25rem] leading-none" style={{ color: "#983A4E" }}>{t.title}</h3>
+               <h3 className="font-script text-[1.75rem] leading-none" style={{ color: "#983A4E" }}>{t.title}</h3>
                <p className="mt-3 text-sm font-medium tracking-wide" style={{ color: "#6E4950" }}>{t.date}, {t.time}</p>
                <p className="mt-2 text-sm leading-relaxed" style={{ color: "#983A4E", opacity: 0.9 }}>{t.note}</p>
              </div>
@@ -696,171 +691,102 @@ function Timeline() {
 }
 
 function Venue() {
-  const q = encodeURIComponent("Grand Palace Hall, 123, Abc Road, Xyz City");
+  const q = encodeURIComponent("Royal Palm Banquet, Lahore, Pakistan");
   return (
-    <section className="bg-blush py-20 px-6">
-      <SectionTitle icon={MapPin}>Venue</SectionTitle>
-      <div className="mx-auto mt-6 max-w-md text-center">
-        <h3 className="font-serif text-2xl font-semibold">Grand Palace Hall</h3>
-        <p className="mt-2 text-muted-foreground">123, Abc Road, Xyz City</p>
-        <div className="mt-6 overflow-hidden rounded-2xl border border-rose/20 shadow-md">
-          <iframe
-            title="Venue map"
-            src={`https://www.google.com/maps?q=${q}&output=embed`}
-            className="h-64 w-full"
-            loading="lazy"
-          />
+    <section className="py-24 px-6 overflow-hidden" style={{ backgroundColor: "#FDF8F0" }}>
+      <div className="mx-auto max-w-5xl flex flex-col md:flex-row items-center justify-between gap-12">
+        <div className="md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left z-10">
+          <div className="flex items-center gap-3 mb-6">
+            <MapPin className="w-7 h-7" style={{ color: "#641829" }} />
+            <h2 className="font-script text-[3.5rem] md:text-[4rem] leading-none" style={{ color: "#641829" }}>Venue</h2>
+          </div>
+          <h3 className="font-serif text-xl md:text-2xl tracking-[0.2em] uppercase mb-4" style={{ color: "#641829" }}>
+            Royal Palm Banquet
+          </h3>
+          <p className="text-lg mb-8 font-medium leading-relaxed max-w-[320px]" style={{ color: "#3D0B16" }}>
+            123, Palm Avenue, Garden City, Lahore, Pakistan
+          </p>
+          <a
+            href={`https://www.google.com/maps/search/?api=1&query=${q}`}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-block rounded-full px-8 py-3.5 text-sm font-semibold tracking-[0.15em] shadow-lg transition-transform hover:scale-105"
+            style={{ backgroundColor: "#641829", color: "#FDF8F0" }}
+          >
+            VIEW ON MAP
+          </a>
         </div>
-        <a
-          href={`https://www.google.com/maps/search/?api=1&query=${q}`}
-          target="_blank"
-          rel="noreferrer"
-          className="mt-6 inline-flex items-center gap-2 rounded-full bg-rose px-6 py-3 text-sm font-medium text-white shadow-md transition hover:bg-rose-deep"
-        >
-          <MapPin className="h-4 w-4" /> View on Google Maps
-        </a>
-      </div>
-    </section>
-  );
-}
-
-function DressCode() {
-  return (
-    <section className="bg-blush-soft py-20 px-6">
-      <SectionTitle>Dress Code</SectionTitle>
-      <div className="mx-auto mt-8 grid max-w-md gap-6 sm:grid-cols-2">
-        {[
-          { t: "Women", d: "Elegant formal attire in pastel or jewel tones" },
-          { t: "Men", d: "Suit or traditional formal wear" },
-        ].map((x) => (
-          <div key={x.t} className="rounded-2xl bg-white/70 p-6 text-center shadow-sm">
-            <h3 className="font-hand text-2xl text-rose-deep">{x.t}</h3>
-            <div className="mx-auto my-3 h-px w-10 bg-rose/40" />
-            <p className="text-sm text-muted-foreground leading-relaxed">{x.d}</p>
+        <div className="md:w-1/2 w-full z-10">
+          <div className="overflow-hidden rounded-2xl border-[6px] shadow-2xl transition-transform hover:scale-[1.02]" style={{ borderColor: "#FDF8F0" }}>
+            <iframe
+              title="Venue map"
+              src={`https://www.google.com/maps?q=${q}&output=embed`}
+              className="h-72 md:h-80 w-full"
+              loading="lazy"
+            />
           </div>
-        ))}
+        </div>
       </div>
     </section>
-  );
-}
-
-const PRE = [
-  { t: "Mahendi", w: "Jun 27, 2026, 9:30 PM", l: "At Bride's Home" },
-  { t: "Haldi", w: "Jun 28, 2026, 8:30 PM", l: "At Groom's Home" },
-  { t: "Sangeet", w: "Jun 29, 2026, 9:30 PM", l: "At Grand Palace Hall" },
-];
-
-function PreWedding() {
-  return (
-    <section className="bg-blush py-20 px-6">
-      <SectionTitle icon={PartyPopper}>Pre-Wedding Events</SectionTitle>
-      <div className="mx-auto mt-8 max-w-md space-y-4">
-        {PRE.map((e) => (
-          <div key={e.t} className="rounded-2xl bg-white/70 p-6 text-center shadow-sm">
-            <h3 className="font-hand text-2xl text-rose-deep">{e.t}</h3>
-            <p className="mt-1 font-serif text-lg">{e.w}</p>
-            <p className="text-sm text-muted-foreground">{e.l}</p>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function InfoCards() {
-  return (
-    <section className="bg-blush-soft py-20 px-6">
-      <div className="mx-auto grid max-w-md gap-6">
-        <InfoCard icon={Bus} title="Transportation">
-          Shuttle service will be available from the city center to the venue. Pickup point: Central Station at 9:30 AM.
-        </InfoCard>
-        <InfoCard icon={BedDouble} title="Accommodation">
-          Special rates at The Grand Palace Hall (5 min from venue). Use code <span className="font-semibold text-rose-deep">WEDDING2026</span> when booking.
-        </InfoCard>
-      </div>
-    </section>
-  );
-}
-
-function InfoCard({ icon: Icon, title, children }: { icon: any; title: string; children: React.ReactNode }) {
-  return (
-    <div className="rounded-2xl bg-white/80 p-6 shadow-sm">
-      <div className="flex items-center gap-3">
-        <span className="grid h-10 w-10 place-items-center rounded-full bg-rose/10 text-rose">
-          <Icon className="h-5 w-5" />
-        </span>
-        <h3 className="font-hand text-2xl text-rose-deep">{title}</h3>
-      </div>
-      <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{children}</p>
-    </div>
-  );
-}
-
-function Gifts() {
-  return (
-    <section className="bg-blush py-20 px-6 text-center">
-      <SectionTitle icon={Gift}>Gifts</SectionTitle>
-      <p className="mx-auto mt-4 max-w-md font-serif italic text-lg text-foreground/80">
-        Your love, blessings, and presence are the greatest gifts we could ever ask for.
-      </p>
-    </section>
-  );
-}
-
-function RSVPForm() {
-  const [sent, setSent] = useState(false);
-  return (
-    <section className="bg-blush-soft py-20 px-6">
-      <SectionTitle icon={Send}>Send a Message</SectionTitle>
-      <form
-        onSubmit={(e) => { e.preventDefault(); setSent(true); }}
-        className="mx-auto mt-6 max-w-md space-y-4 rounded-2xl bg-white/80 p-6 shadow-sm"
-      >
-        <Field label="Your Name">
-          <input required className="w-full rounded-lg border border-border bg-white px-4 py-3 focus:border-rose focus:outline-none" />
-        </Field>
-        <Field label="Email">
-          <input type="email" required className="w-full rounded-lg border border-border bg-white px-4 py-3 focus:border-rose focus:outline-none" />
-        </Field>
-        <Field label="Will you be attending?">
-          <select required className="w-full rounded-lg border border-border bg-white px-4 py-3 focus:border-rose focus:outline-none">
-            <option value="">Select...</option>
-            <option>Yes, I'll be there!</option>
-            <option>Sorry, I can't make it</option>
-          </select>
-        </Field>
-        <Field label="Your Message">
-          <textarea rows={4} className="w-full resize-none rounded-lg border border-border bg-white px-4 py-3 focus:border-rose focus:outline-none" />
-        </Field>
-        <button
-          type="submit"
-          className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-rose px-6 py-3 font-medium text-white shadow-md transition hover:bg-rose-deep"
-        >
-          <Send className="h-4 w-4" /> {sent ? "Message Sent ❤" : "Send Message"}
-        </button>
-      </form>
-    </section>
-  );
-}
-
-function Field({ label, children }: { label: string; children: React.ReactNode }) {
-  return (
-    <label className="block">
-      <span className="mb-1 block text-sm font-medium text-foreground/80">{label}</span>
-      {children}
-    </label>
   );
 }
 
 function Footer() {
   return (
-    <footer className="bg-plum text-white/90 py-16 px-6 text-center">
-      <p className="font-hand text-2xl">We can't wait to celebrate with you!</p>
-      <h3 className="mt-4 font-script text-6xl" style={{ color: "oklch(0.8 0.13 85)" }}>Jack &amp; Rose</h3>
-      <div className="divider-heart mt-6 text-white/40">
-        <Heart className="h-3 w-3 fill-current" />
+    <footer className="relative py-24 px-6 overflow-hidden" style={{ backgroundColor: "#641829" }}>
+      <div className="mx-auto max-w-5xl relative z-10">
+        
+        {/* RSVP Section */}
+        <div className="text-center mb-16">
+          <h2 className="font-script text-[4rem] mb-4" style={{ color: "#E8C385" }}>RSVP</h2>
+          <p className="text-lg md:text-xl max-w-[500px] mx-auto mb-10 font-serif" style={{ color: "#FDF8F0" }}>
+            Kindly confirm your presence and bless the couple with your love.
+          </p>
+          <button 
+            className="rounded-full px-10 py-4 font-semibold tracking-[0.15em] shadow-xl transition-transform hover:scale-105"
+            style={{ backgroundColor: "#E8C385", color: "#641829" }}
+            onClick={() => alert('RSVP functionality would go here!')}
+          >
+            CONFIRM NOW
+          </button>
+        </div>
+
+        {/* Divider with J&R */}
+        <div className="relative flex items-center justify-center my-16">
+          <div className="w-full h-[1px]" style={{ backgroundColor: "#E8C385", opacity: 0.4 }}></div>
+          <div className="absolute w-20 h-20 rounded-full border flex items-center justify-center" style={{ backgroundColor: "#641829", borderColor: "#E8C385" }}>
+            <span className="font-serif text-3xl italic font-semibold" style={{ color: "#E8C385" }}>J&amp;R</span>
+          </div>
+        </div>
+
+        {/* Thank You & Copyright */}
+        <div className="flex flex-col md:flex-row items-center justify-between mt-12 gap-8">
+          <div className="text-center md:text-left flex-1" style={{ color: "#FDF8F0" }}>
+            <div className="flex flex-col md:flex-row items-center gap-3 mb-6">
+              <p className="font-serif text-xl tracking-wide">
+                Thank you for being a part of our special day
+              </p>
+              <Heart className="w-4 h-4 fill-current hidden md:block" style={{ color: "#E8C385" }} />
+              <Heart className="w-4 h-4 fill-current md:hidden mt-2" style={{ color: "#E8C385" }} />
+            </div>
+            <p className="text-xs tracking-[0.15em] opacity-70 uppercase">
+              © 2026 Jack &amp; Rose Wedding. All Rights Reserved.
+            </p>
+          </div>
+          
+          <div className="flex items-center gap-4">
+            {[Instagram, Facebook, MessageCircle].map((Icon, i) => (
+              <a key={i} href="#" className="w-12 h-12 rounded-full border flex items-center justify-center transition-colors duration-300" 
+                 style={{ borderColor: "#E8C385", color: "#E8C385" }}
+                 onMouseOver={(e) => { e.currentTarget.style.backgroundColor = "#E8C385"; e.currentTarget.style.color = "#641829"; }}
+                 onMouseOut={(e) => { e.currentTarget.style.backgroundColor = "transparent"; e.currentTarget.style.color = "#E8C385"; }}
+              >
+                <Icon className="w-5 h-5" />
+              </a>
+            ))}
+          </div>
+        </div>
       </div>
-      <p className="mt-4 text-xs tracking-[0.3em] uppercase text-white/50">Test Mode</p>
     </footer>
   );
 }
