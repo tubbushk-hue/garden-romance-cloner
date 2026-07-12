@@ -210,10 +210,8 @@ function Hero() {
 
 function FormalInvitation() {
   return (
-    <section className="relative w-full overflow-hidden bg-[oklch(0.97_0.015_25)] py-12 px-4 md:px-8">
-      <div className="w-full max-w-4xl mx-auto flex justify-center">
-        <img src={formalInvitationBg} alt="Formal Invitation" className="w-full h-auto object-contain rounded-lg shadow-xl" />
-      </div>
+    <section className="relative w-full overflow-hidden">
+      <img src={formalInvitationBg} alt="Formal Invitation" className="w-full h-auto block" />
     </section>
   );
 }
