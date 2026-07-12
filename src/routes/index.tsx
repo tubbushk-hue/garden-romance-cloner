@@ -241,78 +241,8 @@ function Hero() {
 
 function FormalInvitation() {
   return (
-    <section className="relative w-full py-20 md:py-32 px-4 md:px-8 overflow-hidden flex flex-col items-center justify-center text-center" style={{ backgroundColor: "#FCF8F2" }}>
-      
-      {/* Decorative borders from heroBg */}
-      <div className="absolute top-0 bottom-0 left-0 w-24 md:w-80 pointer-events-none" style={{ backgroundImage: `url(${heroBg})`, backgroundSize: "cover", backgroundPosition: "left center" }}>
-         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-[#FCF8F2]" />
-      </div>
-      <div className="absolute top-0 bottom-0 right-0 w-24 md:w-80 pointer-events-none" style={{ backgroundImage: `url(${heroBg})`, backgroundSize: "cover", backgroundPosition: "right center" }}>
-         <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-[#FCF8F2]" />
-      </div>
-
-      <div className="relative z-10 w-full max-w-4xl mx-auto flex flex-col items-center">
-        {/* Top Decorative Line & Heart */}
-        <div className="flex items-center justify-center gap-3 mb-6">
-          <div className="w-16 md:w-24 h-[1px]" style={{ backgroundColor: "#C2A878" }} />
-          <Heart className="w-4 h-4 fill-current" style={{ color: "#7A2040" }} />
-          <div className="w-16 md:w-24 h-[1px]" style={{ backgroundColor: "#C2A878" }} />
-        </div>
-
-        {/* Bismillah */}
-        <div className="mb-4 text-center">
-           <span className="text-4xl md:text-5xl leading-none font-sans" style={{ color: "#8C6239" }}>﷽</span>
-        </div>
-
-        <p className="font-serif text-[1.1rem] md:text-[1.3rem] leading-relaxed mb-6" style={{ color: "#4A4A4A" }}>
-          In the Name of Allah,<br />the Most Merciful
-        </p>
-
-        <div className="flex items-center justify-center gap-4 md:gap-6 mb-10 w-full max-w-xs md:max-w-lg">
-          <div className="flex-1 h-[1px]" style={{ backgroundColor: "#C2A878", opacity: 0.6 }} />
-          <p className="font-serif text-[1rem] md:text-[1.2rem] text-[#8C6239]">
-            We are delighted to present
-          </p>
-          <div className="flex-1 h-[1px]" style={{ backgroundColor: "#C2A878", opacity: 0.6 }} />
-        </div>
-
-        <h2 className="font-script text-[3rem] md:text-[5rem] leading-[0.9] mb-4" style={{ color: "#7A2040" }}>
-          Yasmeen Shaikh
-        </h2>
-        <p className="font-serif text-[1rem] md:text-[1.2rem] text-[#6E4950] mb-1">
-          Beloved Daughter of
-        </p>
-        <p className="font-serif text-[1.2rem] md:text-[1.5rem] font-medium text-[#7A2040] mb-8">
-          Mr. Naseem Shaikh
-        </p>
-
-        {/* Divider Heart */}
-        <Heart className="w-5 h-5 fill-current mb-8" style={{ color: "#7A2040" }} />
-
-        <h2 className="font-script text-[3rem] md:text-[5rem] leading-[0.9] mb-4" style={{ color: "#7A2040" }}>
-          Mohammed Gibran Shaikh
-        </h2>
-        <p className="font-serif text-[1rem] md:text-[1.2rem] text-[#6E4950] mb-1">
-          Beloved Son of
-        </p>
-        <p className="font-serif text-[1.2rem] md:text-[1.5rem] font-medium text-[#7A2040] mb-10">
-          Mr. Ikram Shaikh
-        </p>
-
-        {/* Bottom Decorative Line */}
-        <div className="flex items-center justify-center gap-2 md:gap-3 mb-8">
-          <div className="w-10 md:w-20 h-[1px]" style={{ backgroundColor: "#C2A878" }} />
-          <div className="w-2 h-2 md:w-2.5 md:h-2.5 rotate-45 border" style={{ borderColor: "#C2A878" }} />
-          <Heart className="w-3 h-3 fill-current mx-0.5 md:mx-1" style={{ color: "#C2A878" }} />
-          <div className="w-2 h-2 md:w-2.5 md:h-2.5 rotate-45 border" style={{ borderColor: "#C2A878" }} />
-          <div className="w-10 md:w-20 h-[1px]" style={{ backgroundColor: "#C2A878" }} />
-        </div>
-
-        <p className="font-serif text-[1.1rem] md:text-[1.4rem] italic text-[#6E4950]">
-          as they begin a beautiful<br />journey together in <span className="font-bold text-[#7A2040] not-italic">Nikah.</span>
-        </p>
-
-      </div>
+    <section className="relative w-full overflow-hidden">
+      <img src={formalInvitationBg} alt="Formal Invitation" className="w-full h-auto block" />
     </section>
   );
 }
