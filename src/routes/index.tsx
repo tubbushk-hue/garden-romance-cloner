@@ -58,6 +58,14 @@ const t = {
     time9pm: "9:00 PM",
     time10pm: "10:00 PM",
     timelineDate: "Nov 01, 2026",
+    bismillahArabic: "بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ",
+    bismillahTrans: "In the name of Allah, the most beneficent, the most merciful",
+    announceText: "We are delighted to announce",
+    brideName: "Yasmeen Shaikh",
+    brideParents: "Daughter of Mr. Naseem Shaikh",
+    groomName: "Mohammed Gibran Shaikh",
+    groomParents: "Son of Mr. Ikram Shaikh",
+    journeyText: "As they start a new journey in the sacred bond of Nikah",
   },
   ur: {
     heroSub: "کی شادی",
@@ -98,6 +106,14 @@ const t = {
     time9pm: "رات ۹:۰۰ بجے",
     time10pm: "رات ۱۰:۰۰ بجے",
     timelineDate: "١ نومبر ٢٠٢٦",
+    bismillahArabic: "بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ",
+    bismillahTrans: "اللہ کے نام سے، جو بہت مہربان نہایت رحم والا ہے",
+    announceText: "ہمیں یہ بتاتے ہوئے بے حد خوشی ہو رہی ہے",
+    brideName: "یاسمین شیخ",
+    brideParents: "دختر نیک اختر جناب نسیم شیخ صاحب کی",
+    groomName: "محمد جبران شیخ",
+    groomParents: "فرزند ارجمند جناب اکرام شیخ صاحب کے",
+    journeyText: "جب وہ نکاح کے مقدس بندھن میں ایک نئے سفر کا آغاز کر رہے ہیں",
   },
   hi: {
     heroSub: "की शादी",
@@ -138,6 +154,14 @@ const t = {
     time9pm: "रात ९:०० बजे",
     time10pm: "रात १०:०० बजे",
     timelineDate: "१ नवंबर २०२६",
+    bismillahArabic: "بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ",
+    bismillahTrans: "अल्लाह के नाम से जो बड़ा मेहरबान है",
+    announceText: "हमें बताते हुए बहुत खुशी हो रही है",
+    brideName: "यास्मीन शेख",
+    brideParents: "सुपुत्री जनाब नसीम शेख",
+    groomName: "मोहम्मद जिब्रान शेख",
+    groomParents: "सुपुत्र जनाब इकराम शेख",
+    journeyText: "जब वे निकाह के पवित्र बंधन में एक नए सफर की शुरुआत कर रहे हैं।",
   }
 };
 
@@ -370,10 +394,10 @@ function Hero() {
           {/* Scroll cue */}
           <div
             className="float-y"
-            style={{ position: "absolute", bottom: "1.5rem", left: "1.5rem", zIndex: 10, display: "flex", flexDirection: "column", alignItems: "flex-start", color: "#FFFFFF" }}
+            style={{ position: "absolute", bottom: "1.5rem", left: "50%", transform: "translateX(-50%)", zIndex: 10, display: "flex", flexDirection: "column", alignItems: "center", color: "#FFFFFF" }}
           >
             <span className="font-sans text-xl font-black uppercase tracking-[0.15em] mb-1" style={{ textShadow: "0 2px 10px rgba(0,0,0,0.9), 0 0 20px rgba(0,0,0,0.5)" }}>{t[lang].scrollDown}</span>
-            <ChevronDown className="h-8 w-8 ml-8" style={{ filter: "drop-shadow(0 2px 8px rgba(0,0,0,0.9))" }} />
+            <ChevronDown className="h-8 w-8" style={{ filter: "drop-shadow(0 2px 8px rgba(0,0,0,0.9))" }} />
           </div>
         </div>
       </div>
@@ -413,10 +437,10 @@ function Hero() {
         </div>
         <div
           className="float-y"
-          style={{ position: "absolute", bottom: "2rem", left: "4rem", zIndex: 10, display: "flex", flexDirection: "column", alignItems: "flex-start", color: "#FFFFFF" }}
+          style={{ position: "absolute", bottom: "2rem", left: "50%", transform: "translateX(-50%)", zIndex: 10, display: "flex", flexDirection: "column", alignItems: "center", color: "#FFFFFF" }}
         >
           <span className="font-sans text-xl font-black uppercase tracking-[0.15em] mb-1" style={{ textShadow: "0 2px 10px rgba(0,0,0,0.9), 0 0 20px rgba(0,0,0,0.5)" }}>{t[lang].scrollDown}</span>
-          <ChevronDown className="h-8 w-8 ml-10" style={{ filter: "drop-shadow(0 2px 8px rgba(0,0,0,0.9))" }} />
+          <ChevronDown className="h-8 w-8" style={{ filter: "drop-shadow(0 2px 8px rgba(0,0,0,0.9))" }} />
         </div>
       </div>
     </section>
@@ -444,25 +468,60 @@ function Welcome() {
         <div className="absolute inset-0 bg-white/20 mix-blend-overlay" />
       </div>
 
-      {/* Center text content */}
+      {/* Center text content based on specific formatting request */}
       <div className="flex-1 flex flex-col items-center justify-center py-16 px-4 md:px-12 text-center z-10">
-        <h2
-          className="font-script text-5xl md:text-6xl mb-6 md:mb-8"
-          style={{ color: "oklch(0.35 0.14 20)" }}
-        >
-          {t[lang].welcomeTitle}
-        </h2>
         
-        <p
-          className="font-serif text-[0.95rem] md:text-lg leading-[2] md:leading-loose max-w-lg whitespace-pre-line"
-          style={{ color: "oklch(0.25 0.05 20)" }}
-        >
-          {t[lang].welcomeText}
+        {/* Top small heart */}
+        <Heart className="w-3 h-3 mb-6" style={{ color: "#7a2040", fill: "#7a2040" }} />
+
+        {/* Bismillah */}
+        <h3 className="font-serif text-3xl md:text-4xl mb-3" style={{ color: "#5a1a2a" }}>
+          {t[lang].bismillahArabic}
+        </h3>
+        <p className="font-serif text-sm md:text-base font-semibold mb-6" style={{ color: "#2a0a14" }}>
+          {t[lang].bismillahTrans}
         </p>
-        
-        <div className="mt-6 md:mt-8">
-          <Heart className="h-5 w-5" style={{ fill: "oklch(0.35 0.14 20)", color: "oklch(0.35 0.14 20)" }} />
+
+        {/* Divider & Announce */}
+        <div className="flex items-center justify-center gap-2 md:gap-4 w-full max-w-sm mx-auto mb-8">
+          <div className="h-[1px] flex-1 bg-[oklch(0.25_0.05_20)] opacity-30"></div>
+          <p className="font-serif text-[0.95rem] md:text-lg text-[oklch(0.25_0.05_20)] whitespace-nowrap">
+            {t[lang].announceText}
+          </p>
+          <div className="h-[1px] flex-1 bg-[oklch(0.25_0.05_20)] opacity-30"></div>
         </div>
+
+        {/* Bride */}
+        <h2 className="font-script text-5xl md:text-6xl mb-2" style={{ color: "#5a1a2a" }}>
+          {t[lang].brideName}
+        </h2>
+        <p className="font-serif text-sm md:text-base font-medium mb-6" style={{ color: "#2a0a14" }}>
+          {t[lang].brideParents}
+        </p>
+
+        {/* Heart Divider */}
+        <Heart className="w-4 h-4 mb-6" style={{ color: "#7a2040", fill: "#7a2040" }} />
+
+        {/* Groom */}
+        <h2 className="font-script text-5xl md:text-6xl mb-2" style={{ color: "#5a1a2a" }}>
+          {t[lang].groomName}
+        </h2>
+        <p className="font-serif text-sm md:text-base font-medium mb-8" style={{ color: "#2a0a14" }}>
+          {t[lang].groomParents}
+        </p>
+
+        {/* Ornate Divider */}
+        <div className="flex items-center justify-center gap-2 mb-8">
+          <div className="h-[1px] w-12 bg-[#d4af37]"></div>
+          <div className="w-2 h-2 rotate-45 bg-[#d4af37]"></div>
+          <div className="h-[1px] w-12 bg-[#d4af37]"></div>
+        </div>
+
+        {/* Journey Text */}
+        <p className="font-serif text-base md:text-lg font-medium leading-relaxed max-w-sm mx-auto" style={{ color: "#2a0a14" }}>
+          {t[lang].journeyText}
+        </p>
+
       </div>
     </section>
   );
