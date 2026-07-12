@@ -54,6 +54,10 @@ const t = {
     thankYou: "Thank you for being a part of our special day",
     scrollDown: "Scroll Down",
     weddingDate: "NOVEMBER 1, 2026",
+    time8pm: "8:00 PM",
+    time9pm: "9:00 PM",
+    time10pm: "10:00 PM",
+    timelineDate: "Nov 01, 2026",
   },
   ur: {
     heroSub: "کی شادی",
@@ -90,6 +94,10 @@ const t = {
     thankYou: "ہمارے اس خاص دن کا حصہ بننے کے لیے آپ کا شکریہ",
     scrollDown: "نیچے سکرول کریں",
     weddingDate: "١ نومبر ٢٠٢٦",
+    time8pm: "رات ۸:۰۰ بجے",
+    time9pm: "رات ۹:۰۰ بجے",
+    time10pm: "رات ۱۰:۰۰ بجے",
+    timelineDate: "١ نومبر ٢٠٢٦",
   },
   hi: {
     heroSub: "की शादी",
@@ -126,6 +134,10 @@ const t = {
     thankYou: "हमारे इस खास दिन में शामिल होने के लिए आपका शुक्रिया",
     scrollDown: "नीचे जाएं",
     weddingDate: "१ नवंबर २०२६",
+    time8pm: "रात ८:०० बजे",
+    time9pm: "रात ९:०० बजे",
+    time10pm: "रात १०:०० बजे",
+    timelineDate: "१ नवंबर २०२६",
   }
 };
 
@@ -360,7 +372,7 @@ function Hero() {
             className="float-y"
             style={{ position: "absolute", bottom: "1.5rem", left: "50%", transform: "translateX(-50%)", zIndex: 10, display: "flex", flexDirection: "column", alignItems: "center", color: "#D4AF37", opacity: 0.9 }}
           >
-            <span className="font-serif text-sm font-semibold uppercase tracking-[0.2em] mb-1" style={{ textShadow: "0 2px 4px rgba(0,0,0,0.3)" }}>{t[lang].scrollDown}</span>
+            <span className="font-serif text-base md:text-lg font-bold uppercase tracking-[0.2em] mb-1" style={{ textShadow: "0 2px 4px rgba(0,0,0,0.5)" }}>{t[lang].scrollDown}</span>
             <ChevronDown className="h-7 w-7 drop-shadow-md" />
           </div>
         </div>
@@ -403,7 +415,7 @@ function Hero() {
           className="float-y"
           style={{ position: "absolute", bottom: "1.5rem", left: "50%", transform: "translateX(-50%)", zIndex: 10, display: "flex", flexDirection: "column", alignItems: "center", color: "#D4AF37", opacity: 0.9 }}
         >
-          <span className="font-serif text-sm font-semibold uppercase tracking-[0.2em] mb-1" style={{ textShadow: "0 2px 4px rgba(0,0,0,0.3)" }}>{t[lang].scrollDown}</span>
+          <span className="font-serif text-base md:text-lg font-bold uppercase tracking-[0.2em] mb-1" style={{ textShadow: "0 2px 4px rgba(0,0,0,0.5)" }}>{t[lang].scrollDown}</span>
           <ChevronDown className="h-7 w-7 drop-shadow-md" />
         </div>
       </div>
@@ -637,7 +649,7 @@ function ScratchSection() {
               <p className="font-script" style={{ fontSize: "1.5rem", color: "#7a2040", marginBottom: "0.25rem" }}>{t[lang].youAreInvited}</p>
               <p className="font-serif" style={{ fontSize: "1.5rem", fontWeight: 700, color: "#2a0a14", letterSpacing: "0.05em" }}>{t[lang].weddingDate}</p>
               <p style={{ fontSize: "0.8rem", letterSpacing: "0.2em", color: "#7a2040", textTransform: "uppercase", margin: "0.2rem 0" }}>{t[lang].sunday}</p>
-              <p style={{ fontSize: "0.85rem", letterSpacing: "0.15em", color: "#7a2040" }}>8:00 PM</p>
+              <p style={{ fontSize: "0.85rem", letterSpacing: "0.15em", color: "#7a2040" }}>{t[lang].time8pm}</p>
             </div>
             {/* Gold scratch canvas */}
             <canvas
@@ -764,9 +776,9 @@ function RingsIcon({ className }: { className?: string }) {
 function Timeline() {
   const lang = useLanguage();
   const TIMELINE_DATA = [
-    { title: t[lang].guestArrival, date: "Nov 01, 2026", time: "8:00 PM", note: t[lang].weWelcomeYou, icon: Users },
-    { title: t[lang].weddingCeremony, date: "Nov 01, 2026", time: "9:00 PM", note: t[lang].yourPresence, icon: Heart },
-    { title: t[lang].dinner, date: "Nov 01, 2026", time: "10:00 PM", note: t[lang].letsCelebrate, icon: Wine },
+    { title: t[lang].guestArrival, date: t[lang].timelineDate, time: t[lang].time8pm, note: t[lang].weWelcomeYou, icon: Users },
+    { title: t[lang].weddingCeremony, date: t[lang].timelineDate, time: t[lang].time9pm, note: t[lang].yourPresence, icon: Heart },
+    { title: t[lang].dinner, date: t[lang].timelineDate, time: t[lang].time10pm, note: t[lang].letsCelebrate, icon: Wine },
   ];
 
   return (
