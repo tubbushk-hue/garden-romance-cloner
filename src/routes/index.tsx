@@ -132,6 +132,58 @@ const GALLERY = [
   "/gallery/gallery-4.jpg",
 ];
 
+function AppWrapper() {
+  const [lang, setLang] = useState<Language | null>(null);
+
+  if (!lang) {
+    return <LanguageSelection onSelect={setLang} />;
+  }
+
+  return (
+    <LanguageContext.Provider value={lang}>
+      <Invitation />
+    </LanguageContext.Provider>
+  );
+}
+
+function LanguageSelection({ onSelect }: { onSelect: (lang: Language) => void }) {
+  return (
+    <div className="fixed inset-0 z-[200] bg-[#F7E5DE] overflow-hidden flex flex-col items-center justify-center p-4">
+      <div className="absolute inset-0 opacity-40 pointer-events-none" style={{ backgroundImage: `url(${heroBg})`, backgroundSize: "cover", backgroundPosition: "center" }} />
+      
+      <div className="relative z-10 w-full max-w-sm flex flex-col items-center">
+        <p className="font-serif text-[0.7rem] uppercase tracking-[0.3em] text-[#6E4950] mb-2">THE WEDDING OF</p>
+        <h1 className="font-script text-[3.5rem] md:text-[4.5rem] text-[#7A2040] leading-[0.9] mb-4 text-center">
+          Gibran & Yasmeen
+        </h1>
+        <p className="font-serif text-[0.7rem] uppercase tracking-[0.3em] text-[#6E4950] mb-12">FOREVER TOGETHER</p>
+
+        <p className="font-serif text-lg text-[#8C6239] mb-8">Choose Your Language</p>
+
+        <div className="flex flex-col gap-5 w-full">
+           <LanguageButton label="English" subLabel="English" onClick={() => onSelect("en")} />
+           <LanguageButton label="اردو" subLabel="Urdu" onClick={() => onSelect("ur")} />
+           <LanguageButton label="हिन्दी" subLabel="Hindi" onClick={() => onSelect("hi")} />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function LanguageButton({ label, subLabel, onClick }: { label: string; subLabel: string; onClick: () => void }) {
+  return (
+    <button 
+      onClick={onClick}
+      className="relative w-full h-[65px] rounded-full flex items-center justify-center border border-[#C2A878] bg-[#FDF8F0]/90 shadow-sm transition-all hover:scale-105 active:scale-95 group"
+    >
+      <div className="absolute inset-1.5 border border-[#C2A878]/40 rounded-full pointer-events-none" />
+      <span className="font-serif text-2xl text-[#7A2040] font-medium min-w-[80px] text-center">{label}</span>
+      <div className="w-1 h-1 mx-4 rotate-45 border border-[#C2A878] bg-[#C2A878] group-hover:bg-[#7A2040] transition-colors" />
+      <span className="font-script text-2xl text-[#7A2040] min-w-[80px] text-center">{subLabel}</span>
+    </button>
+  );
+}
+
 function Divider() {
   return (
     <div className="divider-heart my-6">
@@ -250,6 +302,7 @@ function useCountdown(target: Date) {
 }
 
 function InvitationBody() {
+  const lang = useLanguage();
   return (
     <main className="w-full overflow-x-hidden">
       <Hero />
@@ -322,7 +375,7 @@ function Hero() {
         {/* Desktop text positioned on the left side */}
         <div className="hero-fade" style={{ position: "relative", zIndex: 10, width: "50%", maxWidth: "28rem", textAlign: "center", padding: "4rem 2rem 4rem 4rem", marginLeft: "10%" }}>
           <p style={{ letterSpacing: "0.35em", fontSize: "0.8rem", textTransform: "uppercase", color: "oklch(0.45 0.03 20 / 0.7)" }}>
-            The Wedding Of
+            {t[lang].heroSub}
           </p>
           <h1
             className="font-script"
@@ -334,7 +387,7 @@ function Hero() {
             <Heart className="h-3 w-3 fill-current" />
           </div>
           <p style={{ letterSpacing: "0.4em", fontSize: "0.8rem", textTransform: "uppercase", color: "oklch(0.6 0.13 60)" }}>
-            Forever Together
+            {t[lang].forever}
           </p>
         </div>
         <div
@@ -357,6 +410,7 @@ function FormalInvitation() {
 }
 
 function Welcome() {
+  const lang = useLanguage();
   return (
     <section className="relative w-full overflow-hidden flex flex-row min-h-[50vh]" style={{ background: "oklch(0.97 0.015 25)" }}>
       {/* Left decorative border using the floral part of heroBg */}
@@ -374,17 +428,14 @@ function Welcome() {
           className="font-script text-5xl md:text-6xl mb-6 md:mb-8"
           style={{ color: "oklch(0.35 0.14 20)" }}
         >
-          Welcome
+          {t[lang].welcomeTitle}
         </h2>
         
         <p
-          className="font-serif text-[0.95rem] md:text-lg leading-[2] md:leading-loose max-w-lg"
+          className="font-serif text-[0.95rem] md:text-lg leading-[2] md:leading-loose max-w-lg whitespace-pre-line"
           style={{ color: "oklch(0.25 0.05 20)" }}
         >
-          We are honored to welcome you to<br />
-          the wedding ceremony of Gibran &amp; Yasmeen<br />
-          as they begin their journey together in<br />
-          faith and love.
+          {t[lang].welcomeText}
         </p>
         
         <div className="mt-6 md:mt-8">
@@ -444,10 +495,11 @@ function PetalShower({ active }: { active: boolean }) {
 }
 
 function ScratchSection() {
-  const canvasRef = useRef<HTMLCanvasElement | null>(null);
-  const [revealed, setRevealed] = useState(false);
-  const [shower, setShower] = useState(false);
+  const [scratched, setScratched] = useState(false);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
   const drawing = useRef(false);
+  const lang = useLanguage();
+  const [shower, setShower] = useState(false);
   const showered = useRef(false);
 
   useEffect(() => {
@@ -469,7 +521,7 @@ function ScratchSection() {
     ctx.fillStyle = "rgba(255,255,255,0.85)";
     ctx.font = "600 16px 'Inter', sans-serif";
     ctx.textAlign = "center";
-    ctx.fillText("✦  Scratch to Reveal  ✦", rect.width / 2, rect.height / 2);
+    ctx.fillText("✦  " + t[lang].scratchToReveal + "  ✦", rect.width / 2, rect.height / 2);
   }, []);
 
   const checkProgress = () => {
@@ -501,7 +553,7 @@ function ScratchSection() {
     if (pct >= 0.5 && !showered.current) {
       showered.current = true;
       setShower(true);
-      setTimeout(() => setRevealed(true), 600);
+      setTimeout(() => setScratched(true), 600);
       setTimeout(() => setShower(false), 5000);
     }
   };
@@ -540,7 +592,7 @@ function ScratchSection() {
             className="font-script"
             style={{ fontSize: "1.6rem", color: "#f5e6d3", marginBottom: "0.3rem", position: "relative", zIndex: 2 }}
           >
-            Scratch to Reveal
+            {t[lang].scratchTitle}
           </h3>
           {/* Decorative line + heart */}
           <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "1rem", position: "relative", zIndex: 2 }}>
@@ -572,15 +624,15 @@ function ScratchSection() {
               padding: "1rem",
             }}>
               <CalendarDays style={{ width: "2rem", height: "2rem", color: "#7a2040", marginBottom: "0.5rem" }} />
-              <p className="font-script" style={{ fontSize: "1.5rem", color: "#7a2040", marginBottom: "0.25rem" }}>You're Invited!</p>
+              <p className="font-script" style={{ fontSize: "1.5rem", color: "#7a2040", marginBottom: "0.25rem" }}>{t[lang].youAreInvited}</p>
               <p className="font-serif" style={{ fontSize: "1.5rem", fontWeight: 700, color: "#2a0a14", letterSpacing: "0.05em" }}>NOVEMBER <span style={{ fontFamily: "sans-serif" }}>1</span>, 2026</p>
-              <p style={{ fontSize: "0.8rem", letterSpacing: "0.2em", color: "#7a2040", textTransform: "uppercase", margin: "0.2rem 0" }}>Sunday</p>
+              <p style={{ fontSize: "0.8rem", letterSpacing: "0.2em", color: "#7a2040", textTransform: "uppercase", margin: "0.2rem 0" }}>{t[lang].sunday}</p>
               <p style={{ fontSize: "0.85rem", letterSpacing: "0.15em", color: "#7a2040" }}>8:00 PM</p>
             </div>
             {/* Gold scratch canvas */}
             <canvas
               ref={canvasRef}
-              className={`absolute inset-0 h-full w-full touch-none cursor-pointer transition-opacity duration-700 ${revealed ? "opacity-0 pointer-events-none" : "opacity-100"}`}
+              className={`absolute inset-0 h-full w-full touch-none cursor-pointer transition-opacity duration-700 ${scratched ? "opacity-0 pointer-events-none" : "opacity-100"}`}
               style={{ zIndex: 5 }}
               onPointerDown={(e) => { drawing.current = true; scratch(e.clientX, e.clientY); }}
               onPointerMove={(e) => drawing.current && scratch(e.clientX, e.clientY)}
@@ -634,11 +686,12 @@ function Gallery() {
 
 function Countdown() {
   const { d, h, m, s } = useCountdown(WEDDING_DATE);
+  const lang = useLanguage();
   const cells = [
-    { label: "DAYS", value: d },
-    { label: "HOURS", value: h },
-    { label: "MINUTES", value: m },
-    { label: "SECONDS", value: s },
+    { label: t[lang].days, value: d },
+    { label: t[lang].hours, value: h },
+    { label: t[lang].minutes, value: m },
+    { label: t[lang].seconds, value: s },
   ];
   return (
     <section className="relative w-full py-16 overflow-hidden" style={{ backgroundColor: "#641829" }}>
@@ -647,7 +700,7 @@ function Countdown() {
 
       <div className="relative z-10 mx-auto max-w-5xl text-center px-2 sm:px-4">
         <h2 className="font-script text-4xl md:text-[3.25rem] tracking-wide" style={{ color: "#E8C385" }}>
-          Counting Down to Forever
+          {t[lang].countdownTitle}
         </h2>
         
         <div className="flex items-center justify-center gap-3 mt-4 mb-10">
@@ -701,31 +754,11 @@ function RingsIcon({ className }: { className?: string }) {
 function Timeline() {
   const lang = useLanguage();
   const TIMELINE_DATA = [
-    { title: t[lang].guestArrival, date: "Nov 01, 2026", time: "7:30 PM", note: t[lang].weWelcomeYou, icon: Users },
-    { title: t[lang].weddingCeremony, date: "Nov 01, 2026", time: "8:00 PM", note: t[lang].yourPresence, icon: RingsIcon },
-    { title: t[lang].dinner, date: "Nov 01, 2026", time: "9:00 PM", note: t[lang].letsCelebrate, icon: Wine },
-  ];
-
-  return (
-    <section className="py-24 px-6 overflow-hidden" style={{ backgroundColor: "#FDF8F0" }}>
-      <div className="mx-auto max-w-6xl text-center">
-        
-        {/* Mobile Title */}
-        <div className="flex flex-col items-center justify-center md:hidden mb-12">
-           <div className="w-10 h-10 rounded-full border flex items-center justify-center mb-4" style={{ borderColor: "#D4AF37" }}>
-             <Clock className="w-5 h-5" style={{ color: "#983A4E" }} />
-           </div>
-           <h2 className="font-script text-[2.5rem]" style={{ color: "#983A4E" }}>{t[lang].timelineTitle}</h2>
-           <div className="flex items-center justify-center gap-4 mt-5">
-              <div className="h-[1px] w-12" style={{ backgroundColor: "#D4AF37", opacity: 0.6 }}></div>
-              <Heart className="w-3 h-3 fill-current" style={{ color: "#D4AF37" }} />
-              <div className="h-[1px] w-12" style={{ backgroundColor: "#D4AF37", opacity: 0.6 }}></div>
-           </div>
-        </div>
     { title: t[lang].guestArrival, date: "Nov 01, 2026", time: "8:00 PM", note: t[lang].weWelcomeYou, icon: Users },
     { title: t[lang].weddingCeremony, date: "Nov 01, 2026", time: "9:00 PM", note: t[lang].yourPresence, icon: Heart },
     { title: t[lang].dinner, date: "Nov 01, 2026", time: "10:00 PM", note: t[lang].letsCelebrate, icon: Wine },
   ];
+
   return (
     <section className="py-24 px-4 md:px-8 relative overflow-hidden bg-white">
       {/* Delicate floral corners */}
@@ -736,7 +769,7 @@ function Timeline() {
         <SectionTitle icon={CalendarDays}>{t[lang].timelineTitle}</SectionTitle>
         <div className="mt-16 space-y-12 md:space-y-24 relative before:absolute before:inset-0 before:ml-5 md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-[oklch(0.97_0.015_25)] before:via-[oklch(0.85_0.05_30)] before:to-[oklch(0.97_0.015_25)]">
           
-          <div className="relative flex justify-between w-full">
+          <div className="relative justify-between w-full hidden md:flex">
             {TIMELINE_DATA.map((t, i) => {
               const Icon = t.icon;
               return (
@@ -747,7 +780,7 @@ function Timeline() {
                   </div>
                   
                   {/* Content */}
-                  <div className="mt-8 opacity-90 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-1">
+                  <div className="mt-8 opacity-90 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-1 text-center">
                     <h3 className="font-script text-3xl mb-3" style={{ color: "#983A4E" }}>{t.title}</h3>
                     <div className="font-serif text-sm font-medium tracking-widest uppercase mb-2" style={{ color: "#6E4950" }}>{t.time}</div>
                     <p className="font-serif text-sm leading-relaxed max-w-[200px] mx-auto" style={{ color: "#983A4E", opacity: 0.85 }}>{t.note}</p>
@@ -770,6 +803,7 @@ function Timeline() {
                </div>
             ))}
           </div>
+
         </div>
       </div>
     </section>
