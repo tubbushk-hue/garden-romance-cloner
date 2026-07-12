@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Heart, MapPin, Clock, PartyPopper, Bus, BedDouble, Gift, Send, ChevronDown } from "lucide-react";
+import { Heart, MapPin, Clock, PartyPopper, Bus, BedDouble, Gift, Send, ChevronDown, CalendarDays } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
 import heroBgMobile from "@/assets/hero-bg-mobile.jpg";
 
@@ -369,7 +369,7 @@ function ScratchSection() {
     ctx.fillStyle = g;
     ctx.fillRect(0, 0, rect.width, rect.height);
     ctx.fillStyle = "rgba(255,255,255,0.85)";
-    ctx.font = "600 20px 'Inter', sans-serif";
+    ctx.font = "600 16px 'Inter', sans-serif";
     ctx.textAlign = "center";
     ctx.fillText("✦  Scratch to Reveal  ✦", rect.width / 2, rect.height / 2);
   }, []);
@@ -396,7 +396,7 @@ function ScratchSection() {
     const rect = canvas.getBoundingClientRect();
     ctx.globalCompositeOperation = "destination-out";
     ctx.beginPath();
-    ctx.arc(x - rect.left, y - rect.top, 35, 0, Math.PI * 2);
+    ctx.arc(x - rect.left, y - rect.top, 30, 0, Math.PI * 2);
     ctx.fill();
 
     const pct = checkProgress();
@@ -409,24 +409,133 @@ function ScratchSection() {
   };
 
   return (
-    <section className="bg-blush py-20 px-6">
-      <SectionTitle>Scratch to Reveal</SectionTitle>
-      <div className="relative mx-auto mt-8 w-full max-w-sm aspect-[16/10] rounded-2xl overflow-hidden shadow-xl">
-        <div className="absolute inset-0 flex flex-col items-center justify-center bg-white text-center px-6"
-             style={{ background: "linear-gradient(135deg, #fff 0%, oklch(0.96 0.02 20) 100%)" }}>
-          <p className="font-hand text-3xl text-rose-deep">You're Invited!</p>
-          <p className="font-serif text-2xl mt-2">June 30, 2026</p>
-          <p className="text-sm text-muted-foreground mt-1">Tuesday</p>
-          <p className="font-serif text-xl mt-2 text-rose">10:20 AM</p>
+    <section style={{ background: "oklch(0.97 0.015 25)", padding: "3rem 1rem" }}>
+      {/* Two-card layout: scratch card on left, invitation on right */}
+      <div style={{ display: "flex", flexDirection: "row", gap: "1rem", maxWidth: "52rem", margin: "0 auto", alignItems: "stretch" }}>
+
+        {/* ── LEFT CARD: Maroon scratch card ── */}
+        <div style={{
+          flex: 1,
+          background: "linear-gradient(135deg, #5a1a2a 0%, #7a2040 40%, #4a1020 100%)",
+          borderRadius: "1rem",
+          padding: "1.5rem",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          position: "relative",
+          overflow: "hidden",
+          boxShadow: "0 8px 32px rgba(90, 26, 42, 0.3)",
+        }}>
+          {/* Subtle floral pattern overlay */}
+          <div style={{
+            position: "absolute",
+            inset: 0,
+            opacity: 0.08,
+            backgroundImage: `url(${heroBg})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            pointerEvents: "none",
+          }} />
+
+          {/* Title */}
+          <h3
+            className="font-script"
+            style={{ fontSize: "1.6rem", color: "#f5e6d3", marginBottom: "0.3rem", position: "relative", zIndex: 2 }}
+          >
+            Scratch to Reveal
+          </h3>
+          {/* Decorative line + heart */}
+          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "1rem", position: "relative", zIndex: 2 }}>
+            <div style={{ width: "3rem", height: "1px", background: "#d4af37" }} />
+            <Heart style={{ width: "0.75rem", height: "0.75rem", fill: "#d4af37", color: "#d4af37" }} />
+            <div style={{ width: "3rem", height: "1px", background: "#d4af37" }} />
+          </div>
+
+          {/* Scratch area */}
+          <div style={{
+            position: "relative",
+            width: "100%",
+            flex: 1,
+            minHeight: "10rem",
+            borderRadius: "0.75rem",
+            overflow: "hidden",
+            zIndex: 2,
+          }}>
+            {/* Revealed content underneath */}
+            <div style={{
+              position: "absolute",
+              inset: 0,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              background: "linear-gradient(135deg, #faf6f0 0%, #f5ebe0 100%)",
+              textAlign: "center",
+              padding: "1rem",
+            }}>
+              <CalendarDays style={{ width: "2rem", height: "2rem", color: "#7a2040", marginBottom: "0.5rem" }} />
+              <p className="font-script" style={{ fontSize: "1.5rem", color: "#7a2040", marginBottom: "0.25rem" }}>You're Invited!</p>
+              <p className="font-serif" style={{ fontSize: "1.5rem", fontWeight: 700, color: "#2a0a14", letterSpacing: "0.05em" }}>JUNE 30, 2026</p>
+              <p style={{ fontSize: "0.8rem", letterSpacing: "0.2em", color: "#7a2040", textTransform: "uppercase", margin: "0.2rem 0" }}>Tuesday</p>
+              <p style={{ fontSize: "0.85rem", letterSpacing: "0.15em", color: "#7a2040" }}>10:20 AM</p>
+            </div>
+            {/* Gold scratch canvas */}
+            <canvas
+              ref={canvasRef}
+              className={`absolute inset-0 h-full w-full touch-none cursor-pointer transition-opacity duration-700 ${revealed ? "opacity-0 pointer-events-none" : "opacity-100"}`}
+              style={{ zIndex: 5 }}
+              onPointerDown={(e) => { drawing.current = true; scratch(e.clientX, e.clientY); }}
+              onPointerMove={(e) => drawing.current && scratch(e.clientX, e.clientY)}
+              onPointerUp={() => (drawing.current = false)}
+              onPointerLeave={() => (drawing.current = false)}
+            />
+          </div>
         </div>
-        <canvas
-          ref={canvasRef}
-          className={`absolute inset-0 h-full w-full touch-none cursor-pointer transition-opacity duration-700 ${revealed ? "opacity-0 pointer-events-none" : "opacity-100"}`}
-          onPointerDown={(e) => { drawing.current = true; scratch(e.clientX, e.clientY); }}
-          onPointerMove={(e) => drawing.current && scratch(e.clientX, e.clientY)}
-          onPointerUp={() => (drawing.current = false)}
-          onPointerLeave={() => (drawing.current = false)}
-        />
+
+        {/* ── RIGHT CARD: Invitation details (always visible) ── */}
+        <div style={{
+          flex: 1,
+          background: "linear-gradient(135deg, #faf6f0 0%, #f5ebe0 100%)",
+          borderRadius: "1rem",
+          padding: "2rem 1.5rem",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          textAlign: "center",
+          boxShadow: "0 4px 20px rgba(0,0,0,0.06)",
+          position: "relative",
+          overflow: "hidden",
+        }}>
+          {/* Top-right floral accent */}
+          <div style={{
+            position: "absolute",
+            top: "-1rem",
+            right: "-1rem",
+            width: "8rem",
+            height: "8rem",
+            backgroundImage: `url(${heroBg})`,
+            backgroundSize: "cover",
+            backgroundPosition: "top right",
+            opacity: 0.2,
+            borderRadius: "0 1rem 0 0",
+            pointerEvents: "none",
+          }} />
+
+          <CalendarDays style={{ width: "2.5rem", height: "2.5rem", color: "#7a2040", marginBottom: "0.75rem" }} />
+          <p className="font-script" style={{ fontSize: "1.8rem", color: "#7a2040", marginBottom: "0.75rem" }}>You're Invited!</p>
+          <p className="font-serif" style={{ fontSize: "2rem", fontWeight: 700, color: "#2a0a14", letterSpacing: "0.08em", marginBottom: "0.25rem" }}>JUNE 30, 2026</p>
+          <p style={{ fontSize: "0.85rem", letterSpacing: "0.25em", color: "#7a2040", textTransform: "uppercase", marginBottom: "0.15rem" }}>TUESDAY</p>
+          <p style={{ fontSize: "0.9rem", letterSpacing: "0.15em", color: "#7a2040" }}>10:20 AM</p>
+
+          {/* Bottom ornament */}
+          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginTop: "1rem" }}>
+            <div style={{ width: "2.5rem", height: "1px", background: "#d4af37" }} />
+            <span style={{ color: "#d4af37", fontSize: "0.7rem" }}>❖</span>
+            <div style={{ width: "2.5rem", height: "1px", background: "#d4af37" }} />
+          </div>
+        </div>
+
       </div>
       <PetalShower active={shower} />
     </section>
