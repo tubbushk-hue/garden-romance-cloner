@@ -592,7 +592,7 @@ function ScratchSection() {
             className="font-script"
             style={{ fontSize: "1.6rem", color: "#f5e6d3", marginBottom: "0.3rem", position: "relative", zIndex: 2 }}
           >
-            {t[lang].scratchTitle}
+            {t[lang].scratchToReveal}
           </h3>
           {/* Decorative line + heart */}
           <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "1rem", position: "relative", zIndex: 2 }}>
