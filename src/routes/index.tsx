@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState, createContext, useContext } from "react";
 import { Heart, MapPin, Clock, PartyPopper, Bus, BedDouble, Gift, Send, ChevronDown, CalendarDays, Users, Camera, Wine, Instagram, Facebook, MessageCircle, Volume2, VolumeX } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
 import heroBgMobile from "@/assets/hero-bg-mobile.jpg";
@@ -11,8 +11,117 @@ import welcomeBgMobile from "@/assets/welcome-bg-mobile.png";
 import bgMusic from "@/assets/bg-music.mp3";
 
 export const Route = createFileRoute("/")({
-  component: Invitation,
+  component: AppWrapper,
 });
+
+type Language = "en" | "ur" | "hi";
+const LanguageContext = createContext<Language>("en");
+const useLanguage = () => useContext(LanguageContext);
+
+const t = {
+  en: {
+    heroSub: "The Wedding Of",
+    forever: "Forever Together",
+    chooseLanguage: "Choose Your Language",
+    welcomeTitle: "Welcome",
+    welcomeText: "We are honored to welcome you to\nthe wedding ceremony of Gibran & Yasmeen\nas they begin their journey together in\nfaith and love.",
+    scratchToReveal: "Scratch to Reveal",
+    youAreInvited: "You're Invited!",
+    sunday: "Sunday",
+    gallery: "Gallery",
+    countdownTitle: "Counting Down to Forever",
+    days: "DAYS",
+    hours: "HOURS",
+    minutes: "MINUTES",
+    seconds: "SECONDS",
+    timelineTitle: "Program Timeline",
+    guestArrival: "Guest Arrival",
+    weWelcomeYou: "We welcome you!",
+    weddingCeremony: "Wedding Ceremony",
+    yourPresence: "Your presence is special",
+    dinner: "Dinner",
+    letsCelebrate: "Let's celebrate together!",
+    venueTitle: "Venue",
+    venueName: "Diamond Banquet Hall",
+    venueAddress: "Near St. Mary School, Khadi Machine Road...",
+    viewOnMap: "VIEW ON MAP",
+    rsvpTitle: "RSVP",
+    rsvpDate: "Kindly respond by October 15, 2026",
+    gibransFamily: "Gibran's Family",
+    yasmeensFamily: "Yasmeen's Family",
+    sendWishes: "Send Wishes",
+    shareBlessings: "Share your blessings",
+    thankYou: "Thank you for being a part of our special day",
+  },
+  ur: {
+    heroSub: "کی شادی",
+    forever: "ہمیشہ ایک ساتھ",
+    chooseLanguage: "اپنی زبان کا انتخاب کریں",
+    welcomeTitle: "خوش آمدید",
+    welcomeText: "ہمیں آپ کو جبران اور یاسمین کی شادی کی\nتقریب میں مدعو کرتے ہوئے دلی خوشی محسوس ہو رہی ہے\nجیسا کہ وہ ایمان اور محبت میں\nاپنے نئے سفر کا آغاز کر رہے ہیں۔",
+    scratchToReveal: "دیکھنے کے لیے اسکریچ کریں",
+    youAreInvited: "آپ کو دعوت دی جاتی ہے!",
+    sunday: "اتوار",
+    gallery: "تصاویر",
+    countdownTitle: "یادگار لمحے کا انتظار",
+    days: "دن",
+    hours: "گھنٹے",
+    minutes: "منٹ",
+    seconds: "سیکنڈ",
+    timelineTitle: "پروگرام کی تفصیلات",
+    guestArrival: "مہمانوں کی آمد",
+    weWelcomeYou: "ہم آپ کو خوش آمدید کہتے ہیں!",
+    weddingCeremony: "تقریب نکاح",
+    yourPresence: "آپ کی شرکت ہمارے لیے باعث مسرت ہے",
+    dinner: "دعوت ولیمہ",
+    letsCelebrate: "آئیے مل کر خوشیاں منائیں!",
+    venueTitle: "مقام",
+    venueName: "ڈائمنڈ بینکوئٹ ہال",
+    venueAddress: "سینٹ میری اسکول کے قریب، کھادی مشین روڈ...",
+    viewOnMap: "نقشے پر دیکھیں",
+    rsvpTitle: "جواب طلب",
+    rsvpDate: "براہ کرم 15 اکتوبر 2026 تک مطلع کریں",
+    gibransFamily: "جبران کی فیملی",
+    yasmeensFamily: "یاسمین کی فیملی",
+    sendWishes: "دعائیں بھیجیں",
+    shareBlessings: "اپنی نیک تمناؤں کا اظہار کریں",
+    thankYou: "ہمارے اس خاص دن کا حصہ بننے کے لیے آپ کا شکریہ",
+  },
+  hi: {
+    heroSub: "की शादी",
+    forever: "हमेशा एक साथ",
+    chooseLanguage: "अपनी भाषा चुनें",
+    welcomeTitle: "स्वागत है",
+    welcomeText: "हमें आपको जिब्रान और यास्मीन के विवाह\nसमारोह में आमंत्रित करते हुए अत्यंत हर्ष हो रहा है\nजैसे कि वे विश्वास और प्रेम के साथ\nअपनी नई यात्रा शुरू कर रहे हैं।",
+    scratchToReveal: "देखने के लिए स्क्रैच करें",
+    youAreInvited: "आप आमंत्रित हैं!",
+    sunday: "रविवार",
+    gallery: "तस्वीरें",
+    countdownTitle: "अनमोल पल का इंतज़ार",
+    days: "दिन",
+    hours: "घंटे",
+    minutes: "मिनट",
+    seconds: "सेकंड",
+    timelineTitle: "कार्यक्रम विवरण",
+    guestArrival: "अतिथियों का आगमन",
+    weWelcomeYou: "हम आपका स्वागत करते हैं!",
+    weddingCeremony: "विवाह समारोह (निकाह)",
+    yourPresence: "आपकी उपस्थिति हमारे लिए विशेष है",
+    dinner: "रात्रिकालीन भोज (दावत-ए-वलीमा)",
+    letsCelebrate: "आइए मिलकर जश्न मनाएं!",
+    venueTitle: "स्थान",
+    venueName: "डायमंड बैंक्वेट हॉल",
+    venueAddress: "सेंट मैरी स्कूल के पास, खादी मशीन रोड...",
+    viewOnMap: "नक्शे पर देखें",
+    rsvpTitle: "आरएसवीपी",
+    rsvpDate: "कृपया 15 अक्टूबर 2026 तक सूचित करें",
+    gibransFamily: "जिब्रान का परिवार",
+    yasmeensFamily: "यास्मीन का परिवार",
+    sendWishes: "शुभकामनाएं भेजें",
+    shareBlessings: "अपना आशीर्वाद साझा करें",
+    thankYou: "हमारे इस खास दिन का हिस्सा बनने के लिए आपका धन्यवाद",
+  }
+};
 
 const WEDDING_DATE = new Date("2026-11-01T20:00:00");
 
@@ -589,13 +698,14 @@ function RingsIcon({ className }: { className?: string }) {
   );
 }
 
-const TIMELINE = [
-  { title: "Guest Arrival", date: "Nov 01, 2026", time: "7:30 PM", note: "We welcome you!", icon: Users },
-  { title: "Wedding Ceremony", date: "Nov 01, 2026", time: "8:00 PM", note: "Your presence is special", icon: RingsIcon },
-  { title: "Dinner", date: "Nov 01, 2026", time: "9:00 PM", note: "Let's celebrate together!", icon: Wine },
-];
-
 function Timeline() {
+  const lang = useLanguage();
+  const TIMELINE_DATA = [
+    { title: t[lang].guestArrival, date: "Nov 01, 2026", time: "7:30 PM", note: t[lang].weWelcomeYou, icon: Users },
+    { title: t[lang].weddingCeremony, date: "Nov 01, 2026", time: "8:00 PM", note: t[lang].yourPresence, icon: RingsIcon },
+    { title: t[lang].dinner, date: "Nov 01, 2026", time: "9:00 PM", note: t[lang].letsCelebrate, icon: Wine },
+  ];
+
   return (
     <section className="py-24 px-6 overflow-hidden" style={{ backgroundColor: "#FDF8F0" }}>
       <div className="mx-auto max-w-6xl text-center">
@@ -605,78 +715,61 @@ function Timeline() {
            <div className="w-10 h-10 rounded-full border flex items-center justify-center mb-4" style={{ borderColor: "#D4AF37" }}>
              <Clock className="w-5 h-5" style={{ color: "#983A4E" }} />
            </div>
-           <h2 className="font-script text-[2.5rem]" style={{ color: "#983A4E" }}>Program Timeline</h2>
+           <h2 className="font-script text-[2.5rem]" style={{ color: "#983A4E" }}>{t[lang].timelineTitle}</h2>
            <div className="flex items-center justify-center gap-4 mt-5">
               <div className="h-[1px] w-12" style={{ backgroundColor: "#D4AF37", opacity: 0.6 }}></div>
               <Heart className="w-3 h-3 fill-current" style={{ color: "#D4AF37" }} />
               <div className="h-[1px] w-12" style={{ backgroundColor: "#D4AF37", opacity: 0.6 }}></div>
            </div>
         </div>
-
-        {/* Desktop Title */}
-        <div className="hidden md:flex flex-col items-center justify-center mb-20">
-           <div className="flex items-center justify-center gap-6">
-             <div className="flex items-center gap-3">
-               <div className="w-1.5 h-1.5 rotate-45 border" style={{ borderColor: "#D4AF37" }}></div>
-               <div className="w-20 h-[1px]" style={{ backgroundColor: "#D4AF37" }}></div>
-               <div className="text-xl leading-none -mt-1" style={{ color: "#D4AF37" }}>›</div>
-             </div>
-             
-             <h2 className="font-script text-[3.25rem] -mt-3" style={{ color: "#983A4E" }}>Program Timeline</h2>
-             
-             <div className="flex items-center gap-3">
-               <div className="text-xl leading-none -mt-1" style={{ color: "#D4AF37" }}>‹</div>
-               <div className="w-20 h-[1px]" style={{ backgroundColor: "#D4AF37" }}></div>
-               <div className="w-1.5 h-1.5 rotate-45 border" style={{ borderColor: "#D4AF37" }}></div>
-             </div>
-           </div>
-        </div>
-
-        {/* Desktop Layout */}
-        <div className="hidden md:block relative w-full mt-10">
-          {/* Horizontal Line */}
-          <div className="absolute top-[28px] left-[12%] right-[12%] h-[1px] border-t-2 border-dotted" style={{ borderColor: "#D4AF37", opacity: 0.5 }}></div>
+    { title: t[lang].guestArrival, date: "Nov 01, 2026", time: "8:00 PM", note: t[lang].weWelcomeYou, icon: Users },
+    { title: t[lang].weddingCeremony, date: "Nov 01, 2026", time: "9:00 PM", note: t[lang].yourPresence, icon: Heart },
+    { title: t[lang].dinner, date: "Nov 01, 2026", time: "10:00 PM", note: t[lang].letsCelebrate, icon: Wine },
+  ];
+  return (
+    <section className="py-24 px-4 md:px-8 relative overflow-hidden bg-white">
+      {/* Delicate floral corners */}
+      <div className="absolute top-0 left-0 w-32 h-32 opacity-20 pointer-events-none" style={{ backgroundImage: `url(${heroBg})`, backgroundPosition: "top left" }} />
+      <div className="absolute bottom-0 right-0 w-32 h-32 opacity-20 pointer-events-none" style={{ backgroundImage: `url(${heroBg})`, backgroundPosition: "bottom right" }} />
+      
+      <div className="max-w-4xl mx-auto relative z-10">
+        <SectionTitle icon={CalendarDays}>{t[lang].timelineTitle}</SectionTitle>
+        <div className="mt-16 space-y-12 md:space-y-24 relative before:absolute before:inset-0 before:ml-5 md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-[oklch(0.97_0.015_25)] before:via-[oklch(0.85_0.05_30)] before:to-[oklch(0.97_0.015_25)]">
           
           <div className="relative flex justify-between w-full">
-            {TIMELINE.map((t, i) => {
+            {TIMELINE_DATA.map((t, i) => {
               const Icon = t.icon;
               return (
-                <div key={i} className="flex flex-col items-center w-1/4 relative px-4">
-                  {/* Circle on line */}
-                  <div className="z-10 w-14 h-14 rounded-full flex items-center justify-center shadow-md relative" style={{ backgroundColor: "#983A4E" }}>
-                     <div className="absolute inset-1 rounded-full border border-white/20"></div>
-                     <Icon className="w-6 h-6 text-white" />
+                <div key={i} className="flex flex-col items-center w-1/3 px-4 z-10 group cursor-default">
+                  {/* Icon Node */}
+                  <div className="w-14 h-14 rounded-full border-4 border-[#FDF8F0] flex items-center justify-center transition-transform duration-500 group-hover:scale-110 group-hover:-translate-y-2 shadow-lg" style={{ backgroundColor: "#983A4E" }}>
+                    <Icon className="w-6 h-6" style={{ color: "#FDF8F0" }} />
                   </div>
                   
-                  <div className="mt-8 text-center">
-                    <h3 className="font-serif text-[1.15rem] font-semibold" style={{ color: "#983A4E" }}>{t.title}</h3>
-                    <p className="mt-4 text-sm font-medium tracking-wide" style={{ color: "#6E4950" }}>{t.date}</p>
-                    <p className="text-sm font-bold mt-1" style={{ color: "#6E4950" }}>{t.time}</p>
-                    <p className="mt-4 text-sm leading-relaxed max-w-[200px] mx-auto" style={{ color: "#983A4E", opacity: 0.9 }}>{t.note}</p>
+                  {/* Content */}
+                  <div className="mt-8 opacity-90 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-1">
+                    <h3 className="font-script text-3xl mb-3" style={{ color: "#983A4E" }}>{t.title}</h3>
+                    <div className="font-serif text-sm font-medium tracking-widest uppercase mb-2" style={{ color: "#6E4950" }}>{t.time}</div>
+                    <p className="font-serif text-sm leading-relaxed max-w-[200px] mx-auto" style={{ color: "#983A4E", opacity: 0.85 }}>{t.note}</p>
                   </div>
                 </div>
               );
             })}
-            
-            {/* intermediate dots on line */}
-            <div className="absolute top-[28px] left-[25%] w-2.5 h-2.5 rounded-full transform -translate-x-1/2 -translate-y-1/2 shadow-sm" style={{ backgroundColor: "#E8C385" }}></div>
-            <div className="absolute top-[28px] left-[50%] w-2.5 h-2.5 rounded-full transform -translate-x-1/2 -translate-y-1/2 shadow-sm" style={{ backgroundColor: "#E8C385" }}></div>
-            <div className="absolute top-[28px] left-[75%] w-2.5 h-2.5 rounded-full transform -translate-x-1/2 -translate-y-1/2 shadow-sm" style={{ backgroundColor: "#E8C385" }}></div>
           </div>
-        </div>
 
-        {/* Mobile Layout */}
-        <div className="md:hidden relative border-l ml-6 pl-8 space-y-12 text-left pb-4 mt-8" style={{ borderColor: "rgba(212, 175, 55, 0.4)" }}>
-          {TIMELINE.map((t, i) => (
-             <div key={i} className="relative">
-               {/* Dot */}
-               <div className="absolute -left-[37.5px] top-2 h-3.5 w-3.5 rounded-full ring-4 ring-[#FDF8F0]" style={{ backgroundColor: "#983A4E" }} />
-               
-               <h3 className="font-script text-[1.75rem] leading-none" style={{ color: "#983A4E" }}>{t.title}</h3>
-               <p className="mt-3 text-sm font-medium tracking-wide" style={{ color: "#6E4950" }}>{t.date}, {t.time}</p>
-               <p className="mt-2 text-sm leading-relaxed" style={{ color: "#983A4E", opacity: 0.9 }}>{t.note}</p>
-             </div>
-          ))}
+          {/* Mobile Layout */}
+          <div className="md:hidden relative border-l ml-6 pl-8 space-y-12 text-left pb-4 mt-8" style={{ borderColor: "rgba(212, 175, 55, 0.4)" }}>
+            {TIMELINE_DATA.map((t, i) => (
+               <div key={i} className="relative">
+                 {/* Dot */}
+                 <div className="absolute -left-[37.5px] top-2 h-3.5 w-3.5 rounded-full ring-4 ring-[#FDF8F0]" style={{ backgroundColor: "#983A4E" }} />
+                 
+                 <h3 className="font-script text-[1.75rem] leading-none" style={{ color: "#983A4E" }}>{t.title}</h3>
+                 <p className="mt-3 text-sm font-medium tracking-wide" style={{ color: "#6E4950" }}>{t.date}, {t.time}</p>
+                 <p className="mt-2 text-sm leading-relaxed" style={{ color: "#983A4E", opacity: 0.9 }}>{t.note}</p>
+               </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -685,6 +778,7 @@ function Timeline() {
 
 function Venue() {
   const q = encodeURIComponent("Diamond Banquet Hall, Mumbra, Thane");
+  const lang = useLanguage();
   return (
     <section className="relative py-24 px-6 overflow-hidden" style={{ backgroundColor: "#F9EFE5" }}>
       
@@ -703,13 +797,13 @@ function Venue() {
         <div className="md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left z-10">
           <div className="flex items-center gap-3 mb-6">
             <MapPin className="w-7 h-7" style={{ color: "#641829" }} />
-            <h2 className="font-script text-[3.5rem] md:text-[4rem] leading-none" style={{ color: "#641829" }}>Venue</h2>
+            <h2 className="font-script text-[3.5rem] md:text-[4rem] leading-none" style={{ color: "#641829" }}>{t[lang].venueTitle}</h2>
           </div>
           <h3 className="font-serif text-xl md:text-2xl tracking-[0.2em] uppercase mb-4" style={{ color: "#641829" }}>
-            Diamond Banquet Hall
+            {t[lang].venueName}
           </h3>
           <p className="text-lg mb-8 font-medium leading-relaxed max-w-[320px]" style={{ color: "#3D0B16" }}>
-            Near St. Mary School, Khadi Machine Road, Mumbra, Thane-400612, Maharashtra
+            {t[lang].venueAddress}
           </p>
           <a
             href={`https://www.google.com/maps/search/?api=1&query=${q}`}
@@ -718,7 +812,7 @@ function Venue() {
             className="inline-block rounded-full px-8 py-3.5 text-sm font-semibold tracking-[0.15em] shadow-lg transition-transform hover:scale-105"
             style={{ backgroundColor: "#641829", color: "#FDF8F0" }}
           >
-            VIEW ON MAP
+            {t[lang].viewOnMap}
           </a>
         </div>
         <div className="md:w-1/2 w-full z-10">
@@ -737,6 +831,7 @@ function Venue() {
 }
 
 function Footer() {
+  const lang = useLanguage();
   return (
     <footer className="relative pt-20 pb-10 px-6 overflow-hidden" style={{ backgroundColor: "#641829" }}>
       <div className="mx-auto max-w-5xl relative z-10">
@@ -751,8 +846,8 @@ function Footer() {
 
         {/* Thank You & Copyright */}
         <div className="text-center pb-6" style={{ color: "#FDF8F0" }}>
-          <p className="font-serif text-[1.45rem] tracking-wide mb-8 leading-relaxed">
-            Thank you for being a part of our<br/>special day
+          <p className="font-serif text-[1.45rem] tracking-wide mb-8 leading-relaxed whitespace-pre-line">
+            {t[lang].thankYou}
           </p>
           <Heart className="w-4 h-4 fill-current mx-auto" style={{ color: "#E8C385" }} />
         </div>
