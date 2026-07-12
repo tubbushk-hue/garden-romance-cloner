@@ -4,7 +4,7 @@ import { Heart, MapPin, Clock, PartyPopper, Bus, BedDouble, Gift, Send, ChevronD
 import heroBg from "@/assets/hero-bg.jpg";
 import heroBgMobile from "@/assets/hero-bg-mobile.jpg";
 import entranceBg from "@/assets/entrance-bg.png";
-import desktopEntranceBg from "@/assets/desktop-entrance-bg.png";
+import desktopEntranceBg from "@/assets/desktop-entrance-bg.jpg";
 
 export const Route = createFileRoute("/")({
   component: Invitation,
