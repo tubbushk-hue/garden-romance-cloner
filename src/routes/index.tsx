@@ -151,18 +151,18 @@ function Hero() {
           overflow: "hidden",
           background: "oklch(0.96 0.02 25)",
         }}>
-          {/* Couple image — background-contain shows BOTH people, no cropping */}
+          {/* Couple image — fully centered vertically & horizontally */}
           <div
             className="hero-fade"
             style={{
               position: "absolute",
-              top: "18%",
+              top: 0,
               left: 0,
               right: 0,
               bottom: 0,
               backgroundImage: `url(${heroBg})`,
               backgroundSize: "contain",
-              backgroundPosition: "center bottom",
+              backgroundPosition: "center center",
               backgroundRepeat: "no-repeat",
             }}
           />
@@ -170,8 +170,8 @@ function Hero() {
           <div style={{
             position: "absolute",
             top: 0, left: 0, right: 0,
-            height: "55%",
-            background: "linear-gradient(to bottom, oklch(0.96 0.02 25) 0%, oklch(0.96 0.02 25 / 0.88) 40%, oklch(0.96 0.02 25 / 0.4) 70%, transparent 100%)",
+            height: "40%",
+            background: "linear-gradient(to bottom, oklch(0.96 0.02 25) 0%, oklch(0.96 0.02 25 / 0.85) 45%, oklch(0.96 0.02 25 / 0.3) 80%, transparent 100%)",
             zIndex: 2,
             pointerEvents: "none",
           }} />
@@ -180,7 +180,7 @@ function Hero() {
             className="hero-fade"
             style={{
               position: "absolute",
-              top: "2.5rem",
+              top: "1.5rem",
               left: 0,
               right: 0,
               textAlign: "center",
@@ -188,16 +188,16 @@ function Hero() {
               padding: "0 1.5rem",
             }}
           >
-            <p style={{ letterSpacing: "0.35em", fontSize: "0.65rem", textTransform: "uppercase", color: "oklch(0.4 0.04 20 / 0.8)", marginBottom: "0.4rem" }}>
+            <p style={{ letterSpacing: "0.35em", fontSize: "0.65rem", textTransform: "uppercase", color: "oklch(0.4 0.04 20 / 0.8)", marginBottom: "0.3rem" }}>
               The Wedding Of
             </p>
             <h1
               className="font-script"
-              style={{ fontSize: "3.5rem", lineHeight: 1.05, color: "oklch(0.32 0.15 20)", margin: "0.25rem 0" }}
+              style={{ fontSize: "3rem", lineHeight: 1.05, color: "oklch(0.32 0.15 20)", margin: "0.15rem 0" }}
             >
               Jack &amp; Rose
             </h1>
-            <div className="divider-heart" style={{ color: "oklch(0.6 0.13 40)", margin: "0.5rem 0" }}>
+            <div className="divider-heart" style={{ color: "oklch(0.6 0.13 40)", margin: "0.35rem 0" }}>
               <Heart className="h-3 w-3 fill-current" />
             </div>
             <p style={{ letterSpacing: "0.38em", fontSize: "0.65rem", textTransform: "uppercase", color: "oklch(0.55 0.13 60)" }}>
