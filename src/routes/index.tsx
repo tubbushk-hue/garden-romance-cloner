@@ -396,7 +396,7 @@ function Hero() {
             className="float-y"
             style={{ position: "absolute", bottom: "1.5rem", left: "50%", transform: "translateX(-50%)", zIndex: 10, display: "flex", flexDirection: "column", alignItems: "center", color: "#FFFFFF" }}
           >
-            <span className="font-sans text-xl font-black uppercase tracking-[0.15em] mb-1" style={{ textShadow: "0 2px 10px rgba(0,0,0,0.9), 0 0 20px rgba(0,0,0,0.5)" }}>{t[lang].scrollDown}</span>
+            <span className={`font-sans uppercase mb-1 ${lang === "en" ? "text-xs md:text-sm font-bold tracking-[0.3em]" : "text-xl font-black tracking-[0.15em]"}`} style={{ textShadow: "0 2px 10px rgba(0,0,0,0.9), 0 0 20px rgba(0,0,0,0.5)" }}>{t[lang].scrollDown}</span>
             <ChevronDown className="h-8 w-8" style={{ filter: "drop-shadow(0 2px 8px rgba(0,0,0,0.9))" }} />
           </div>
         </div>
@@ -439,7 +439,7 @@ function Hero() {
           className="float-y"
           style={{ position: "absolute", bottom: "2rem", left: "50%", transform: "translateX(-50%)", zIndex: 10, display: "flex", flexDirection: "column", alignItems: "center", color: "#FFFFFF" }}
         >
-          <span className="font-sans text-xl font-black uppercase tracking-[0.15em] mb-1" style={{ textShadow: "0 2px 10px rgba(0,0,0,0.9), 0 0 20px rgba(0,0,0,0.5)" }}>{t[lang].scrollDown}</span>
+          <span className={`font-sans uppercase mb-1 ${lang === "en" ? "text-xs md:text-sm font-bold tracking-[0.3em]" : "text-xl font-black tracking-[0.15em]"}`} style={{ textShadow: "0 2px 10px rgba(0,0,0,0.9), 0 0 20px rgba(0,0,0,0.5)" }}>{t[lang].scrollDown}</span>
           <ChevronDown className="h-8 w-8" style={{ filter: "drop-shadow(0 2px 8px rgba(0,0,0,0.9))" }} />
         </div>
       </div>
