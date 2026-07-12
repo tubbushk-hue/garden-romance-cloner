@@ -615,9 +615,9 @@ function Timeline() {
         {/* Mobile Title */}
         <div className="flex flex-col items-center justify-center md:hidden mb-12">
            <div className="w-10 h-10 rounded-full border flex items-center justify-center mb-4" style={{ borderColor: "#D4AF37" }}>
-             <Clock className="w-5 h-5" style={{ color: "#641829" }} />
+             <Clock className="w-5 h-5" style={{ color: "#983A4E" }} />
            </div>
-           <h2 className="font-script text-[3rem]" style={{ color: "#641829" }}>Program Timeline</h2>
+           <h2 className="font-script text-[3rem]" style={{ color: "#983A4E" }}>Program Timeline</h2>
            <div className="flex items-center justify-center gap-4 mt-5">
               <div className="h-[1px] w-12" style={{ backgroundColor: "#D4AF37", opacity: 0.6 }}></div>
               <Heart className="w-3 h-3 fill-current" style={{ color: "#D4AF37" }} />
@@ -634,7 +634,7 @@ function Timeline() {
                <div className="text-xl leading-none -mt-1" style={{ color: "#D4AF37" }}>›</div>
              </div>
              
-             <h2 className="font-script text-[4rem] -mt-3" style={{ color: "#641829" }}>Program Timeline</h2>
+             <h2 className="font-script text-[4rem] -mt-3" style={{ color: "#983A4E" }}>Program Timeline</h2>
              
              <div className="flex items-center gap-3">
                <div className="text-xl leading-none -mt-1" style={{ color: "#D4AF37" }}>‹</div>
@@ -655,16 +655,16 @@ function Timeline() {
               return (
                 <div key={i} className="flex flex-col items-center w-1/4 relative px-4">
                   {/* Circle on line */}
-                  <div className="z-10 w-14 h-14 rounded-full flex items-center justify-center shadow-md relative" style={{ backgroundColor: "#641829" }}>
+                  <div className="z-10 w-14 h-14 rounded-full flex items-center justify-center shadow-md relative" style={{ backgroundColor: "#983A4E" }}>
                      <div className="absolute inset-1 rounded-full border border-white/20"></div>
                      <Icon className="w-6 h-6 text-white" />
                   </div>
                   
                   <div className="mt-8 text-center">
-                    <h3 className="font-serif text-[1.35rem] font-medium" style={{ color: "#641829" }}>{t.title}</h3>
-                    <p className="mt-4 text-sm font-medium tracking-wide" style={{ color: "#3D0B16" }}>{t.date}</p>
-                    <p className="text-sm font-bold mt-1" style={{ color: "#3D0B16" }}>{t.time}</p>
-                    <p className="mt-4 text-sm leading-relaxed max-w-[200px] mx-auto" style={{ color: "#641829", opacity: 0.9 }}>{t.note}</p>
+                    <h3 className="font-serif text-[1.35rem] font-medium" style={{ color: "#983A4E" }}>{t.title}</h3>
+                    <p className="mt-4 text-sm font-medium tracking-wide" style={{ color: "#6E4950" }}>{t.date}</p>
+                    <p className="text-sm font-bold mt-1" style={{ color: "#6E4950" }}>{t.time}</p>
+                    <p className="mt-4 text-sm leading-relaxed max-w-[200px] mx-auto" style={{ color: "#983A4E", opacity: 0.9 }}>{t.note}</p>
                   </div>
                 </div>
               );
@@ -682,11 +682,11 @@ function Timeline() {
           {TIMELINE.map((t, i) => (
              <div key={i} className="relative">
                {/* Dot */}
-               <div className="absolute -left-[37.5px] top-2 h-3.5 w-3.5 rounded-full ring-4 ring-[#FDF8F0]" style={{ backgroundColor: "#641829" }} />
+               <div className="absolute -left-[37.5px] top-2 h-3.5 w-3.5 rounded-full ring-4 ring-[#FDF8F0]" style={{ backgroundColor: "#983A4E" }} />
                
-               <h3 className="font-script text-[2.25rem] leading-none" style={{ color: "#641829" }}>{t.title}</h3>
-               <p className="mt-3 text-sm font-medium tracking-wide" style={{ color: "#3D0B16" }}>{t.date}, {t.time}</p>
-               <p className="mt-2 text-sm leading-relaxed" style={{ color: "#641829", opacity: 0.9 }}>{t.note}</p>
+               <h3 className="font-script text-[2.25rem] leading-none" style={{ color: "#983A4E" }}>{t.title}</h3>
+               <p className="mt-3 text-sm font-medium tracking-wide" style={{ color: "#6E4950" }}>{t.date}, {t.time}</p>
+               <p className="mt-2 text-sm leading-relaxed" style={{ color: "#983A4E", opacity: 0.9 }}>{t.note}</p>
              </div>
           ))}
         </div>
