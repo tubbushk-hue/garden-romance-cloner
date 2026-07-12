@@ -121,10 +121,31 @@ function useCountdown(target: Date) {
   return { d, h, m, s };
 }
 
-function Entrance({ isOpen, onOpen }: { isOpen: boolean; onOpen: () => void }) {
+function InvitationBody() {
   return (
-    <div 
-      className={`fixed inset-0 z-[100] flex flex-col items-center justify-center transition-all duration-[1500ms] ease-in-out ${isOpen ? 'opacity-0 scale-110 pointer-events-none' : 'opacity-100 scale-100'}`}
+    <main className="w-full overflow-x-hidden">
+      <Hero />
+      <Welcome />
+      <ScratchSection />
+      <Gallery />
+      <Countdown />
+      <Timeline />
+      <Venue />
+      <Footer />
+    </main>
+  );
+}
+
+function Hero() {
+  const scrollToWelcome = () => {
+    const welcomeEl = document.getElementById('welcome');
+    if (welcomeEl) {
+      welcomeEl.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  return (
+    <section className="relative w-full h-[100svh] overflow-hidden flex flex-col items-center justify-center bg-[#FDF8F0]"
       style={{
         backgroundImage: `url(${entranceBg})`,
         backgroundSize: 'cover',
@@ -147,7 +168,7 @@ function Entrance({ isOpen, onOpen }: { isOpen: boolean; onOpen: () => void }) {
 
          {/* Center Seal Button */}
          <button 
-           onClick={onOpen}
+           onClick={scrollToWelcome}
            className="group relative flex items-center justify-center w-36 h-36 md:w-40 md:h-40 rounded-full transition-transform hover:scale-105 active:scale-95 cursor-pointer"
          >
            {/* Outer gold glow */}
@@ -178,163 +199,13 @@ function Entrance({ isOpen, onOpen }: { isOpen: boolean; onOpen: () => void }) {
             </div>
          </div>
       </div>
-    </div>
-  );
-}
-
-function InvitationBody() {
-  const [isOpen, setIsOpen] = useState(false);
-
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'auto';
-    } else {
-      document.body.style.overflow = 'hidden';
-      window.scrollTo(0, 0);
-    }
-    return () => {
-      document.body.style.overflow = 'auto';
-    };
-  }, [isOpen]);
-
-  return (
-    <>
-      <Entrance isOpen={isOpen} onOpen={() => setIsOpen(true)} />
-      <main className={`w-full overflow-x-hidden ${!isOpen ? 'h-screen' : ''}`}>
-        <Hero />
-        <Welcome />
-        <ScratchSection />
-        <Gallery />
-        <Countdown />
-        <Timeline />
-        <Venue />
-        <Footer />
-      </main>
-    </>
-  );
-}
-
-function Hero() {
-  return (
-    <section className="relative w-full overflow-hidden" style={{ background: "oklch(0.97 0.015 25)" }}>
-      {/* ── MOBILE ONLY: shown on screens narrower than 768px ── */}
-      <div className="md:hidden">
-        <div style={{
-          position: "relative",
-          width: "100%",
-          height: "100svh",
-          overflow: "hidden",
-          background: "oklch(0.96 0.02 25)",
-        }}>
-          {/* Couple image — fully centered vertically & horizontally */}
-          <div
-            className="hero-fade"
-            style={{
-              position: "absolute",
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              backgroundImage: `url(${heroBgMobile})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center center",
-              backgroundRepeat: "no-repeat",
-            }}
-          />
-          {/* Soft gradient at top for text readability */}
-          <div style={{
-            position: "absolute",
-            top: 0, left: 0, right: 0,
-            height: "40%",
-            background: "linear-gradient(to bottom, oklch(0.96 0.02 25) 0%, oklch(0.96 0.02 25 / 0.85) 45%, oklch(0.96 0.02 25 / 0.3) 80%, transparent 100%)",
-            zIndex: 2,
-            pointerEvents: "none",
-          }} />
-          {/* Text overlaid at the TOP */}
-          <div
-            className="hero-fade"
-            style={{
-              position: "absolute",
-              top: "1.5rem",
-              left: 0,
-              right: 0,
-              textAlign: "center",
-              zIndex: 10,
-              padding: "0 1.5rem",
-            }}
-          >
-            <p style={{ letterSpacing: "0.35em", fontSize: "0.65rem", textTransform: "uppercase", color: "oklch(0.4 0.04 20 / 0.8)", marginBottom: "0.3rem" }}>
-              The Wedding Of
-            </p>
-            <h1
-              className="font-script"
-              style={{ fontSize: "3rem", lineHeight: 1.05, color: "oklch(0.32 0.15 20)", margin: "0.15rem 0" }}
-            >
-              Jack &amp; Rose
-            </h1>
-            <div className="divider-heart" style={{ color: "oklch(0.6 0.13 40)", margin: "0.35rem 0" }}>
-              <Heart className="h-3 w-3 fill-current" />
-            </div>
-            <p style={{ letterSpacing: "0.38em", fontSize: "0.65rem", textTransform: "uppercase", color: "oklch(0.55 0.13 60)" }}>
-              Forever Together
-            </p>
-          </div>
-          {/* Scroll cue */}
-          <div
-            className="float-y"
-            style={{ position: "absolute", bottom: "1.5rem", left: "50%", transform: "translateX(-50%)", zIndex: 10, display: "flex", flexDirection: "column", alignItems: "center", color: "oklch(0.55 0.15 15 / 0.7)" }}
-          >
-            <ChevronDown className="h-6 w-6" />
-          </div>
-        </div>
-      </div>
-
-
-      {/* ── TABLET & DESKTOP: unchanged full-screen side-by-side layout ── */}
-      <div
-        className="hidden md:flex"
-        style={{ position: "relative", minHeight: "100vh", width: "100%", flexDirection: "row", alignItems: "center" }}
-      >
-        <img
-          src={heroBg}
-          alt=""
-          aria-hidden="true"
-          width={1600}
-          height={1008}
-          className="hero-fade hero-bg-img"
-          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }}
-        />
-        <div className="hero-fade" style={{ position: "relative", zIndex: 10, width: "50%", maxWidth: "28rem", textAlign: "center", padding: "4rem 2rem 4rem 4rem", margin: "0 auto" }}>
-          <p style={{ letterSpacing: "0.35em", fontSize: "0.8rem", textTransform: "uppercase", color: "oklch(0.45 0.03 20 / 0.7)" }}>
-            The Wedding Of
-          </p>
-          <h1
-            className="font-script"
-            style={{ fontSize: "5rem", lineHeight: 1, color: "oklch(0.35 0.14 20)", marginTop: "1.5rem" }}
-          >
-            Jack &amp; Rose
-          </h1>
-          <div className="divider-heart" style={{ color: "oklch(0.6 0.13 40)", margin: "1.5rem 0" }}>
-            <Heart className="h-3 w-3 fill-current" />
-          </div>
-          <p style={{ letterSpacing: "0.4em", fontSize: "0.8rem", textTransform: "uppercase", color: "oklch(0.6 0.13 60)" }}>
-            Forever Together
-          </p>
-        </div>
-        <div
-          className="float-y"
-          style={{ position: "absolute", bottom: "1.5rem", left: "50%", transform: "translateX(-50%)", zIndex: 10, display: "flex", flexDirection: "column", alignItems: "center", color: "oklch(0.55 0.15 15 / 0.7)" }}
-        >
-          <ChevronDown className="h-6 w-6" />
-        </div>
-      </div>
     </section>
   );
 }
 
 function Welcome() {
   return (
-    <section className="relative w-full overflow-hidden flex flex-row min-h-[50vh]" style={{ background: "oklch(0.97 0.015 25)" }}>
+    <section id="welcome" className="relative w-full overflow-hidden flex flex-row min-h-[50vh]" style={{ background: "oklch(0.97 0.015 25)" }}>
       {/* Left decorative border using the floral part of heroBg */}
       <div className="w-16 md:w-32 lg:w-48 relative flex-shrink-0">
         <img src={heroBg} className="w-full h-full object-cover object-left" alt="" />
