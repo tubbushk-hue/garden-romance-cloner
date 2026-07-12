@@ -161,8 +161,8 @@ function Hero() {
               right: 0,
               bottom: 0,
               backgroundImage: `url(${heroBg})`,
-              backgroundSize: "contain",
-              backgroundPosition: "center center",
+              backgroundSize: "cover",
+              backgroundPosition: "78% center",
               backgroundRepeat: "no-repeat",
             }}
           />
