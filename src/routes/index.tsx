@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Heart, MapPin, Clock, PartyPopper, Bus, BedDouble, Gift, Send, ChevronDown, CalendarDays } from "lucide-react";
+import { Heart, MapPin, Clock, PartyPopper, Bus, BedDouble, Gift, Send, ChevronDown, CalendarDays, Users, Camera, Wine } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
 import heroBgMobile from "@/assets/hero-bg-mobile.jpg";
 
@@ -591,26 +591,106 @@ function Countdown() {
   );
 }
 
+function RingsIcon({ className }: { className?: string }) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+      <circle cx="8.5" cy="12" r="5" />
+      <circle cx="15.5" cy="12" r="5" />
+    </svg>
+  );
+}
+
 const TIMELINE = [
-  { title: "Guest Arrival", when: "Jun 30, 2026, 10:00 AM", note: "We welcome you..!" },
-  { title: "Wedding Ceremony", when: "Jun 30, 2026, 10:20 AM", note: "Your gracious presence is requested ❤" },
-  { title: "Reception", when: "Jul 2, 2026, 7:30 PM", note: "Your gracious presence is requested at the Reception at 7:30 PM onwards." },
+  { title: "Guest Arrival", date: "Jun 30, 2026", time: "10:00 AM", note: "We welcome you!", icon: Users },
+  { title: "Wedding Ceremony", date: "Jun 30, 2026", time: "10:20 AM", note: "Your presence is special ❤", icon: RingsIcon },
+  { title: "Photo Session", date: "Jun 30, 2026", time: "5:00 PM", note: "Capture the best moments", icon: Camera },
+  { title: "Reception", date: "Jul 02, 2026", time: "7:30 PM", note: "Let's celebrate together!", icon: Wine },
 ];
 
 function Timeline() {
   return (
-    <section className="bg-blush-soft py-20 px-6">
-      <SectionTitle icon={Clock}>Program Timeline</SectionTitle>
-      <ol className="mx-auto mt-10 max-w-md space-y-8 border-l-2 border-rose/30 pl-6">
-        {TIMELINE.map((t) => (
-          <li key={t.title} className="relative">
-            <span className="absolute -left-[33px] top-1 h-4 w-4 rounded-full bg-rose ring-4 ring-blush-soft" />
-            <h3 className="font-hand text-2xl text-rose-deep">{t.title}</h3>
-            <p className="mt-1 text-foreground">{t.when}</p>
-            <p className="mt-1 text-sm text-muted-foreground">{t.note}</p>
-          </li>
-        ))}
-      </ol>
+    <section className="py-24 px-6 overflow-hidden" style={{ backgroundColor: "#FDF8F0" }}>
+      <div className="mx-auto max-w-6xl text-center">
+        
+        {/* Mobile Title */}
+        <div className="flex flex-col items-center justify-center md:hidden mb-12">
+           <div className="w-10 h-10 rounded-full border flex items-center justify-center mb-4" style={{ borderColor: "#D4AF37" }}>
+             <Clock className="w-5 h-5" style={{ color: "#641829" }} />
+           </div>
+           <h2 className="font-script text-[3rem]" style={{ color: "#641829" }}>Program Timeline</h2>
+           <div className="flex items-center justify-center gap-4 mt-5">
+              <div className="h-[1px] w-12" style={{ backgroundColor: "#D4AF37", opacity: 0.6 }}></div>
+              <Heart className="w-3 h-3 fill-current" style={{ color: "#D4AF37" }} />
+              <div className="h-[1px] w-12" style={{ backgroundColor: "#D4AF37", opacity: 0.6 }}></div>
+           </div>
+        </div>
+
+        {/* Desktop Title */}
+        <div className="hidden md:flex flex-col items-center justify-center mb-20">
+           <div className="flex items-center justify-center gap-6">
+             <div className="flex items-center gap-3">
+               <div className="w-1.5 h-1.5 rotate-45 border" style={{ borderColor: "#D4AF37" }}></div>
+               <div className="w-20 h-[1px]" style={{ backgroundColor: "#D4AF37" }}></div>
+               <div className="text-xl leading-none -mt-1" style={{ color: "#D4AF37" }}>›</div>
+             </div>
+             
+             <h2 className="font-script text-[4rem] -mt-3" style={{ color: "#641829" }}>Program Timeline</h2>
+             
+             <div className="flex items-center gap-3">
+               <div className="text-xl leading-none -mt-1" style={{ color: "#D4AF37" }}>‹</div>
+               <div className="w-20 h-[1px]" style={{ backgroundColor: "#D4AF37" }}></div>
+               <div className="w-1.5 h-1.5 rotate-45 border" style={{ borderColor: "#D4AF37" }}></div>
+             </div>
+           </div>
+        </div>
+
+        {/* Desktop Layout */}
+        <div className="hidden md:block relative w-full mt-10">
+          {/* Horizontal Line */}
+          <div className="absolute top-[28px] left-[12%] right-[12%] h-[1px] border-t-2 border-dotted" style={{ borderColor: "#D4AF37", opacity: 0.5 }}></div>
+          
+          <div className="relative flex justify-between w-full">
+            {TIMELINE.map((t, i) => {
+              const Icon = t.icon;
+              return (
+                <div key={i} className="flex flex-col items-center w-1/4 relative px-4">
+                  {/* Circle on line */}
+                  <div className="z-10 w-14 h-14 rounded-full flex items-center justify-center shadow-md relative" style={{ backgroundColor: "#641829" }}>
+                     <div className="absolute inset-1 rounded-full border border-white/20"></div>
+                     <Icon className="w-6 h-6 text-white" />
+                  </div>
+                  
+                  <div className="mt-8 text-center">
+                    <h3 className="font-serif text-[1.35rem] font-medium" style={{ color: "#641829" }}>{t.title}</h3>
+                    <p className="mt-4 text-sm font-medium tracking-wide" style={{ color: "#3D0B16" }}>{t.date}</p>
+                    <p className="text-sm font-bold mt-1" style={{ color: "#3D0B16" }}>{t.time}</p>
+                    <p className="mt-4 text-sm leading-relaxed max-w-[200px] mx-auto" style={{ color: "#641829", opacity: 0.9 }}>{t.note}</p>
+                  </div>
+                </div>
+              );
+            })}
+            
+            {/* intermediate dots on line */}
+            <div className="absolute top-[28px] left-[25%] w-2.5 h-2.5 rounded-full transform -translate-x-1/2 -translate-y-1/2 shadow-sm" style={{ backgroundColor: "#E8C385" }}></div>
+            <div className="absolute top-[28px] left-[50%] w-2.5 h-2.5 rounded-full transform -translate-x-1/2 -translate-y-1/2 shadow-sm" style={{ backgroundColor: "#E8C385" }}></div>
+            <div className="absolute top-[28px] left-[75%] w-2.5 h-2.5 rounded-full transform -translate-x-1/2 -translate-y-1/2 shadow-sm" style={{ backgroundColor: "#E8C385" }}></div>
+          </div>
+        </div>
+
+        {/* Mobile Layout */}
+        <div className="md:hidden relative border-l ml-6 pl-8 space-y-12 text-left pb-4 mt-8" style={{ borderColor: "rgba(212, 175, 55, 0.4)" }}>
+          {TIMELINE.map((t, i) => (
+             <div key={i} className="relative">
+               {/* Dot */}
+               <div className="absolute -left-[37.5px] top-2 h-3.5 w-3.5 rounded-full ring-4 ring-[#FDF8F0]" style={{ backgroundColor: "#641829" }} />
+               
+               <h3 className="font-script text-[2.25rem] leading-none" style={{ color: "#641829" }}>{t.title}</h3>
+               <p className="mt-3 text-sm font-medium tracking-wide" style={{ color: "#3D0B16" }}>{t.date}, {t.time}</p>
+               <p className="mt-2 text-sm leading-relaxed" style={{ color: "#641829", opacity: 0.9 }}>{t.note}</p>
+             </div>
+          ))}
+        </div>
+      </div>
     </section>
   );
 }
