@@ -410,8 +410,8 @@ function ScratchSection() {
 
   return (
     <section style={{ background: "oklch(0.97 0.015 25)", padding: "3rem 1rem" }}>
-      {/* Two-card layout: scratch card on left, invitation on right */}
-      <div style={{ display: "flex", flexDirection: "row", gap: "1rem", maxWidth: "52rem", margin: "0 auto", alignItems: "stretch" }}>
+      {/* Single centered scratch card */}
+      <div style={{ display: "flex", justifyContent: "center", maxWidth: "28rem", margin: "0 auto" }}>
 
         {/* ── LEFT CARD: Maroon scratch card ── */}
         <div style={{
@@ -489,50 +489,6 @@ function ScratchSection() {
               onPointerUp={() => (drawing.current = false)}
               onPointerLeave={() => (drawing.current = false)}
             />
-          </div>
-        </div>
-
-        {/* ── RIGHT CARD: Invitation details (always visible) ── */}
-        <div style={{
-          flex: 1,
-          background: "linear-gradient(135deg, #faf6f0 0%, #f5ebe0 100%)",
-          borderRadius: "1rem",
-          padding: "2rem 1.5rem",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          textAlign: "center",
-          boxShadow: "0 4px 20px rgba(0,0,0,0.06)",
-          position: "relative",
-          overflow: "hidden",
-        }}>
-          {/* Top-right floral accent */}
-          <div style={{
-            position: "absolute",
-            top: "-1rem",
-            right: "-1rem",
-            width: "8rem",
-            height: "8rem",
-            backgroundImage: `url(${heroBg})`,
-            backgroundSize: "cover",
-            backgroundPosition: "top right",
-            opacity: 0.2,
-            borderRadius: "0 1rem 0 0",
-            pointerEvents: "none",
-          }} />
-
-          <CalendarDays style={{ width: "2.5rem", height: "2.5rem", color: "#7a2040", marginBottom: "0.75rem" }} />
-          <p className="font-script" style={{ fontSize: "1.8rem", color: "#7a2040", marginBottom: "0.75rem" }}>You're Invited!</p>
-          <p className="font-serif" style={{ fontSize: "2rem", fontWeight: 700, color: "#2a0a14", letterSpacing: "0.08em", marginBottom: "0.25rem" }}>JUNE 30, 2026</p>
-          <p style={{ fontSize: "0.85rem", letterSpacing: "0.25em", color: "#7a2040", textTransform: "uppercase", marginBottom: "0.15rem" }}>TUESDAY</p>
-          <p style={{ fontSize: "0.9rem", letterSpacing: "0.15em", color: "#7a2040" }}>10:20 AM</p>
-
-          {/* Bottom ornament */}
-          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginTop: "1rem" }}>
-            <div style={{ width: "2.5rem", height: "1px", background: "#d4af37" }} />
-            <span style={{ color: "#d4af37", fontSize: "0.7rem" }}>❖</span>
-            <div style={{ width: "2.5rem", height: "1px", background: "#d4af37" }} />
           </div>
         </div>
 
