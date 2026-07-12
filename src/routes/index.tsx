@@ -5,6 +5,7 @@ import heroBg from "@/assets/hero-bg.jpg";
 import heroBgMobile from "@/assets/hero-bg-mobile.jpg";
 import entranceBg from "@/assets/entrance-bg.png";
 import desktopEntranceBg from "@/assets/desktop-entrance-bg.jpg";
+import formalInvitationBg from "@/assets/formal-invitation.png";
 import welcomeBg from "@/assets/welcome-bg.jpg";
 import welcomeBgMobile from "@/assets/welcome-bg-mobile.png";
 
@@ -114,6 +115,7 @@ function InvitationBody() {
       <Hero />
       <Welcome />
       <ScratchSection />
+      <FormalInvitation />
       <Gallery />
       <Countdown />
       <Timeline />
@@ -206,7 +208,15 @@ function Hero() {
   );
 }
 
-
+function FormalInvitation() {
+  return (
+    <section className="relative w-full overflow-hidden bg-[oklch(0.97_0.015_25)] py-12 px-4 md:px-8">
+      <div className="w-full max-w-4xl mx-auto flex justify-center">
+        <img src={formalInvitationBg} alt="Formal Invitation" className="w-full h-auto object-contain rounded-lg shadow-xl" />
+      </div>
+    </section>
+  );
+}
 
 function Welcome() {
   return (
@@ -425,7 +435,7 @@ function ScratchSection() {
             }}>
               <CalendarDays style={{ width: "2rem", height: "2rem", color: "#7a2040", marginBottom: "0.5rem" }} />
               <p className="font-script" style={{ fontSize: "1.5rem", color: "#7a2040", marginBottom: "0.25rem" }}>You're Invited!</p>
-              <p className="font-serif" style={{ fontSize: "1.5rem", fontWeight: 700, color: "#2a0a14", letterSpacing: "0.05em" }}>NOVEMBER 1, 2026</p>
+              <p className="font-serif" style={{ fontSize: "1.5rem", fontWeight: 700, color: "#2a0a14", letterSpacing: "0.05em" }}>NOVEMBER <span style={{ fontFamily: "sans-serif" }}>1</span>, 2026</p>
               <p style={{ fontSize: "0.8rem", letterSpacing: "0.2em", color: "#7a2040", textTransform: "uppercase", margin: "0.2rem 0" }}>Sunday</p>
               <p style={{ fontSize: "0.85rem", letterSpacing: "0.15em", color: "#7a2040" }}>8:00 PM</p>
             </div>
