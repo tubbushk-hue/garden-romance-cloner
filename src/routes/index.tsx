@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Heart, MapPin, Clock, PartyPopper, Bus, BedDouble, Gift, Send, ChevronDown } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
+import heroBgMobile from "@/assets/hero-bg-mobile.jpg";
 
 export const Route = createFileRoute("/")({
   component: Invitation,
@@ -160,7 +161,7 @@ function Hero() {
               left: 0,
               right: 0,
               bottom: 0,
-              backgroundImage: `url(${heroBg})`,
+              backgroundImage: `url(${heroBgMobile})`,
               backgroundSize: "cover",
               backgroundPosition: "center center",
               backgroundRepeat: "no-repeat",
