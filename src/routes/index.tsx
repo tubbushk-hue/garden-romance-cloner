@@ -9,7 +9,7 @@ export const Route = createFileRoute("/")({
   component: Invitation,
 });
 
-const WEDDING_DATE = new Date("2026-06-30T10:20:00");
+const WEDDING_DATE = new Date("2026-11-01T20:00:00");
 
 const GALLERY = [
   "/gallery/gallery-1.png",
@@ -262,7 +262,7 @@ function Welcome() {
           style={{ color: "oklch(0.25 0.05 20)" }}
         >
           We are honored to welcome you to<br />
-          the wedding ceremony of Jack &amp; Rose<br />
+          the wedding ceremony of Yasmeen &amp; Gibran<br />
           as they begin their journey together in<br />
           faith and love.
         </p>
@@ -453,9 +453,9 @@ function ScratchSection() {
             }}>
               <CalendarDays style={{ width: "2rem", height: "2rem", color: "#7a2040", marginBottom: "0.5rem" }} />
               <p className="font-script" style={{ fontSize: "1.5rem", color: "#7a2040", marginBottom: "0.25rem" }}>You're Invited!</p>
-              <p className="font-serif" style={{ fontSize: "1.5rem", fontWeight: 700, color: "#2a0a14", letterSpacing: "0.05em" }}>JUNE 30, 2026</p>
-              <p style={{ fontSize: "0.8rem", letterSpacing: "0.2em", color: "#7a2040", textTransform: "uppercase", margin: "0.2rem 0" }}>Tuesday</p>
-              <p style={{ fontSize: "0.85rem", letterSpacing: "0.15em", color: "#7a2040" }}>10:20 AM</p>
+              <p className="font-serif" style={{ fontSize: "1.5rem", fontWeight: 700, color: "#2a0a14", letterSpacing: "0.05em" }}>NOVEMBER 1, 2026</p>
+              <p style={{ fontSize: "0.8rem", letterSpacing: "0.2em", color: "#7a2040", textTransform: "uppercase", margin: "0.2rem 0" }}>Sunday</p>
+              <p style={{ fontSize: "0.85rem", letterSpacing: "0.15em", color: "#7a2040" }}>8:00 PM</p>
             </div>
             {/* Gold scratch canvas */}
             <canvas
@@ -579,10 +579,9 @@ function RingsIcon({ className }: { className?: string }) {
 }
 
 const TIMELINE = [
-  { title: "Guest Arrival", date: "Jun 30, 2026", time: "10:00 AM", note: "We welcome you!", icon: Users },
-  { title: "Wedding Ceremony", date: "Jun 30, 2026", time: "10:20 AM", note: "Your presence is special ❤", icon: RingsIcon },
-  { title: "Photo Session", date: "Jun 30, 2026", time: "5:00 PM", note: "Capture the best moments", icon: Camera },
-  { title: "Reception", date: "Jul 02, 2026", time: "7:30 PM", note: "Let's celebrate together!", icon: Wine },
+  { title: "Guest Arrival", date: "Nov 01, 2026", time: "7:30 PM", note: "We welcome you!", icon: Users },
+  { title: "Wedding Ceremony", date: "Nov 01, 2026", time: "8:00 PM", note: "Your presence is special", icon: RingsIcon },
+  { title: "Dinner", date: "Nov 01, 2026", time: "9:00 PM", note: "Let's celebrate together!", icon: Wine },
 ];
 
 function Timeline() {
@@ -674,7 +673,7 @@ function Timeline() {
 }
 
 function Venue() {
-  const q = encodeURIComponent("Royal Palm Banquet, Lahore, Pakistan");
+  const q = encodeURIComponent("Diamond Banquet Hall, Mumbra, Thane");
   return (
     <section className="relative py-24 px-6 overflow-hidden" style={{ backgroundColor: "#F9EFE5" }}>
       
@@ -696,10 +695,10 @@ function Venue() {
             <h2 className="font-script text-[3.5rem] md:text-[4rem] leading-none" style={{ color: "#641829" }}>Venue</h2>
           </div>
           <h3 className="font-serif text-xl md:text-2xl tracking-[0.2em] uppercase mb-4" style={{ color: "#641829" }}>
-            Royal Palm Banquet
+            Diamond Banquet Hall
           </h3>
           <p className="text-lg mb-8 font-medium leading-relaxed max-w-[320px]" style={{ color: "#3D0B16" }}>
-            123, Palm Avenue, Garden City, Lahore, Pakistan
+            Near St. Mary School, Khadi Machine Road, Mumbra, Thane-400612, Maharashtra
           </p>
           <a
             href={`https://www.google.com/maps/search/?api=1&query=${q}`}
@@ -735,7 +734,7 @@ function Footer() {
         <div className="relative flex items-center justify-center mt-4 mb-16">
           <div className="w-full h-[1px]" style={{ backgroundColor: "#E8C385", opacity: 0.4 }}></div>
           <div className="absolute w-24 h-24 rounded-full border flex items-center justify-center" style={{ backgroundColor: "#641829", borderColor: "#E8C385" }}>
-            <span className="font-serif text-4xl italic font-semibold" style={{ color: "#E8C385" }}>J&amp;R</span>
+            <span className="font-serif text-4xl italic font-semibold" style={{ color: "#E8C385" }}>Y&amp;G</span>
           </div>
         </div>
 
@@ -746,7 +745,7 @@ function Footer() {
           </p>
           <Heart className="w-4 h-4 fill-current mx-auto mb-10" style={{ color: "#E8C385" }} />
           <p className="text-[0.7rem] tracking-[0.2em] opacity-80 uppercase leading-loose max-w-[350px] mx-auto">
-            © 2026 Jack &amp; Rose Wedding. All Rights<br/>Reserved.
+            © 2026 Yasmeen &amp; Gibran Wedding. All Rights<br/>Reserved.
           </p>
         </div>
 
