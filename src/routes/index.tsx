@@ -425,7 +425,7 @@ function ScratchSection() {
             }}>
               <CalendarDays style={{ width: "2rem", height: "2rem", color: "#7a2040", marginBottom: "0.5rem" }} />
               <p className="font-script" style={{ fontSize: "1.5rem", color: "#7a2040", marginBottom: "0.25rem" }}>You're Invited!</p>
-              <p className="font-sans" style={{ fontSize: "1.5rem", fontWeight: 700, color: "#2a0a14", letterSpacing: "0.05em" }}>NOVEMBER 1, 2026</p>
+              <p className="font-serif" style={{ fontSize: "1.5rem", fontWeight: 700, color: "#2a0a14", letterSpacing: "0.05em" }}>NOVEMBER <span className="font-sans">1</span>, 2026</p>
               <p style={{ fontSize: "0.8rem", letterSpacing: "0.2em", color: "#7a2040", textTransform: "uppercase", margin: "0.2rem 0" }}>Sunday</p>
               <p style={{ fontSize: "0.85rem", letterSpacing: "0.15em", color: "#7a2040" }}>8:00 PM</p>
             </div>
