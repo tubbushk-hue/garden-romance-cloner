@@ -11,8 +11,8 @@ export const Route = createFileRoute("/")({
 const WEDDING_DATE = new Date("2026-06-30T10:20:00");
 
 const GALLERY = [
-  "/gallery/gallery-1.jpg",
-  "/gallery/gallery-2.jpg",
+  "/gallery/gallery-1.png",
+  "/gallery/gallery-2.png",
   "/gallery/gallery-3.jpg",
   "/gallery/gallery-4.jpg",
 ];
