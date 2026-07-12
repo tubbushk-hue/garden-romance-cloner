@@ -5,7 +5,6 @@ import heroBg from "@/assets/hero-bg.jpg";
 import heroBgMobile from "@/assets/hero-bg-mobile.jpg";
 import entranceBg from "@/assets/entrance-bg.png";
 import desktopEntranceBg from "@/assets/desktop-entrance-bg.jpg";
-import coupleImg from "@/assets/couple.png";
 
 export const Route = createFileRoute("/")({
   component: Invitation,
@@ -149,48 +148,8 @@ function Hero() {
               backgroundRepeat: "no-repeat",
             }}
           />
-          {/* Couple Cutout Overlay */}
-          <div className="absolute inset-x-0 bottom-0 z-[5] flex justify-center pointer-events-none">
-            <img src={coupleImg} alt="Couple" className="w-[90%] max-w-sm object-contain object-bottom hero-fade" style={{ maxHeight: "70vh" }} />
-          </div>
-          {/* Soft gradient at top for text readability */}
-          <div style={{
-            position: "absolute",
-            top: 0, left: 0, right: 0,
-            height: "40%",
-            background: "linear-gradient(to bottom, oklch(0.96 0.02 25) 0%, oklch(0.96 0.02 25 / 0.85) 45%, oklch(0.96 0.02 25 / 0.3) 80%, transparent 100%)",
-            zIndex: 2,
-            pointerEvents: "none",
-          }} />
-          {/* Text overlaid at the TOP */}
-          <div
-            className="hero-fade"
-            style={{
-              position: "absolute",
-              top: "1.5rem",
-              left: 0,
-              right: 0,
-              textAlign: "center",
-              zIndex: 10,
-              padding: "0 1.5rem",
-            }}
-          >
-            <p style={{ letterSpacing: "0.35em", fontSize: "0.65rem", textTransform: "uppercase", color: "oklch(0.4 0.04 20 / 0.8)", marginBottom: "0.3rem" }}>
-              The Wedding Of
-            </p>
-            <h1
-              className="font-script"
-              style={{ fontSize: "3rem", lineHeight: 1.05, color: "oklch(0.32 0.15 20)", margin: "0.15rem 0" }}
-            >
-              Gibran &amp; Yasmeen
-            </h1>
-            <div className="divider-heart" style={{ color: "oklch(0.6 0.13 40)", margin: "0.35rem 0" }}>
-              <Heart className="h-3 w-3 fill-current" />
-            </div>
-            <p style={{ letterSpacing: "0.38em", fontSize: "0.65rem", textTransform: "uppercase", color: "oklch(0.55 0.13 60)" }}>
-              Forever Together
-            </p>
-          </div>
+          {/* Soft gradient at top for text readability - removed because image has text built in */}
+
           {/* Scroll cue */}
           <div
             className="float-y"
@@ -216,11 +175,8 @@ function Hero() {
           className="hero-fade hero-bg-img"
           style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }}
         />
-        {/* Couple Cutout Overlay Desktop */}
-        <div className="absolute inset-y-0 left-0 w-1/2 flex items-end justify-center z-[5] pointer-events-none">
-           <img src={coupleImg} alt="Couple" className="h-[85%] max-h-[900px] object-contain object-bottom hero-fade" />
-        </div>
-        <div className="hero-fade" style={{ position: "relative", zIndex: 10, width: "50%", maxWidth: "28rem", textAlign: "center", padding: "4rem 2rem 4rem 4rem", margin: "0 auto" }}>
+        {/* Desktop text positioned on the left side */}
+        <div className="hero-fade" style={{ position: "relative", zIndex: 10, width: "50%", maxWidth: "28rem", textAlign: "center", padding: "4rem 2rem 4rem 4rem", marginLeft: "10%" }}>
           <p style={{ letterSpacing: "0.35em", fontSize: "0.8rem", textTransform: "uppercase", color: "oklch(0.45 0.03 20 / 0.7)" }}>
             The Wedding Of
           </p>
